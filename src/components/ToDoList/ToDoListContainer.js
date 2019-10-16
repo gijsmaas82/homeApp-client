@@ -4,17 +4,23 @@ import { connect } from 'react-redux'
 import ToDoList from './ToDoList'
 
 class ToDoListContainer extends React.Component {
-  componentDidMount() {
-    this.props.getToDo()
-  }
 
+  pushLogin = () => {
+    this.props.history.push('/login')
+  }
   render() {
-    return <ToDoList todo={this.props.todo} />
+    this.props.getToDo()
+      
+    return (
+      <div>
+        <ToDoList todo={this.props.todo} />
+      </div>
+    )
   }
 }
 
 function mapStateToProps (state) {
-  return { todo: state.toDoList }
+  return { todo: state.toDoList, user: state.login }
 }
 
 const mapDispatchToProps = { getToDo }

@@ -9,7 +9,7 @@ export default class ToDoList extends Component {
         {this.props.todo && 
           <div>
             <ul>{this.props.todo.map(todo => {
-              return <li>
+              return <li key={todo.id}>
                 <h2>{todo.title}</h2>
                 <p>{todo.description}</p>
               </li>
