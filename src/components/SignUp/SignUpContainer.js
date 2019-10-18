@@ -4,12 +4,12 @@ import request from 'superagent'
 const { url } = require('../../constants')
 
 export default class SignupFormContainer extends React.Component {
-    state = { name: '', password: '' }
+    state = { name: '', email: '', password: '' }
   
-    signUp = (name, password) => {
+    signUp = (state) => {
       request
         .post(`${url}/user`)
-        .send({ name, password })
+        .send( state )
         .then(res => {
           console.log(res.body)
         })
@@ -18,7 +18,7 @@ export default class SignupFormContainer extends React.Component {
   
     onSubmit = (event) => {
       event.preventDefault()
-      this.signUp(this.state.name, this.state.password)
+      this.signUp(this.state)
       this.props.history.push('/')
     }
   

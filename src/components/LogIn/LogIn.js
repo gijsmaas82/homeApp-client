@@ -1,10 +1,28 @@
 import React, { Component } from 'react'
+import { Button, Form } from 'react-bootstrap'
 
 export default class LogIn extends Component {
   render() {
     return (
       <div>
-        {this.props.loggedIn ? <h1>You already logged in.</h1>: 
+        <Form onSubmit={this.props.onSubmit}>
+        <Form.Group controlId="formBasicText">
+            <Form.Label>User Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter User Name" value={this.props.name}
+              name='name' onChange={this.props.onChange}/>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" value={this.props.password}
+              name='password' onChange={this.props.onChange}/>
+          </Form.Group>
+          <Button variant="dark" type="submit">
+            Submit
+          </Button>
+        </Form>
+
+        {/* {this.props.loggedIn ? <h1>You already logged in.</h1>: 
         <div><h2>Login</h2>
         <form onSubmit={this.props.onSubmit}>
           <label>
@@ -28,7 +46,7 @@ export default class LogIn extends Component {
             />
           </label>
           <button type='submit'>Login</button>
-        </form></div>}
+        </form></div>} */}
       </div>
     )
   }
