@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import './Header.css'
 
 export default class Header extends Component {
@@ -24,10 +24,12 @@ export default class Header extends Component {
               </NavDropdown>
             </Nav> */}
             <Nav>
-              <Nav.Link><Link to={'/signup/'} >Sign up</Link></Nav.Link>
+              {!this.props.user ? 
+              <div><Nav.Link><Link to={'/signup/'} >Sign up</Link></Nav.Link> 
               <Nav.Link>
               <Link to={'/login/'} >Log in</Link>
-              </Nav.Link>
+              </Nav.Link> </div>:
+            <Nav.Link><Link to={'/signup/'} >Profile</Link></Nav.Link> }
             </Nav>
           </Navbar.Collapse>
         </Navbar>
