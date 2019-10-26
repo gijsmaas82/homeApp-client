@@ -24,11 +24,11 @@ export default class Header extends Component {
             </Nav>
             <Nav>
               {!this.props.user ? 
-              <div><Nav.Link href="signup">Sign up</Nav.Link> 
-              <Nav.Link href="login">
+              <div><Nav.Link href="/signup">Sign up</Nav.Link> 
+              <Nav.Link href="/login">
               Log in
               </Nav.Link> </div>:
-            <Nav.Link href="login">Profile</Nav.Link> }
+            <Nav.Link href="/login">Profile</Nav.Link> }
             </Nav>
           </Navbar.Collapse>
         </Navbar>
