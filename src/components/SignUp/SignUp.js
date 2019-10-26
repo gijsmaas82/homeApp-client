@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, Container, Row, Col } from 'react-bootstrap'
 
+
 export default class SignUp extends Component {
   render() {
     return (
