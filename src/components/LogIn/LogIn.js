@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Container, Row, Col } from 'react-bootstrap'
 
 export default class LogIn extends Component {
   render() {
     return (
       <div>
+        <Container>
+        <Row>
         <Form onSubmit={this.props.onSubmit}>
         <Form.Group controlId="formBasicText">
             <Form.Label>User Name</Form.Label>
@@ -21,6 +23,8 @@ export default class LogIn extends Component {
             Submit
           </Button>
         </Form>
+        </Row>
+        </Container>
 
         {/* {this.props.loggedIn ? <h1>You already logged in.</h1>: 
         <div><h2>Login</h2>
