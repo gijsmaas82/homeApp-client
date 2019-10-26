@@ -7,6 +7,7 @@ import HomePageContainer from './components/HomePage/HomePageContainer'
 import ToDoListContainer from './components/ToDoList/ToDoListContainer'
 import SignUpContainer from './components/SignUp/SignUpContainer'
 import LogInContainer from './components/LogIn/LogInContainer';
+import CalendarContainer from './components/Calendar/CalendarContainer'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <Route path="/signup/" component={SignUpContainer} />
         <Route path="/login/" component={LogInContainer} />
         <Route path="/todolist/" component={ToDoListContainer} />
+        <Route path="/calendar/" component={CalendarContainer} />
       </div>
     );
   }
