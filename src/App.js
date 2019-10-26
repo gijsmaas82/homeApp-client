@@ -15,10 +15,10 @@ class App extends Component {
       <div className="App" >
         <HeaderContainer />
         <Route exact path="/" component={HomePageContainer} />
-        <Route path="/signup/" component={SignUpContainer} />
-        <Route path="/login/" component={LogInContainer} />
-        <Route path="/todolist/" component={ToDoListContainer} />
-        <Route path="/calendar/" component={CalendarContainer} />
+        <Route path="/signup" component={SignUpContainer} />
+        <Route path="/login" component={LogInContainer} />
+        <Route path="/todolist" component={ToDoListContainer} />
+        <Route path="/calendar" component={CalendarContainer} />
       </div>
     );
   }
