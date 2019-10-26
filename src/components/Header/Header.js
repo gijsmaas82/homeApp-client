@@ -13,8 +13,6 @@ export default class Header extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              {/* <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link> */}
               <NavDropdown title="Features" id="collapsible-nav-dropdown">
                 <NavDropdown.Item><Link to="calendar" >Calendar</Link></NavDropdown.Item>
                 <NavDropdown.Divider />
