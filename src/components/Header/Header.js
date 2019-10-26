@@ -9,18 +9,16 @@ export default class Header extends Component {
     return (
       <div className="header">
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="/">HOME</Navbar.Brand>
+          <Navbar.Brand><Link to="/" >HOME</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               {/* <Nav.Link href="#features">Features</Nav.Link>
               <Nav.Link href="#pricing">Pricing</Nav.Link> */}
               <NavDropdown title="Features" id="collapsible-nav-dropdown">
-                <NavDropdown.Item href="calendar">Calendar</NavDropdown.Item>
-                <NavDropdown.Item href="todolist">To do list</NavDropdown.Item>
-                <NavDropdown.Item href="/">Games</NavDropdown.Item>
-                {/* <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
+                <NavDropdown.Item><Link to="calendar" >Calendar</Link></NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item><Link to="todolist" >Todo list</Link></NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Nav>
