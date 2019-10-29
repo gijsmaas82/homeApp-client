@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Table, Jumbotron, Button, CardDeck, Card, Badge } from 'react-bootstrap'
 import moment from "moment";
-import "./calendar.css";
+// import "./calendar.css";
 
 export default class Calendar extends Component {
 
@@ -87,41 +88,18 @@ export default class Calendar extends Component {
   render() {
     return (
       <div>
-        <div className="tail-datetime-calendar">
-      <div className="calendar-navi">
-          <span
-            onClick={this.props.onPrev}
-            className="calendar-button button-prev"
-          />
-          {!this.props.showMonthTable && (
-            <span
-              onClick={this.props.showMonth}
-              className="calendar-label"
-            >
-              {this.props.dateObject.format("MMMM")}
-            </span>
-          )}
-          <span
-          onClick={this.props.onNext}
-          className="calendar-button button-next"
-        />
-          <span
-            onClick={this.props.onPrevYear}
-            className="calendar-button button-prevYear"
-          />
-          <span className="calendar-label" > 
-            {this.props.dateObject.format("Y")}
-            </span>
-            <span
-          onClick={this.props.onNextYear}
-          className="calendar-button button-nextYear"
-          />
-        </div>
+        <div style={{display:"flex", flexDirection:"column", fontFamily:"'Righteous', cursive" }}>
+         <div style={{ margin:"10px", width:"100%", display:"flex", justifyContent:"space-around", alignItems:"center", fontFamily:"'Righteous', cursive"}}> 
+           <h4 onClick={this.props.showMonth}>{this.props.dateObject.format("MMMM")}</h4>
+           <h4>{this.props.dateObject.format("Y")}</h4>
+           <Button variant="dark" onClick={this.props.onPrev} >-</Button>
+           <Button variant="dark" onClick={this.props.onNext}>+</Button>
+         </div>        
        
-        <div className="calendar-date">
+        <div>
           {this.props.showDateTable && (
             
-              <table className="calendar-day">
+              <Table>
                 <thead>
                   <tr>{moment.weekdaysShort().map(day => {
                     return <th key={day}>{day}</th>;
@@ -136,12 +114,12 @@ export default class Calendar extends Component {
                   }
                   })}
                 </tbody>
-              </table>
+              </Table>
           )}
           </div>
-          <div className="calendar-date">
+          <div>
           {this.props.showMonthTable && (
-            <table className="calendar-month">
+            <Table >
               <thead>
                 <tr>
                   <th colSpan="4">Select a Month</th>
@@ -156,11 +134,11 @@ export default class Calendar extends Component {
                 }
                 })}
               </tbody>
-            </table>
+            </Table>
           )}
         </div>
       </div>
-      </div>
+     </div>
     )
   }
 }
