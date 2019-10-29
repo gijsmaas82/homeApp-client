@@ -1,0 +1,93 @@
+.drawingWrapper {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+  align-items: center;
+  height: 100vh;
+}
+
+.drawingWrapper h1{
+  font-family: 'Ribeye', cursive;
+  color: pink;
+  font-size: 2.5rem;
+}
+
+.fixedDrawingStage { 
+  position: fixed;
+  display: flex;
+  background-color: rgb(243, 236, 236);
+  border: solid black 3px;
+  border-radius: 10px;
+  height: 600;
+  width: 1100;
+}
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.green {
+  width:50px;
+  height:50px;
+  background-color: green;
+  border-radius: 25px;
+  border: solid black 3px;
+}
+
+.yellow {
+  width:50px;
+  height:50px;
+  background-color: yellow;
+  border-radius: 25px;
+  border: solid black 3px;
+}
+.red {
+  width:50px;
+  height:50px;
+  background-color: red;
+  border-radius: 25px;
+  border: solid black 3px;
+}
+.blue {
+  widows: 50px;
+  height: 50px;
+  background-color: blue;
+  border-radius: 25px;
+  border: solid black 3px;
+}
+.orange {
+  width:50px;
+  height:50px;
+  background-color: orange;
+  border-radius: 25px;
+  border: solid black 3px;
+}
+
+.saveButton {
+  width:50px;
+  height:50px;
+  background-color:black;
+  border-radius: 25px;
+  border: solid black 3px;
+  text-align: center;
+  font-size: 40px;
+  color: burlywood;
+  font-family: 'Ranchers', cursive;
+}
+
+.drawings {
+  display: flex;
+  justify-content: left;
+}
+
+.drawing img{
+  background-color: white;
+  height: 150px;
+  width: 250px;
+  border: solid purple 3px;
+  border-radius: 30px;
+}

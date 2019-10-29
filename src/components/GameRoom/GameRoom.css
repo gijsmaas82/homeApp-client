@@ -1,0 +1,21 @@
+.HomePageWrapper {
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+  align-items: center;
+  height: 100vh;
+}
+
+.HomePageWrapper {
+  font-family: 'Barrio', cursive;
+  color: pink;
+  font-size: 2rem;
+}
+
+.HomePageStage {
+  background-image: url('https://i.pinimg.com/736x/5c/9e/3c/5c9e3c5945d922017dea74ed0d29ad3c.jpg'); 
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
