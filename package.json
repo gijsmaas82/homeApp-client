@@ -5,16 +5,21 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "browserify": "^16.5.0",
+    "konva": "^4.0.16",
     "moment": "^2.24.0",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.9.0",
+    "react-konva": "^16.10.1-0",
+    "react-player": "^1.13.0",
     "react-redux": "^7.1.1",
+    "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "superagent": "^5.1.0"
+    "superagent": "^5.1.0",
+    "use-image": "^1.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
