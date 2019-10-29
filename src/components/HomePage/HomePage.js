@@ -29,7 +29,7 @@ export default function HomePage() {
             <Card.Body>
               <Card.Title>Welcome to my site</Card.Title>
               <Card.Text>
-                Pleae note that this site is under constant construction. Feel free to look around. You can sign up and make customized lists and calendar-events. There is also a games section I am building for my son. It is recommended to play the games section on a tablet. Have fun
+                Please note that this site is under constant construction. Feel free to look around. You can sign up and make customized lists and calendar-events. There is also a games section I am building for my son. It is recommended to play the games section on a tablet. Have fun
               </Card.Text>
             </Card.Body>
           </Card>
