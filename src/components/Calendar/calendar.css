@@ -1,0 +1,16 @@
+.today {
+  border: solid black 5px;
+  border-radius: 5px;
+}
+
+.today:hover {
+  color: red;
+}
+
+.day:hover {
+  color: red;
+}
+
+.month:hover {
+  color: red;
+}

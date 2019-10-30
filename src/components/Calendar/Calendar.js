@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Table, Jumbotron, Button, CardDeck, Card, Badge } from 'react-bootstrap'
 import moment from "moment";
-// import "./calendar.css";
+import "./calendar.css";
 
 export default class Calendar extends Component {
 
@@ -15,23 +15,23 @@ export default class Calendar extends Component {
   dayList = () => {
     let emptyCells = [];
     for (let emptyCell = 0; emptyCell < this.firstDayOfMonth(); emptyCell++) {
-      emptyCells.push(<td key={-emptyCell} className="calendar-day empty">{""}</td>);
+      emptyCells.push(<td key={-emptyCell} >{""}</td>);
     }
     let daysInMonth = [];
+
     for (let day = 1; day <= this.props.dateObject.daysInMonth(); day++) {
-
       let currentMonth = moment().format("MMMM")
-      let currentDay = day === Number(this.props.dateObject.format("D")) && currentMonth === this.props.dateObject.format("MMMM") ? "today" : ''
-
+      let currentDay = day === Number(this.props.dateObject.format("D")) && currentMonth === this.props.dateObject.format("MMMM") ? "today" : 'day'
+    
       daysInMonth.push(
-        <td key={day} className={`calendar-day ${currentDay}`} onClick={e => {
-          this.props.onDayClick(e, day);
-        }}>
-          <span>
-            {day}
-          </span>
-        </td>
-      );
+          <td key={day}  onClick={e => {
+            this.props.onDayClick(e, day);
+          }}>
+            <div className={`${currentDay}`}>
+              {day}
+            </div>
+          </td>
+        );
     }
     let totalSlots = [...emptyCells, ...daysInMonth];
     let rows = [];
@@ -59,12 +59,11 @@ export default class Calendar extends Component {
       return (
         <td
           key={month}
-          className="calendar-month"
           onClick={e => {
             this.props.setMonth(month);
           }}
         >
-          <span>{month}</span>
+          <div className='month'>{month}</div>
       </td> )
     })
     let rows = []

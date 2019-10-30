@@ -2,8 +2,13 @@ import React from "react";
 import moment from "moment";
 import "./calendar.css";
 import Calendar from './Calendar'
+import { url } from '../../constants'
+import request from 'superagent'
+import AddEvent from './AddEvent'
+import Events from './Events'
+
 import { connect } from 'react-redux'
-// import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
+
 
 class CalendarContainer extends React.Component {
 
@@ -12,6 +17,8 @@ class CalendarContainer extends React.Component {
     showDateTable: true,
     dateObject: moment(),
     selectedDay: null,
+    events: [],
+    addEvent: false
   }
 
   showMonth = () => {
@@ -62,28 +69,39 @@ class CalendarContainer extends React.Component {
   }
 
   onDayClick = (e, d) => {
-    console.log('day:', d)
 
-    // this.setState(
-    //   {
-    //     selectedDay: d
-    //   },
-    //   () => {
-    //     request
-    //   .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`)
-    //   .set('Authorization', `Bearer ${this.props.user.jwt}`)
-    //   .then(response => {
-    //     console.log(response)
-    //     this.props.handleResult(response)})
-    //   .catch(console.error)
+    this.setState(
+      {
+        selectedDay: d
+      },
+      () => {
+        request
+          .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`)
+          // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+          .then(response => {
+            this.setState({
+              events: response.body
+            })})
+          .catch(console.error)
 
-    //     // this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), this.state.selectedDay,this.props.user.jwt)  
-    //     this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), this.state.selectedDay)
-    //   }
-    // );
+        // this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), this.state.selectedDay,this.props.user.jwt)  
+        // this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), this.state.selectedDay)
+      }
+    );
   };
 
-  // componentDidMount() {
+  
+
+  componentDidMount() {
+
+    request
+          .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
+          // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+          .then(response => {
+            this.setState({
+              events: response.body
+            })})
+          .catch(console.error)
 
   //   request
   //     .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
@@ -94,7 +112,7 @@ class CalendarContainer extends React.Component {
 
   //   // this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), Number(this.state.dateObject.format("D")), this.props.user.jwt)
   //   this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), Number(this.state.dateObject.format("D")))
-  // }
+  }
 
   render() {
 
@@ -113,7 +131,8 @@ class CalendarContainer extends React.Component {
         onNextYear={this.onNextYear}
 
         />
-        {/* <EventDetailsContainer /> */}
+        <AddEvent /> 
+        <Events events={this.state.events} />
       </div>
     );
   }
