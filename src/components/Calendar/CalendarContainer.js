@@ -6,6 +6,7 @@ import { url } from '../../constants'
 import request from 'superagent'
 import AddEvent from './AddEvent'
 import Events from './Events'
+import { Button } from 'react-bootstrap'
 
 import { connect } from 'react-redux'
 
@@ -18,7 +19,9 @@ class CalendarContainer extends React.Component {
     dateObject: moment(),
     selectedDay: null,
     events: [],
-    addEvent: false
+    addEvent: false,
+    deletingEvent: false,
+    showEvents: false,
   }
 
   showMonth = () => {
@@ -83,35 +86,57 @@ class CalendarContainer extends React.Component {
               events: response.body
             })})
           .catch(console.error)
-
-        // this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), this.state.selectedDay,this.props.user.jwt)  
-        // this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), this.state.selectedDay)
       }
     );
   };
 
-  
+  deleteEvent = (e) => {
+   
+    request.delete(`${url}/event/${e.target.value}`)
+      .then(response => {
+        this.setState({ deletingEvent: !this.state.deletingEvent })
+      })
+      .catch(console.error)
+
+  }
+
+  deletedEvent = () => {
+
+    request
+      .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
+      // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .then(response => {
+        this.setState({
+          events: response.body,
+          deletingEvent: !this.state.deletingEvent
+        })
+      })
+      .catch(console.error)
+  }
+
+  showEvents = () => {
+    request
+      .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
+      // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .then(response => {
+        this.setState({
+          events: response.body,
+          showEvents: !this.state.showEvents
+        })})
+      .catch(console.error)
+  }
 
   componentDidMount() {
 
     request
-          .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-          // .set('Authorization', `Bearer ${this.props.user.jwt}`)
-          .then(response => {
-            this.setState({
-              events: response.body
-            })})
-          .catch(console.error)
+      .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
+      // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .then(response => {
+        this.setState({
+          events: response.body
+        })})
+      .catch(console.error)
 
-  //   request
-  //     .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-  //     .set('Authorization', `Bearer ${this.props.user.jwt}`)
-  //     .then(response => {
-  //       this.props.handleResult(response)})
-  //     .catch(console.error)
-
-  //   // this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), Number(this.state.dateObject.format("D")), this.props.user.jwt)
-  //   this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), Number(this.state.dateObject.format("D")))
   }
 
   render() {
@@ -119,20 +144,28 @@ class CalendarContainer extends React.Component {
     return (
       <div>
         <Calendar 
-        onPrev={this.onPrev}
-        showMonthTable={this.state.showMonthTable}
-        showMonth={this.showMonth}
-        onNext={this.onNext}
-        showDateTable={this.state.showDateTable}
-        dateObject={this.state.dateObject}
-        onDayClick={this.onDayClick}
-        setMonth={this.setMonth}
-        onPrevYear={this.onPrevYear}
-        onNextYear={this.onNextYear}
-
+          onPrev={this.onPrev}
+          showMonthTable={this.state.showMonthTable}
+          showMonth={this.showMonth}
+          onNext={this.onNext}
+          showDateTable={this.state.showDateTable}
+          dateObject={this.state.dateObject}
+          onDayClick={this.onDayClick}
+          setMonth={this.setMonth}
+          onPrevYear={this.onPrevYear}
+          onNextYear={this.onNextYear}
         />
         <AddEvent /> 
-        <Events events={this.state.events} />
+        {!this.state.showEvents ? 
+        <Button style={{ fontFamily:"'Righteous', cursive" }} variant="dark" onClick={this.showEvents}>Show Events</Button>
+        : 
+        <Button style={{ fontFamily:"'Righteous', cursive" }} variant="dark" onClick={() => this.setState({ showEvents: !this.state.showEvents })}>Hide Events</Button>}
+        {this.state.showEvents && <Events 
+          deleteEvent={this.deleteEvent}
+          deletedEvent={this.deletedEvent}
+          events={this.state.events}
+          deletingEvent={this.state.deletingEvent}
+        />}
       </div>
     );
   }

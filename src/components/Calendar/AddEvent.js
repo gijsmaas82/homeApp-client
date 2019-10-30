@@ -11,7 +11,8 @@ export default class AddEvent extends Component {
     date: '',
     startTime: '',
     endTime: '',
-    description: ''
+    description: '',
+    picture: 'https://www.starfm.com/wp-content/uploads/sites/32/2012/10/submit-event.jpg'
   }
 
   addEvent = () => {
@@ -43,7 +44,8 @@ export default class AddEvent extends Component {
       date: '',
       startTime: '',
       endTime: '',
-      description: ''
+      description: '',
+      picture: 'https://www.starfm.com/wp-content/uploads/sites/32/2012/10/submit-event.jpg'
     })
   }
 
