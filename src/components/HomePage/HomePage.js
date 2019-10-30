@@ -15,12 +15,8 @@ export default function HomePage() {
           <Card.Body>
               <Card.Title>Profile</Card.Title>
               <Card.Text>
-                <ul>
-                  <li>Gijs Maas</li>
-                  <li>Proud father</li>
-                  <li>Full-stack developer</li>
-                  <li>Former teacher</li>
-                </ul>
+                Gijs Maas <br/> Proud father <br/> Full Stack Developer <br/> Former historyteacher
+               
               </Card.Text>
             </Card.Body>
           <Image style={{ maxWidth:"15rem" }} src="https://i.ibb.co/4YDTRx6/DSC03981.jpg" roundedCircle fluid /> 
