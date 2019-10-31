@@ -7,10 +7,10 @@ For the latest deployed version click on the link below:
 
 ### Features
 
-..* Profile
-..* Calendar
-..* To-do List
-..* Games
+* Profile
+* Calendar
+* To-do List
+* Games
 
 ### Profile
 
