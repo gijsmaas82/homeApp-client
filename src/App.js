@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css';
+import './scss/main.scss'
 import HeaderContainer from './components/Header/HeaderContainer'
 import HomePageContainer from './components/HomePage/HomePageContainer'
 import ToDoListContainer from './components/ToDoList/ToDoListContainer'

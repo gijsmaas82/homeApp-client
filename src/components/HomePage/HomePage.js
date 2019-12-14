@@ -50,75 +50,11 @@ export default function HomePage() {
           </Jumbotron>
         </Tab>
         <Tab eventKey="profile" title="Full-stack Developer">
-        <CardDeck style={{ background:"linear-gradient(to right, #959595 0%,#138e4d 46%,#010101 50%,#a2b512 53%,#4e4e4e 76%,#bf74d3 87%,#1b1b1b 100%)", 
-        backgroundRepeat:"no-repeat", backgroundPosition:"center"}}>
-          <Card style={{ margin:"1rem", minWidth:"25rem" }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-          <Card style={{ margin:"3rem", minWidth:"25rem", justifyContent:"center", alignItems:"center" }}>
-          <Image style={{ maxWidth:"15rem" }} src="https://i.ibb.co/4YDTRx6/DSC03981.jpg" roundedCircle fluid />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-          <Card style={{ margin:"3rem", minWidth:"25rem"  }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-          </CardDeck>
+         <a  href="https://flickr-search-app.netlify.com">Photo search</a>
+       
         </Tab>
         <Tab eventKey="contact" title="Contact" >
-        <CardDeck style={{background:"rgba(116, 152, 250, 0.51)"}}>
-          <Card style={{ margin:"3rem", minWidth:"25rem" }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-          <Card style={{ margin:"3rem", minWidth:"25rem", justifyContent:"center", alignItems:"center" }}>
-          <Image style={{ maxWidth:"15rem" }} src="https://i.ibb.co/4YDTRx6/DSC03981.jpg" roundedCircle fluid />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-          <Card style={{ margin:"3rem",  minWidth:"25rem"  }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-          </CardDeck>
+          <div style={{ width:"40rem", height:"40rem", border:"solid black 10px"}}>A</div>
         </Tab>
       </Tabs>
     </div>

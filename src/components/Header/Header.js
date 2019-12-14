@@ -7,10 +7,44 @@ import { LinkContainer } from 'react-router-bootstrap'
 export default class Header extends Component {
 
   render() {
-    
+
     return (
       <div className="header">
-        <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <div className="header__logo">
+          <Link to="/" className="header__logo__link">
+            <img
+              src="https://i.ibb.co/p1qJtsy/Logo.png"
+              alt="Home button"
+              className="header__logo__link__image"
+            />
+          </Link>
+        </div>
+        <div className="header__burger" onClick={this.props.openMenu}>
+          <div className="header__burger__top"></div>
+          <div className="header__burger__middle"></div>
+          <div className="header__burger__bottom"></div>
+        </div>
+        
+        {this.props.menuVisible && 
+          <div className="menu">
+            <div className="menu-item">
+              <Link to="/calendar">Calendar</Link>
+            </div>
+            <div className="menu-item">
+              <Link to="/todolist">to do list</Link>
+            </div>
+            <div className="menu-item">
+              <Link to="/games">Games</Link>
+            </div>
+            <div className="menu-item">
+              <Link to="/signup">Sign up</Link>
+            </div>
+            <div className="menu-item">
+              <Link to="/login">Log in</Link>
+            </div>
+          </div>
+        }
+        {/* <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Link to="/" ><Navbar.Brand>
             <img
             src="https://i.ibb.co/p1qJtsy/Logo.png"
@@ -31,7 +65,7 @@ export default class Header extends Component {
               <LinkContainer to="games"> 
                 <Nav.Link>Games</Nav.Link>
               </LinkContainer>
-            
+              
               <NavDropdown title="Extra" id="collapsible-nav-dropdown">
               {!this.props.user ? <div>
                 <LinkContainer to="signup"> 
@@ -46,7 +80,7 @@ export default class Header extends Component {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
+        </Navbar> */}
       </div>
     )
   }
