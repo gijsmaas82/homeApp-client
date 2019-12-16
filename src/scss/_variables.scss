@@ -1,9 +1,10 @@
-$prime-color: orange;
-$second-color: gray;
-$third-color: red;
+$prime-color: rgb(130, 188, 215);
+$second-color: rgb(75, 21, 37);
+$third-color: rgb(100, 5, 101);
 
 @mixin transition-ease {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.7s ease-in-out;
+  animation: menu-animation 2s;
 }
 
 @mixin menu-drop {

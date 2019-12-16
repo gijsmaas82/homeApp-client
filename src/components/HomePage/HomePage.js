@@ -1,12 +1,32 @@
 import React from 'react'
-import { Tabs, Tab, Card, Button, CardDeck, Jumbotron, Image } from 'react-bootstrap'
-import './Homepage.css'
-import { LinkContainer } from 'react-router-bootstrap'
+// import { Tabs, Tab, Card, Button, CardDeck, Jumbotron, Image } from 'react-bootstrap'
+// import { LinkContainer } from 'react-router-bootstrap'
 
 export default function HomePage() {
   return (
     <div>
-      {/* <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
+      <div className="homepage" >
+        <div className="homepage__title" >
+          <h1>Top</h1>
+        </div>
+        <div className="homepage__left">
+          <h1>Left</h1>
+        </div>
+        <div className="homepage__middle">
+          <h1>Middle</h1>
+        </div>
+        <div className="homepage__right">
+          <h1>Right</h1>
+        </div>
+        <div className="homepage__span" >
+          <h1>bottom</h1>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+{/* <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
         <Tab eventKey="home" title="Gijs Maas">
         <Jumbotron style={{ background:"rgb(23, 27, 43)", 
         backgroundRepeat:"no-repeat", backgroundPosition:"center"}} fluid>
@@ -57,7 +77,3 @@ export default function HomePage() {
           <div style={{ width:"40rem", height:"40rem", border:"solid black 10px"}}>A</div>
         </Tab>
       </Tabs> */}
-    </div>
-  )
-}
-

@@ -6,10 +6,15 @@
   align-items: center;
   width: 100vw;
   height: 7vh;
-  background-color: $second-color;
+  background-color: transparent;
 
   &__logo {
     margin-left: 3rem; 
+
+    h1 {
+      color: $second-color;
+      font-weight: 900;
+    }
   }
 
   &__logo__link__image {
@@ -26,43 +31,43 @@
     &__top {
       width: 30px;
       height: 7px;
-      border: solid $prime-color 3px;
+      border: solid $second-color 3px;
       border-radius: 3px;
       margin: 0.2rem;
-      background-color: $prime-color;
+      background-color: $second-color;
       @include transition-ease;
     }
 
     &__top:hover {
-      background-color: $second-color;
+      background-color: $prime-color;
     }
 
     &__middle {
       width: 30px;
       height: 7px;
-      border: solid $prime-color 3px;
+      border: solid $second-color 3px;
       border-radius: 3px;
       margin: 0.2rem;
-      background-color: $prime-color;
+      background-color: $second-color;
       @include transition-ease;
     }
 
     &__middle:hover {
-      background-color: $second-color;
+      background-color: $prime-color;
     }
 
     &__bottom {
       width: 20px;
       height: 7px;
-      border: solid $prime-color 3px;
+      border: solid $second-color 3px;
       border-radius: 3px;
       margin: 0.2rem;
-      background-color: $prime-color;
+      background-color: $second-color;
       @include transition-ease;
     }
 
     &__bottom:hover {
-      background-color: $second-color;
+      background-color: $prime-color;
     }
   }
 
@@ -84,7 +89,7 @@
     &__item {
       text-align: center;
       width: 100%;
-      border: solid $prime-color 2px;
+      border: solid $second-color 2px;
     }
   } 
 }

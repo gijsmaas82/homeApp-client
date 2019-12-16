@@ -12,11 +12,12 @@ export default class Header extends Component {
       <div className="header">
         <div className="header__logo">
           <Link to="/" className="header__logo__link">
-            <img
+            <h1>H</h1>
+            {/* <img
               src="https://i.ibb.co/p1qJtsy/Logo.png"
               alt="Home button"
               className="header__logo__link__image"
-            />
+            /> */}
           </Link>
         </div>
         {this.props.menuVisible && 
