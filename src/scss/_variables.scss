@@ -5,3 +5,7 @@ $third-color: red;
 @mixin transition-ease {
   transition: all 0.5s ease-in-out;
 }
+
+@mixin menu-drop {
+  transition: ease-in-out;
+}

@@ -65,7 +65,27 @@
       background-color: $second-color;
     }
   }
-  
-  
+
+  &__menu {
+    width: 90vw;
+    margin-top: 21vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $second-color;
+    @include menu-drop;
+
+    &__item a {
+      text-decoration: none;
+      color: $prime-color;
+    }
+
+    &__item {
+      text-align: center;
+      width: 100%;
+      border: solid $prime-color 2px;
+    }
+  } 
 }
 

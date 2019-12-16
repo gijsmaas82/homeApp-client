@@ -19,31 +19,32 @@ export default class Header extends Component {
             />
           </Link>
         </div>
+        {this.props.menuVisible && 
+          <div className="header__menu">
+            <div className="header__menu__item">
+              <Link to="/calendar">Calendar</Link>
+            </div>
+            <div className="header__menu__item">
+              <Link to="/todolist">to do list</Link>
+            </div>
+            <div className="header__menu__item">
+              <Link to="/games">Games</Link>
+            </div>
+            <div className="header__menu__item">
+              <Link to="/signup">Sign up</Link>
+            </div>
+            <div className="header__menu__item">
+              <Link to="/login">Log in</Link>
+            </div>
+          </div>
+        }
         <div className="header__burger" onClick={this.props.openMenu}>
           <div className="header__burger__top"></div>
           <div className="header__burger__middle"></div>
           <div className="header__burger__bottom"></div>
         </div>
         
-        {this.props.menuVisible && 
-          <div className="menu">
-            <div className="menu-item">
-              <Link to="/calendar">Calendar</Link>
-            </div>
-            <div className="menu-item">
-              <Link to="/todolist">to do list</Link>
-            </div>
-            <div className="menu-item">
-              <Link to="/games">Games</Link>
-            </div>
-            <div className="menu-item">
-              <Link to="/signup">Sign up</Link>
-            </div>
-            <div className="menu-item">
-              <Link to="/login">Log in</Link>
-            </div>
-          </div>
-        }
+        
         {/* <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Link to="/" ><Navbar.Brand>
             <img

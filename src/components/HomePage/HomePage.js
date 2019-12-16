@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 export default function HomePage() {
   return (
     <div>
-      <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
+      {/* <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
         <Tab eventKey="home" title="Gijs Maas">
         <Jumbotron style={{ background:"rgb(23, 27, 43)", 
         backgroundRepeat:"no-repeat", backgroundPosition:"center"}} fluid>
@@ -56,7 +56,7 @@ export default function HomePage() {
         <Tab eventKey="contact" title="Contact" >
           <div style={{ width:"40rem", height:"40rem", border:"solid black 10px"}}>A</div>
         </Tab>
-      </Tabs>
+      </Tabs> */}
     </div>
   )
 }
