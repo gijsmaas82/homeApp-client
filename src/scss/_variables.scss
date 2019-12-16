@@ -1,6 +1,8 @@
 $prime-color: rgb(130, 188, 215);
-$second-color: rgb(75, 21, 37);
+$second-color: rgb(138, 18, 54);
 $third-color: rgb(100, 5, 101);
+
+$background-color: rgba(8, 81, 129, 0.438);
 
 @mixin transition-ease {
   transition: all 0.7s ease-in-out;

@@ -12,7 +12,7 @@ export default class Header extends Component {
       <div className="header">
         <div className="header__logo">
           <Link to="/" className="header__logo__link">
-            <h1>H</h1>
+            <h1>HOME</h1>
             {/* <img
               src="https://i.ibb.co/p1qJtsy/Logo.png"
               alt="Home button"

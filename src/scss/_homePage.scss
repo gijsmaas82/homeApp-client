@@ -8,80 +8,106 @@
     'left middle right'
     'bottom bottom bottom'
   ;
-  grid-gap: 0.5rem;
-  background-color: $prime-color;
-
-  div {
-    border: solid black 3px;
-  }
+  grid-gap: 0;
+  background-color: $background-color;
+  text-align: center;
 
   h1 {
     color: $second-color;
     font-weight: 900;
   }
 
+  h2 {
+    color: $second-color;
+    font-weight: 700;
+  }
+
+  a {
+    text-decoration: none;
+    color: $second-color;
+    font-weight: 700;
+  }
+
   &__title {
     grid-area: title;
-    text-align: center;
   }
 
   &__span {
-    grid-area: bottom;
-    text-align: center;
+    grid-area: bottom; 
+    
   }
 
   &__left {
     grid-area: left;
-    text-align: left;
+    background-color: transparent;
     @include transition-ease;
-    
-    
-    &:hover {
-      grid-area: "left middle right";
+
+    &__image img {
+      width: 15vw;
+    }
+
+    &__image img:hover {
+      animation: spin 2s ease-in-out;
+    }
+
+    &.open {
       width: 45vw;
       margin-left: 10vw;
-      background-color: white;
-      box-shadow: 5px 10px $second-color;
-      animation: grow 2s ease-in-out;
-      
-      
+      animation: grow 2s ease-in-out; 
     }
+    
   }
 
   &__middle {
     grid-area: middle;
-    text-align: center;
+    
+    // background-image: url('https://static.vecteezy.com/system/resources/previews/000/535/036/non_2x/abstract-digital-technology-with-blue-tech-background-vector-design2.jpg');
+    // background-repeat: no-repeat;
+    // background-size: cover;
     @include transition-ease;
-    &:hover {
-      grid-area: "left middle right";
-      width: 60vw;
-      @include transition-ease;
-      background-color: white;
-      box-shadow: 5px 10px $second-color;
-      animation: grow 2s ease-in-out;
+
+    &__image img {
+      width: 15vw;
+    }
+
+    &__image img:hover {
+      animation: spin 2s ease-in-out;
+    }
+
+    &.open {
+      width: 45vw;
+      margin-left: 10vw;
+      animation: grow 2s ease-in-out; 
     }
   }
 
   &__right {
     grid-area: right;
-    text-align: right;
+    
+    // background-image: url('http://www.allwhitebackground.com/images/5/Sporty-Background-High-Quality-Image.jpg');
+    // background-repeat: no-repeat;
+    // background-size: cover;
     @include transition-ease;
-    background-image: url();
-    &:hover {
-      grid-area: "left middle right";
-      @include transition-ease;
+
+    &__image img {
+      width: 15vw;
+    }
+
+    &__image img:hover {
+      animation: spin 2s ease-in-out;
+    }
+    
+    &.open {
       width: 45vw;
-      margin-right: 10vw;
-      background-color: white;
-      box-shadow: 5px 10px $second-color;
-      animation: grow 2s ease-in-out;
+      margin-left: 10vw;
+      animation: grow 2s ease-in-out; 
     }
   }
 }
 
 @keyframes grow {
   0% {
-    transform: scale(1,1) rotateY(0deg);
+    transform: scale(1,1);
     
     
   }
@@ -89,6 +115,42 @@
     transform: scale(1.5,1.5);
   }
   100% {
-    transform: scale(1,1) rotateY(360deg);
+    transform: scale(1,1);
   }
+}
+
+@keyframes spin {
+  0% {transform: rotateY(0deg)}
+  100%{transform: rotateY(360deg);}
+}
+
+@media screen and (max-width: 800px) {
+  .homepage {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20vh 50vh 50vh 50vh 15vh;
+    grid-template-areas: 
+      'title'
+      'left'
+      'middle'
+      'right'
+      'bottom'
+    ;
+
+    &__left {
+      &__image img {
+        width: 50vw;
+      }
+    }
+  
+    &__middle__image img {
+      width: 50vw;
+    }
+  
+    &__right__image img {
+      width: 50vw;
+    }
+
+  }
+
 }

@@ -1,25 +1,51 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import { Tabs, Tab, Card, Button, CardDeck, Jumbotron, Image } from 'react-bootstrap'
 // import { LinkContainer } from 'react-router-bootstrap'
 
-export default function HomePage() {
+export default function HomePage(props) {
+
   return (
     <div>
       <div className="homepage" >
         <div className="homepage__title" >
-          <h1>Top</h1>
+          <h1>Portfolio Gijs Maas</h1>
         </div>
-        <div className="homepage__left">
-          <h1>Left</h1>
+        <div className="homepage__left" onMouseEnter={props.openLeft} onMouseLeave={props.closeLeft}>
+          <div className="homepage__left__header">
+            <h2>Personal info</h2>
+          </div>
+          <div className="homepage__left__image">
+            <img src="https://i.ibb.co/4YDTRx6/DSC03981.jpg" ></img>
+          </div>
+          {props.leftVisible && <div className="homepage__left__btn" >
+            <Link to="/personal">Click to go to personal info</Link>
+          </div>}
         </div>
-        <div className="homepage__middle">
-          <h1>Middle</h1>
+        <div className="homepage__middle" onMouseEnter={props.openMiddle} onMouseLeave={props.closeMiddle}>
+        <div className="homepage__middle__header">
+            <h2>Projects</h2>
+          </div>
+          <div className="homepage__middle__image">
+            <img src="https://i.ibb.co/RzCb6P8/kisspng-computer-icons-scalable-vector-graphics-favicon-wo-png-save-save-5ab19a06693b12-9290891515215887424311.png" ></img>
+          </div>
+          {props.middleVisible && <div className="homepage__middle__btn" >
+            <Link to="/projects">Click to go to projects</Link>
+          </div>}
         </div>
-        <div className="homepage__right">
-          <h1>Right</h1>
+        <div className="homepage__right" onMouseEnter={props.openRight} onMouseLeave={props.closeRight}>
+        <div className="homepage__right__header">
+            <h2>Interests</h2>
+          </div>
+          <div className="homepage__right__image">
+            <img src="https://i.ibb.co/j3WhdQy/baby-avatar.png" ></img>
+          </div>
+          {props.rightVisible && <div className="homepage__right__btn" >
+            <Link to="/interests">Click to go to interests</Link>
+          </div>}
         </div>
         <div className="homepage__span" >
-          <h1>bottom</h1>
+          
         </div>
       </div>
     </div>
