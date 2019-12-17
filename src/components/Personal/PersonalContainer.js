@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import HomePage from './HomePage'
+import Personal from './Personal'
 
+export default class PersonalContainer extends Component {
 
-class HomePageContainer extends Component {
   state = {
-    leftVisible: false,
+    leftVisible: true,
     rightVisible: false,
   }
   openLeft = (e) => {
@@ -31,21 +30,15 @@ class HomePageContainer extends Component {
   render() {
     return (
       <div>
-        <HomePage 
+        <Personal 
         openLeft={this.openLeft}
         closeLeft={this.closeLeft}
         openRight={this.openRight}
         closeRight={this.closeRight}
         leftVisible={this.state.leftVisible}
         rightVisible={this.state.rightVisible}
-        /> 
+        />
       </div>
     )
   }
 }
-
-function mapStateToProps (state) {
-  return { user: state.login }
-}
-
-export default connect(mapStateToProps)(HomePageContainer)

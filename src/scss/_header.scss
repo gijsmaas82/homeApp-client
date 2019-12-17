@@ -6,7 +6,7 @@
   align-items: center;
   width: 100vw;
   height: 7vh;
-  background-color: $prime-color;
+  background-color: $prime-color-transparent;
 
   &__logo {
     margin-left: 3rem; 
@@ -110,7 +110,7 @@
 .menu {
   position: absolute;
   width: 20vw;
-  height: 94vh;
+  height: auto;
   margin-left: 80vw;
   margin-top: 6vh;
   display: flex;
