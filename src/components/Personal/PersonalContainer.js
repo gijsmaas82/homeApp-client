@@ -2,41 +2,37 @@ import React, { Component } from 'react'
 import Personal from './Personal'
 
 export default class PersonalContainer extends Component {
-
   state = {
-    leftVisible: true,
-    rightVisible: false,
+    menuItems: [
+      {name: 'Personalia', active: true, content:'A 37-year old father who lives in Haarlem'},
+      {name: 'Background', active: false, content: 'Used to be a teacher and now a full-stack developer'}, 
+      {name: 'Interests', active: false, content: 'History, Politics, Computer Science, UX design'}, 
+      {name: 'Hobbies', active: false, content: 'Reading, Volleybal, Games, Fitness, Coding'}, 
+      {name: 'Contact', active: false, content: 'Check the out the buttons below'},  
+       ]
+    
   }
-  openLeft = (e) => {
-    e.currentTarget.classList.add("open")
-    this.setState({leftVisible: !this.state.leftVisible})
-  }
+  
 
-  closeLeft = (e) => {
-    e.currentTarget.classList.remove("open")
-    this.setState({leftVisible: !this.state.leftVisible})
+  navigateMenu = (e) => {
+    const updatedMenu = this.state.menuItems.map(item => {
+      if (e.target.classList.value === item.name) {
+        item.active = true
+        return item
+      } else {
+        item.active = false
+        return item
+      }
+    })
+    this.setState({ menuItems: updatedMenu })
   }
-
-  openRight = (e) => {
-    e.currentTarget.classList.add("open")
-    this.setState({rightVisible: !this.state.rightVisible})
-  }
-
-  closeRight = (e) => {
-    e.currentTarget.classList.remove("open")
-    this.setState({rightVisible: !this.state.rightVisible})
-  }
-
+    
   render() {
     return (
       <div>
         <Personal 
-        openLeft={this.openLeft}
-        closeLeft={this.closeLeft}
-        openRight={this.openRight}
-        closeRight={this.closeRight}
-        leftVisible={this.state.leftVisible}
-        rightVisible={this.state.rightVisible}
+        navigateMenu={this.navigateMenu}
+        menuItems={this.state.menuItems}
         />
       </div>
     )

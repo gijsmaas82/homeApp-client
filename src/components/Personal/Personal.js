@@ -8,27 +8,46 @@ export default function Personal(props) {
         <div className="personalpage__title" >
           <h1>Personal info</h1>
         </div>
-        <div className="personalpage__left" onMouseEnter={props.openLeft} onMouseLeave={props.closeLeft}>
-          <div className="personalpage__left__header">
-            <h2>Personal info</h2>
-          </div>
-          <div className="personalpage__left__image">
-            <img src="https://i.ibb.co/4YDTRx6/DSC03981.jpg" ></img>
-          </div>
-          {props.leftVisible && <div className="personalpage__left__btn" >
-          <Link to="/personal-info">Click</Link>
-          </div>}
+        <div className="personalpage__left">
+          {props.menuItems.map(item => {
+            if (item.active) {
+              return <div className="personalpage__left__active">
+                <div className="personalpage__left__active__header" > 
+                  <h2>{item.name}</h2>
+                </div>
+                <div className="personalpage__left__active__content">
+                  <div><p>{item.content}</p></div>
+                  <div><p>{item.content}</p></div>
+                  <div><p>{item.content}</p></div>
+                  <div><p>{item.content}</p></div>
+                  <div><p>{item.content}</p></div>
+                  <div><p>{item.content}</p></div>
+                </div>
+              </div>
+            } else {
+              return
+            }
+          })}
+          
         </div>
-        <div className="personalpage__right" onMouseEnter={props.openRight} onMouseLeave={props.closeRight}>
-        <div className="personalpage__right__header">
-            <h2>Projects</h2>
+        <div className="personalpage__right">
+          <div className="personalpage__right__header">
+            <h2>Menu</h2>
           </div>
-          <div className="personalpage__right__image">
-            <img src="https://i.ibb.co/j3WhdQy/baby-avatar.png" ></img>
+          <div className="personalpage__right__menu">
+          <div>{props.menuItems.map(item => {
+              if (!item.active) {
+                return <div className="personalpage__right__menu__item" onClick={props.navigateMenu}>
+                  <h3 className={item.name}>{item.name}</h3>
+                </div>
+              } else {
+                return <div className="personalpage__right__menu__item__active">
+                  <h3>{item.name}</h3>
+                </div>
+              }
+              
+            })}</div>
           </div>
-          {props.rightVisible && <div className="personalpage__right__btn" >
-            <Link to="/projects">Click</Link>
-          </div>}
         </div>
         <div className="personalpage__span" >
           

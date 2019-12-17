@@ -1,15 +1,17 @@
-$prime-color: rgb(130, 188, 215);
-$prime-color-transparent: rgba(130, 188, 215, 0.5);
-$second-color: rgb(138, 18, 54);
-$second-color-transparent: rgba(138, 18, 54, 0.5);
-$third-color: rgb(100, 5, 101);
-$third-color-transparent: rgba(100, 5, 101, 0.5);
+$prime-color: rgb(14, 22, 56);
+$prime-color-transparent: rgba(255, 255, 255, 0.5);
+$second-color: rgb(228, 210, 215);
+$second-color-transparent: rgba(228, 210, 215, 0.5);
+$third-color: rgb(27, 25, 25);
+$third-color-transparent: rgba(27, 25, 25, 0.5);
 
 $background-color: rgba(8, 81, 129, 0.438);
 
 $font-color-light: white;
+$font-color-dark: rgba(19, 13, 13, 0.5);
 
-$header-font: 'Girassol', cursive;
+$header-font: 'PT Sans Caption', sans-serif;
+$paragraph-font: 'Girassol', cursive;
 
 @mixin transition-ease {
   transition: all 0.7s ease-in-out;
