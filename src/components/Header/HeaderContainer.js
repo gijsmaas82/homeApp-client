@@ -7,8 +7,16 @@ class HeaderContainer extends Component {
     menuVisible: false
   }
 
-  openMenu = () => {
-    this.setState({ menuVisible: !this.state.menuVisible})
+  toggleMenu = (e) => {
+    console.log(e.currentTarget.classList.value)
+    if (e.currentTarget.classList.value === "header__burger") {
+      e.currentTarget.classList.add('open')
+      this.setState({ menuVisible: !this.state.menuVisible})
+    } else {
+      e.currentTarget.classList.remove('open')
+      this.setState({ menuVisible: !this.state.menuVisible})
+    }
+    
   }
 
   render() {
@@ -16,7 +24,7 @@ class HeaderContainer extends Component {
       <div>
         <Header 
         menuVisible={this.state.menuVisible}
-        openMenu={this.openMenu}
+        toggleMenu={this.toggleMenu}
         user={this.props.user} 
        />
       </div>

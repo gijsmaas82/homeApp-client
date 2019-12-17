@@ -9,41 +9,43 @@ export default class Header extends Component {
   render() {
 
     return (
+      <div>
       <div className="header">
         <div className="header__logo">
           <Link to="/" className="header__logo__link">
-            <h1>HOME</h1>
-            {/* <img
-              src="https://i.ibb.co/p1qJtsy/Logo.png"
-              alt="Home button"
-              className="header__logo__link__image"
-            /> */}
+            <div className="header__logo__link__homeBtn">
+              <span></span>  
+              <span></span>  
+              <span></span>  
+            </div> 
           </Link>
         </div>
-        {this.props.menuVisible && 
-          <div className="header__menu">
-            <div className="header__menu__item">
-              <Link to="/calendar">Calendar</Link>
-            </div>
-            <div className="header__menu__item">
-              <Link to="/todolist">to do list</Link>
-            </div>
-            <div className="header__menu__item">
-              <Link to="/games">Games</Link>
-            </div>
-            <div className="header__menu__item">
-              <Link to="/signup">Sign up</Link>
-            </div>
-            <div className="header__menu__item">
-              <Link to="/login">Log in</Link>
-            </div>
-          </div>
-        }
-        <div className="header__burger" onClick={this.props.openMenu}>
+        
+        <div className="header__burger" onClick={this.props.toggleMenu}>
           <div className="header__burger__top"></div>
           <div className="header__burger__middle"></div>
           <div className="header__burger__bottom"></div>
         </div>
+      </div>
+        {this.props.menuVisible && 
+          <div className="menu">
+            <div className="menu__item">
+              <Link to="/calendar">Calendar</Link>
+            </div>
+            <div className="menu__item">
+              <Link to="/todolist">to do list</Link>
+            </div>
+            <div className="menu__item">
+              <Link to="/games">Games</Link>
+            </div>
+            <div className="menu__item">
+              <Link to="/signup">Sign up</Link>
+            </div>
+            <div className="menu__item" >
+              <Link to="/login">Log in</Link>
+            </div>
+          </div>
+        }
         
         
         {/* <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark">

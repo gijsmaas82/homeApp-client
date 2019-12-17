@@ -11,15 +11,51 @@
   &__logo {
     margin-left: 3rem; 
 
-    h1 {
-      color: $second-color;
-      font-weight: 900;
-    }
-  }
+    &__link {
+      &__homeBtn {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        transform-style: preserve-3d;
+        transform: perspective(500px) rotateX(60deg);
 
-  &__logo__link__image {
-    height: 3rem;
-    width: 3rem;
+        span {
+          position: absolute;
+          display: block;
+          border: 5px solid $second-color;
+          box-shadow: 0 5px 0 black,
+                      inset 0 5px 0 black;
+          box-sizing: border-box;
+          border-radius: 25%;
+          animation: homeButton 3s ease-in-out infinite;
+
+          &:nth-child(1) {
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            animation-delay: 0s;
+          }
+
+          &:nth-child(2) {
+            top: 10px;
+            left: 10px;
+            bottom: 10px;
+            right: 10px;
+            animation-delay: 1s;
+          }
+
+          &:nth-child(3) {
+            top: 20px;
+            left: 20px;
+            bottom: 20px;
+            right: 20px;
+            animation-delay: 2s;
+          }
+        }
+
+      }
+    }
   }
 
   &__burger {
@@ -69,28 +105,61 @@
     &__bottom:hover {
       background-color: $prime-color;
     }
+
+    &.open {
+      position: relative;
+      // transform-style: preserve-3d;
+      // transform: perspective(500px) rotateX(30deg);
+
+      div {
+        width: 40px;
+        border: solid 5px $second-color;
+
+        &:nth-child(1) {
+          transform: rotate(-45deg) translateY(11px) translateX(-10px);
+        }
+
+        &:nth-child(2) {
+          transform: rotate(45deg);
+        }
+
+        &:nth-child(3) {
+          visibility: hidden;
+        }
+      }
+    }
   }
-
-  &__menu {
-    width: 90vw;
-    margin-top: 21vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: $second-color;
-    @include menu-drop;
-
-    &__item a {
-      text-decoration: none;
-      color: $prime-color;
-    }
-
-    &__item {
-      text-align: center;
-      width: 100%;
-      border: solid $second-color 2px;
-    }
-  } 
 }
 
+.menu {
+  position: fixed;
+  width: 20vw;
+  height: 80vh;
+  margin-left: 80vw;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $second-color;
+
+  &__item a {
+    text-decoration: none;
+    color: $prime-color;
+  }
+
+  &__item {
+    text-align: center;
+    width: 100%;
+    border: solid $second-color 2px;
+  }
+} 
+
+@keyframes homeButton {
+  0%, 100% {
+    transform: translateY(-25px);
+  }
+  50% {
+    transform: translateY(25px)
+  }
+}

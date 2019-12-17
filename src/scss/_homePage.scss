@@ -9,23 +9,25 @@
     'bottom bottom bottom'
   ;
   grid-gap: 0;
-  background-color: $background-color;
   text-align: center;
 
   h1 {
     color: $second-color;
     font-weight: 900;
+    animation: grow 2s ease-in-out; 
   }
 
   h2 {
     color: $second-color;
     font-weight: 700;
+    animation: grow 2s ease-in-out;
   }
 
   a {
     text-decoration: none;
     color: $second-color;
     font-weight: 700;
+    animation: grow 2s ease-in-out;
   }
 
   &__title {
@@ -52,8 +54,7 @@
 
     &.open {
       width: 45vw;
-      margin-left: 10vw;
-      animation: grow 2s ease-in-out; 
+      margin-left: 10vw; 
     }
     
   }
@@ -76,8 +77,6 @@
 
     &.open {
       width: 45vw;
-      margin-left: 10vw;
-      animation: grow 2s ease-in-out; 
     }
   }
 
@@ -99,8 +98,7 @@
     
     &.open {
       width: 45vw;
-      margin-left: 10vw;
-      animation: grow 2s ease-in-out; 
+      margin-right: 10vw;
     }
   }
 }
