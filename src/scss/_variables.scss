@@ -4,6 +4,8 @@ $third-color: rgb(100, 5, 101);
 
 $background-color: rgba(8, 81, 129, 0.438);
 
+$header-font: 'Girassol', cursive;
+
 @mixin transition-ease {
   transition: all 0.7s ease-in-out;
   animation: menu-animation 2s;

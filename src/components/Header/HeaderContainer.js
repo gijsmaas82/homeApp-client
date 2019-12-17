@@ -4,18 +4,19 @@ import { connect } from 'react-redux'
 
 class HeaderContainer extends Component {
   state = {
-    menuVisible: false
+    menuVisible: false,
+    menuItems: [
+      {className:'menu__item__calendar', name: 'Calendar', link:'/calendar', icon:'fas fa-calendar'},
+      {className:'menu__item__games', name: 'Games', link: '/games', icon:'fas fa-gamepad'}, 
+      {className:'menu__item__todolist', name: 'To-Do-List', link: '/todolist', icon:'fas fa-list-alt'}, 
+      {className:'menu__item__login', name: 'Log In', link:'/login', icon:'fas fa-sign-in-alt'}, 
+      {className:'menu__item__signup', name: 'Sign Up', link:'/signup', icon:'fas fa-user-plus'},  
+       ]
   }
 
   toggleMenu = (e) => {
-    console.log(e.currentTarget.classList.value)
-    if (e.currentTarget.classList.value === "header__burger") {
-      e.currentTarget.classList.add('open')
-      this.setState({ menuVisible: !this.state.menuVisible})
-    } else {
-      e.currentTarget.classList.remove('open')
-      this.setState({ menuVisible: !this.state.menuVisible})
-    }
+    
+    this.setState({ menuVisible: !this.state.menuVisible})
     
   }
 
@@ -26,6 +27,7 @@ class HeaderContainer extends Component {
         menuVisible={this.state.menuVisible}
         toggleMenu={this.toggleMenu}
         user={this.props.user} 
+        menuItems={this.state.menuItems}
        />
       </div>
     )
