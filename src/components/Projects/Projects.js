@@ -10,10 +10,10 @@ export default function Projects(props) {
         
         <div className="projectspage__left">
           <div className="projectspage__left__header">
-            <h2>Menu</h2>
+            <h3>Menu</h3>
           </div>
           <div className="projectspage__left__menu">
-          {props.menuItems.map(item => {
+          <div></div>{props.menuItems.map(item => {
               if (!item.active) {
                 return <div className="projectspage__left__menu__item" onClick={props.navigateMenu}>
                   <h3 className={item.name}>{item.name}</h3>
@@ -24,24 +24,26 @@ export default function Projects(props) {
                 </div>
               }
               
-            })}
+            })}</div>
           </div>
-        </div>
+        
         <div className="projectspage__right">
-          <div>{props.menuItems.map(item => {
+          {props.menuItems.map(item => {
             if (item.active) {
               return <div className="projectspage__right__active">
                 <div className="projectspage__right__active__header" > 
                   <h2>{item.name}</h2>
                 </div>
                 <div className="projectspage__right__active__content">
-                  <p>{item.content}</p>
+                  <div><p>{item.content}</p></div>
+                  <div><p>{item.content}</p></div>
+                  <div><p>{item.content}</p></div>
                 </div>
               </div>
             } else {
               return
             }
-          })}</div>
+          })}
           
         </div>
         <div className="projectspage__span" >
@@ -49,5 +51,6 @@ export default function Projects(props) {
         </div>
       </div>
     </div>
+    
   )
 }

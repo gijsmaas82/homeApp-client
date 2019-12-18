@@ -19,9 +19,6 @@ export default function Personal(props) {
                   <div><p>{item.content}</p></div>
                   <div><p>{item.content}</p></div>
                   <div><p>{item.content}</p></div>
-                  <div><p>{item.content}</p></div>
-                  <div><p>{item.content}</p></div>
-                  <div><p>{item.content}</p></div>
                 </div>
               </div>
             } else {
@@ -32,7 +29,7 @@ export default function Personal(props) {
         </div>
         <div className="personalpage__right">
           <div className="personalpage__right__header">
-            <h2>Menu</h2>
+            <h3>Menu</h3>
           </div>
           <div className="personalpage__right__menu">
           <div>{props.menuItems.map(item => {

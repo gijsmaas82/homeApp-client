@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Personal from './Personal'
+import FooterContainer from '../Footer/FooterContainer'
 
 export default class PersonalContainer extends Component {
   state = {

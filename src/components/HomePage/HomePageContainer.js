@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import HomePage from './HomePage'
 
 
+
 class HomePageContainer extends Component {
   state = {
     leftVisible: false,
