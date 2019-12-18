@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 class HeaderContainer extends Component {
   state = {
-    menuVisible: false,
+    menuVisible: true,
     menuItems: [
       {className:'menu__item__calendar', name: 'Calendar', link:'/calendar', icon:'fas fa-calendar'},
       {className:'menu__item__games', name: 'Games', link: '/games', icon:'fas fa-gamepad'}, 

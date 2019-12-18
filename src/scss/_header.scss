@@ -140,17 +140,20 @@
       justify-content: center;
       text-decoration: none;
       color: $font-color-light;
-      animation: side-way 2s ease-in-out;
-      font-size: 1.5rem;
+      animation: menu-drop 2s ease-in-out;
+      
 
       &:hover {
         color: $shadow-light;
+      }
+
+      h3 {
+        font-size: 1rem;
       }
     }
     i {
       margin: 2rem;
       font-size: 2rem;
-      animation: side-way 2s ease-in-out;
     }
   }
 } 
@@ -173,9 +176,12 @@
   }
 }
 
-@keyframes side-way {
-  0% {
-    transform: translateX(400px);
+@keyframes menu-drop {
+  0%{
+    transform: translateY(-200px);
+  }
+  75% {
+    transform: translateY(50px);
   }
   100% {
     transform: translateY(0px);
