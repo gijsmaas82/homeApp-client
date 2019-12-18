@@ -1,14 +1,15 @@
 $prime-color: rgb(14, 22, 56);
-$prime-color-transparent: rgba(255, 255, 255, 0.5);
+$prime-color-transparent: rgb(255, 255, 255);
 $second-color: rgb(228, 210, 215);
-$second-color-transparent: rgba(228, 210, 215, 0.5);
+$second-color-transparent: rgb(197, 142, 157);
 $third-color: rgb(27, 25, 25);
-$third-color-transparent: rgba(27, 25, 25, 0.5);
+$third-color-transparent: rgb(51, 45, 45);
 
-$background-color: rgba(8, 81, 129, 0.438);
+$background-color: rgb(51, 45, 45);
+$shadow-light: rgb(165, 165, 73);
 
-$font-color-light: white;
-$font-color-dark: rgba(19, 13, 13, 0.5);
+$font-color-light: rgb(233, 14, 14);
+$font-color-dark: rgb(83, 11, 11);
 
 $header-font: 'PT Sans Caption', sans-serif;
 $paragraph-font: 'Girassol', cursive;
