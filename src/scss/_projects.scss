@@ -18,7 +18,7 @@
   }
 
   h2 {
-    color: $font-color-light;
+    color: $font-color-dark;
     animation: grow 2s ease-in-out;
     font-family: $header-font;
     font-size: 3rem;
@@ -32,7 +32,7 @@
   }
 
   p {
-    color: $font-color-light;
+    color: $font-color-dark;
     font-weight: 700;
     animation: grow 2s ease-in-out;
     font-family: $paragraph-font;
@@ -74,8 +74,9 @@
     &__active {
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
+      justify-content: space-between;
       align-items: center;
+      
       div {
         
         &:nth-child(1) {
@@ -118,6 +119,7 @@
         flex-wrap: wrap;
         justify-content: left;
         align-items: left;
+        
         
 
         div {

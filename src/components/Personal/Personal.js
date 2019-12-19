@@ -16,9 +16,42 @@ export default function Personal(props) {
                   <h2>{item.name}</h2>
                 </div>
                 <div className="personalpage__left__active__content">
-                  <div><p>{item.content}</p></div>
-                  <div><p>{item.content}</p></div>
-                  <div><p>{item.content}</p></div>
+                  <div className="personalpage__left__active__content__left" onClick={props.showCard}>
+                    <h3>{item.contentItems[0].header}</h3>
+                    {props.cards.showLeftCard && 
+                    <div className="personalpage__left__active__content__left__backface" onClick={props.showCard} >
+                      <p>{item.contentItems[0].body}</p>
+                      <ul>
+                        {item.contentItems[0].list.map(item => {
+                          return <li>{item}</li>
+                        })}
+                      </ul>
+                    </div>}
+                  </div>
+                  <div className="personalpage__left__active__content__middle" onClick={props.showCard}>
+                    <h3>{item.contentItems[1].header}</h3>
+                    {props.cards.showMiddleCard && 
+                    <div className="personalpage__left__active__content__middle__backface" onClick={props.showCard} >
+                      <p>{item.contentItems[1].body}</p>
+                      <ul>
+                        {item.contentItems[1].list.map(item => {
+                          return <li>{item}</li>
+                        })}
+                      </ul>
+                    </div>}
+                  </div>
+                  <div className="personalpage__left__active__content__right" onClick={props.showCard}>
+                    <h3>{item.contentItems[2].header}</h3>
+                    {props.cards.showRightCard && 
+                    <div className="personalpage__left__active__content__right__backface" onClick={props.showCard} >
+                      <p>{item.contentItems[2].body}</p>
+                      <ul>
+                        {item.contentItems[2].list.map(item => {
+                          return <li>{item}</li>
+                        })}
+                      </ul>
+                    </div>}
+                  </div>
                 </div>
               </div>
             } else {
@@ -29,6 +62,9 @@ export default function Personal(props) {
         </div>
         <div className="personalpage__right">
           <div className="personalpage__right__header">
+            <Link to="/">
+                <i className="fas fa-forward" style={{fontSize: "5rem", color: "rgb(83, 11, 11)"}}/>
+            </Link>
             <h3>Menu</h3>
           </div>
           <div className="personalpage__right__menu">

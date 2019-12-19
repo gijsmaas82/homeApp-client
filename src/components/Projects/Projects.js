@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Projects(props) {
   return (
@@ -10,6 +11,9 @@ export default function Projects(props) {
         
         <div className="projectspage__left">
           <div className="projectspage__left__header">
+            <Link to="/">
+                <i className="fas fa-backward" style={{fontSize: "5rem", color: "rgb(83, 11, 11)"}}/>
+            </Link>
             <h3>Menu</h3>
           </div>
           <div className="projectspage__left__menu">
@@ -35,9 +39,33 @@ export default function Projects(props) {
                   <h2>{item.name}</h2>
                 </div>
                 <div className="projectspage__right__active__content">
-                  <div><p>{item.content}</p></div>
-                  <div><p>{item.content}</p></div>
-                  <div><p>{item.content}</p></div>
+                  <div className="projectspage__right__active__content__left">
+                    <h3>{item.contentItems[0].header}</h3>
+                    <p>{item.contentItems[0].body}</p>
+                    <ul>
+                      {item.contentItems[0].list.map(item => {
+                        return <li>{item}</li>
+                      })}
+                    </ul>
+                  </div>
+                  <div className="projectspage__right__active__content__middle">
+                    <h3>{item.contentItems[1].header}</h3>
+                    <p>{item.contentItems[1].body}</p>
+                    <ul>
+                      {item.contentItems[1].list.map(item => {
+                        return <li>{item}</li>
+                      })}
+                    </ul>
+                  </div>
+                  <div className="projectspage__right__active__content__right">
+                    <h3>{item.contentItems[2].header}</h3>
+                    <p>{item.contentItems[2].body}</p>
+                    <ul>
+                      {item.contentItems[2].list.map(item => {
+                        return <li>{item}</li>
+                      })}
+                    </ul>
+                  </div>
                 </div>
               </div>
             } else {
