@@ -1,22 +1,18 @@
-@import 'base/variables', "base/mixins", "base/reset", "base/animations";
+@import 'base/variables', 
+  "base/mixins", 
+  "base/reset", 
+  "base/animations",
+  "base/functions";
 
 @import 'components/header',
 'components/homePage', 
 'components/personal',
-'components/projects',
-'components/footer';
+'components/projects';
+
 
 .App {
   box-sizing: border-box;
   margin: 0;
- 
-  h1 h2 h3 {
-    font-family: $header-font;
-  }
-
-  p a li {
-    font-family: $paragraph-font;
-  }
 
   div {
     @include transition-ease;

@@ -15,7 +15,7 @@ export default function HomePage(props) {
             <h2>Personal info</h2>
             <div className="homepage__left__header__btn">
               <Link to="/personal-info">
-                <i className="fas fa-backward" style={{fontSize: "10rem"}}/>
+                <i className="fas fa-backward" />
               </Link>
             </div>
           </div>
@@ -25,7 +25,7 @@ export default function HomePage(props) {
             <h2>Projects</h2>
             <div className="homepage__right__header__btn">
               <Link to="/projects">
-                <i className="fas fa-forward" style={{fontSize: "10rem", color: "rgb(83, 83, 83)"}}/>
+                <i className="fas fa-forward" />
               </Link>
             </div>
           </div>

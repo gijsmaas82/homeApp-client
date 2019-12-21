@@ -12,25 +12,19 @@
   text-align: center;
 
   h1 {
-    color: $font-color-light;
-    
-    animation: grow 2s ease-in-out; 
-    font-family: $header-font;
-    font-size: 4rem;
+    @include h1;
   }
 
   h2 {
-    color: $font-color-light;
-    animation: grow 2s ease-in-out;
-    font-family: $header-font;
-    font-size: 3rem;
+    @include h2;
   }
 
   a {
-    text-decoration: none;
-    color: $font-color-light;
-    
-    animation: grow 2s ease-in-out;
+    @include link;
+  }
+
+  i {
+    @include icon
   }
 
   &__title {

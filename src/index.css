@@ -305,20 +305,21 @@
 }
 .homepage h1 {
   color: #a2d469;
-  animation: grow 2s ease-in-out;
   font-family: "PT Sans Caption", sans-serif;
   font-size: 4rem;
 }
 .homepage h2 {
   color: #a2d469;
-  animation: grow 2s ease-in-out;
   font-family: "PT Sans Caption", sans-serif;
   font-size: 3rem;
 }
 .homepage a {
   text-decoration: none;
   color: #a2d469;
-  animation: grow 2s ease-in-out;
+}
+.homepage i {
+  font-size: 10rem;
+  color: #a2d469;
 }
 .homepage__title {
   grid-area: title;
@@ -869,23 +870,9 @@
     transform: translateX(0px);
   }
 }
-.footer {
-  position: absolute;
-  height: 30vh;
-  width: 100%;
-  margin: 0;
-  background-color: #332d2d;
-}
-
 .App {
   box-sizing: border-box;
   margin: 0;
-}
-.App h1 h2 h3 {
-  font-family: "PT Sans Caption", sans-serif;
-}
-.App p a li {
-  font-family: "Girassol", sans-serif;
 }
 .App div {
   -webkit-transition: all 0.5s ease-in-out;
