@@ -63,7 +63,7 @@ export default function Personal(props) {
         <div className="personalpage__right">
           <div className="personalpage__right__header">
             <Link to="/">
-                <i className="fas fa-forward" style={{fontSize: "5rem", color: "rgb(83, 11, 11)"}}/>
+                <i className="fas fa-forward" style={{fontSize: "5rem", color: 'rgb(83, 83, 83)'}}/>
             </Link>
             <h3>Menu</h3>
           </div>

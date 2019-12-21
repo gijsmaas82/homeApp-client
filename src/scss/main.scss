@@ -1,21 +1,25 @@
-@import '_variables.scss';
-@import '_animations.scss';
-@import '_header';
-@import '_homePage.scss';
-@import '_personal.scss';
-@import '_projects.scss';
-@import '_footer.scss';
+@import 'base/variables', "base/mixins", "base/reset", "base/animations";
+
+@import 'components/header',
+'components/homePage', 
+'components/personal',
+'components/projects',
+'components/footer';
 
 .App {
   box-sizing: border-box;
   margin: 0;
+ 
+  h1 h2 h3 {
+    font-family: $header-font;
+  }
 
+  p a li {
+    font-family: $paragraph-font;
+  }
 
   div {
     @include transition-ease;
-    h1 h2 h3 {
-      font-family: $header-font;
-    }
   }
 
   

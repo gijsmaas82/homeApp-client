@@ -1,0 +1,133 @@
+.header {
+  position: fixed;
+  z-index: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 7vh;
+  background-color: $background-color;
+
+  &__logo {
+    margin-left: 3rem; 
+
+    &__link {
+      &__homeBtn {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        @include threeDstyle;
+
+        span {
+          @include homeButton;
+          @include animation('homeButton 3s ease-in-out infinite');
+    
+
+          &:nth-child(1) {
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            animation-delay: 0s;
+          }
+
+          &:nth-child(2) {
+            top: 10px;
+            left: 10px;
+            bottom: 10px;
+            right: 10px;
+            animation-delay: 1s;
+          }
+
+          &:nth-child(3) {
+            top: 20px;
+            left: 20px;
+            bottom: 20px;
+            right: 20px;
+            animation-delay: 2s;
+          }
+        }
+
+      }
+    }
+  }
+
+  &__burger {
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+    
+
+    &__top {
+      @include burger
+    }
+
+
+    &__middle {
+      @include burger
+    }
+
+    &__bottom {
+      @include burger
+    }
+
+
+    &:hover {
+
+      div {
+        &:nth-child(1) {
+          @include animation(menu-roll 15s infinite);
+          @include threeDstyle;
+        }
+      }
+      
+
+    }
+  }
+}
+
+.menu {
+  position: absolute;
+  width: 70vw;
+  height: 7vh;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0; 
+  background-color: $background-color;
+  font-family: $header-font;
+  
+  &__item {
+    
+    text-align: left;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: $font-color-light;
+      @include animation(menu-drop 2s ease-in-out);
+      
+
+      &:hover {
+        color: $shadow-light;
+      }
+
+      h3 {
+        font-size: 1rem;
+      }
+    }
+    i {
+      margin: 2rem;
+      font-size: 2rem;
+    }
+  }
+} 
+
+
+
+
+
