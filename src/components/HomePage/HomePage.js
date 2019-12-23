@@ -10,7 +10,10 @@ export default function HomePage(props) {
         <div className="homepage__title" >
           <h1>Portfolio Gijs Maas</h1>
         </div>
-        <div className="homepage__left" onMouseEnter={props.openLeft} onMouseLeave={props.closeLeft}>
+        <div className="homepage__parallax__top">
+
+        </div>
+        <div className="homepage__left">
           <div className="homepage__left__header">
             <h2>Personal info</h2>
             <div className="homepage__left__header__btn">
@@ -20,7 +23,14 @@ export default function HomePage(props) {
             </div>
           </div>
         </div>
-        <div className="homepage__right" onMouseEnter={props.openRight} onMouseLeave={props.closeRight}>
+        <div className="homepage__middle" >
+          <img src="https://i.ibb.co/4YDTRx6/DSC03981.jpg" />
+          <h2>Programmer</h2>
+          <h2>Teacher</h2>
+          <h2>Historian</h2>
+          <h2> Father</h2>
+        </div>
+        <div className="homepage__right">
           <div className="homepage__right__header">
             <h2>Projects</h2>
             <div className="homepage__right__header__btn">
@@ -30,14 +40,12 @@ export default function HomePage(props) {
             </div>
           </div>
         </div>
+        <div className="homepage__parallax__bottom">
+
+        </div>
         <div className="homepage__span" >
-          <div className="homepage__span__stage" >
-            <Stage width={window.innerWidth} height={300}>
-              <Layer>
-                <Circle draggable x={200} y={100} radius={50} fill="rgb(83, 11, 11)" />
-              </Layer>
-            </Stage>
-          </div>
+          <i className="fab fa-github" />
+          <i className="fab fa-linkedin" />
         </div>
       </div>
     </div>

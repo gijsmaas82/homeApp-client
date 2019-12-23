@@ -297,9 +297,9 @@
 }
 .homepage {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 13vh 50vh auto;
-  grid-template-areas: "title title" "left right" "bottom bottom";
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 13vh 80vh auto 50vh 20vh;
+  grid-template-areas: "title title title" "parallax__top parallax__top parallax__top" "left middle right" "parallax__bottom parallax__bottom parallax__bottom" "bottom bottom bottom";
   grid-gap: 0;
   text-align: center;
 }
@@ -317,10 +317,6 @@
   text-decoration: none;
   color: #a2d469;
 }
-.homepage i {
-  font-size: 10rem;
-  color: #a2d469;
-}
 .homepage__title {
   grid-area: title;
   margin-top: 7vh;
@@ -328,10 +324,19 @@
   text-align: center;
   background-color: #332d2d;
 }
+.homepage__parallax__top {
+  grid-area: parallax__top;
+  margin-top: 7vh;
+  background-image: url("https://i.ibb.co/PYypKWs/The-Market-Square-at-Haarlem-with-the-St-Bavo.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .homepage__left {
   grid-area: left;
-  margin-top: 7vh;
   background-color: #332d2d;
+  text-align: center;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
@@ -341,15 +346,29 @@
 .homepage__left__header h2 {
   color: #a2d469;
 }
+.homepage__left__header__btn a i {
+  font-size: 10rem;
+  color: #a2d469;
+}
 .homepage__left__header__btn a i:hover {
   animation: pulsate 0.5s infinite;
 }
 .homepage__left:hover {
-  box-shadow: 5px 5px 2px 3px #a2d469;
+  box-shadow: none;
+}
+.homepage__middle {
+  grid-area: middle;
+  background-color: #332d2d;
+}
+.homepage__middle img {
+  margin: 5rem;
+  width: 50%;
+  border: solid 5px #a2d469;
+  border-radius: 5px;
 }
 .homepage__right {
   grid-area: right;
-  margin-top: 7vh;
+  background-color: #332d2d;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
@@ -357,19 +376,31 @@
   transition: all 0.5s ease-in-out;
 }
 .homepage__right__header h2 {
-  color: #535353;
+  color: #a2d469;
+}
+.homepage__right__header__btn a i {
+  font-size: 10rem;
+  color: #a2d469;
 }
 .homepage__right__header__btn a i:hover {
   animation: pulsate 0.5s infinite;
 }
-.homepage__right:hover {
-  box-shadow: 5px 5px 2px 3px #a2d469;
+.homepage__parallax__bottom {
+  grid-area: parallax__bottom;
+  background-image: url("https://www.simonis-buunk.com/images/art/large/11730.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .homepage__span {
   grid-area: bottom;
+  background-color: #332d2d;
 }
-.homepage__span__stage {
-  box-shadow: 5px 5px 2px 3px #a2d469;
+.homepage__span i {
+  color: #a2d469;
+  font-size: 3rem;
+  margin: 1rem;
 }
 
 @keyframes pulsate {

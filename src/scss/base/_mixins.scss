@@ -79,7 +79,12 @@ animation: #{$str};
   color: $font-color-light;
 }
 
-@mixin icon {
+@mixin icon-light {
   font-size: 10rem;
   color: set-text-color($background-color);
+}
+
+@mixin icon-dark {
+  font-size: 10rem;
+  color: set-text-color(white);
 }
