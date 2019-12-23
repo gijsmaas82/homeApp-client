@@ -11,24 +11,16 @@
   text-align: center;
 
   h1 {
-    color: $font-color-light;
-    animation: grow 2s ease-in-out; 
-    font-family: $header-font;
-    font-size: 4rem;
+    @include h1;
   }
 
   h2 {
+    @include h2;
     color: $font-color-dark;
-    animation: grow 2s ease-in-out;
-    font-family: $header-font;
-    font-size: 3rem;
   }
 
   h3 {
-    color: $font-color-dark;
-    animation: grow 2s ease-in-out;
-    font-family: $header-font;
-    font-size: 2rem;
+    @include h3
   }
 
   p {
@@ -40,10 +32,7 @@
   }
 
   a {
-    text-decoration: none;
-    color: $second-color;
-    font-weight: 700;
-    animation: grow 2s linear ease-in-out;
+    @include link;
   }
 
   &__title {
@@ -52,9 +41,6 @@
     height:13vh;
     text-align: center;
     background-color: $background-color;
-    h1 {
-      color: $font-color-light;
-    }
   }
 
   &__span {
@@ -64,47 +50,46 @@
 
   &__left {
     grid-area: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 7vh;
-    width: 70vw;
     transform-style: preserve-3d;
     animation-delay: 1s;
-    height: 80vh;
+    background-color: $background-color;
     @include transition-ease;
+
+    &__CV {
+      width: 40vw;
+      box-shadow: 0.7rem 0.7rem 0.4rem 0.4rem;
+      @include animation('tada 2s');
+
+      &:hover {
+        transform: scale(1.3, 1.3);
+        box-shadow: 1rem 1rem 0.4rem 0.4rem;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
 
     &__active {
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
-      // div {
-        
-        // &:nth-child(1) {
-        //   animation: spins 1s linear;
-        //   animation-fill-mode: both;
-          
-        // }
-        // &:nth-child(2) {
-        //   animation: spins 1s linear;
-        //   animation-fill-mode: both;
-        //   animation-delay: 0.5s;
-        // }
-        // &:nth-child(3) {
-        //   animation: spins 1s linear;
-        //   animation-fill-mode: both;
-        //   animation-delay: 1s;
-        // }
-        // &:nth-child(4) {
-        //   animation: spins 1s linear;
-        //   animation-fill-mode: both;
-        //   animation-delay: 1.5s;
-        // }
-        // &:nth-child(5) {
-        //   animation: spins 1s linear;
-        //   animation-fill-mode: both;
-        //   animation-delay: 2s;
-        // }
-         
-      // }
+      background-color: white;
+      width: 40vw;
+      box-shadow: 0.7rem 0.7rem 0.4rem 0.4rem;
+      
+      @include animation('menu-drop 2s');
+
+      &:hover {
+        transform: scale(1.3, 1.3);
+        box-shadow: 1rem 1rem 0.4rem 0.4rem;
+      }
+
       &__header {
         height: 7vh;
         margin: 10px;
@@ -192,8 +177,21 @@
   &__right {
     grid-area: right;
     margin-top: 7vh;
-    height:auto;
+    height: auto;
+    background-color: $background-color;
     @include transition-ease;
+  
+  &__header {
+
+    a {
+      i {
+        @include icon-light;
+      }
+      i:hover  {
+        @include animation('pulsate 0.9s infinite');
+      }
+     }
+  }
 
    &__menu {
      display: flex;
@@ -230,7 +228,7 @@
      &__item {
 
        &:hover {
-         h3 {color: $font-color-light}
+         h3 {color: $font-color-dark}
        }
        &__active {
          h3 {color: $font-color-light}
@@ -278,34 +276,6 @@
     transform: perspective(400px);
     animation-timing-function: ease-in;
     opacity: 1;
-  }
-}
-
-@keyframes tada {
-  from {
-    transform: scale3d(1, 1, 1);
-  }
-
-  10%,
-  20% {
-    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
-  }
-
-  30%,
-  50%,
-  70%,
-  90% {
-    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-  }
-
-  40%,
-  60%,
-  80% {
-    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-  }
-
-  to {
-    transform: scale3d(1, 1, 1);
   }
 }
 

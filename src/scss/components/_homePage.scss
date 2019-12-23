@@ -2,7 +2,7 @@
 .homepage {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 13vh 80vh auto 50vh 20vh;
+  grid-template-rows: 13vh 50vh auto 50vh 20vh;
   grid-template-areas: 
     'title title title'
     'parallax__top parallax__top parallax__top'
@@ -38,11 +38,8 @@
   &__parallax__top {
     grid-area: parallax__top;
     margin-top: 7vh;
-    background-image: url('https://i.ibb.co/PYypKWs/The-Market-Square-at-Haarlem-with-the-St-Bavo.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url('https://i.ibb.co/bHBMVtV/haarlem.png');
+    @include parallax
   }
 
   &__left {
@@ -63,7 +60,7 @@
             @include icon-light;
           }
           i:hover  {
-            animation: pulsate 0.5s infinite;
+            @include animation('pulsate 0.9s infinite');
           }
         }
         
@@ -104,7 +101,7 @@
             @include icon-light;
           }
           i:hover  {
-            animation: pulsate 0.5s infinite;
+            @include animation('pulsate 0.9s infinite');
           }
         }
         
@@ -114,11 +111,8 @@
 
   &__parallax__bottom {
     grid-area: parallax__bottom;
-    background-image: url('https://www.simonis-buunk.com/images/art/large/11730.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url('https://i.ibb.co/bHBMVtV/haarlem.png');
+    @include parallax
   }
 
   &__span {

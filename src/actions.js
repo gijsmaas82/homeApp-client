@@ -35,11 +35,7 @@ export function personalInfo (payload) {
   }
 }
 
-export const getPersonalInfo = (dispatch, getState) => {
-  const state = getState()
-  const { personalInfo } = state
-
-  if (!personalInfo.length) {
+export const getPersonalInfo = () => dispatch => {
     request(`${url}/personal`)
       .then(response => {
         const action = personalInfo(response.body)
@@ -47,7 +43,7 @@ export const getPersonalInfo = (dispatch, getState) => {
         dispatch(action)
       })
       .catch(console.error)
-  }
+  
 }
 
 export const JWT = 'JWT'

@@ -74,17 +74,30 @@ animation: #{$str};
   font-size: 3rem;
 }
 
+@mixin h3 {
+  color: $font-color-light;
+  font-family: $header-font;
+  font-size: 2rem;
+}
+
 @mixin link {
   text-decoration: none;
   color: $font-color-light;
 }
 
 @mixin icon-light {
-  font-size: 10rem;
+  font-size: 7rem;
   color: set-text-color($background-color);
 }
 
 @mixin icon-dark {
-  font-size: 10rem;
+  font-size: 7rem;
   color: set-text-color(white);
+}
+
+@mixin parallax {
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
 }
