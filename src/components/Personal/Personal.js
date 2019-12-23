@@ -68,19 +68,41 @@ export default function Personal(props) {
             <h3>Menu</h3>
           </div>
           <div className="personalpage__right__menu">
-          <div>{props.menuItems.map(item => {
-              if (!item.active) {
-                return <div className="personalpage__right__menu__item" onClick={props.navigateMenu}>
-                  <h3 className={item.name}>{item.name}</h3>
-                </div>
-              } else {
-                return <div className="personalpage__right__menu__item__active">
-                  <h3>{item.name}</h3>
-                </div>
-              }
-              
-            })}</div>
-          </div>
+            <div>{props.menuItems.map(item => {
+                if (!item.active) {
+                  return <div className="personalpage__right__menu__item" onClick={props.navigateMenu}>
+                    <h3 className={item.name}>{item.name}</h3>
+                  </div>
+                } else {
+                  return <div className="personalpage__right__menu__item__active">
+                    <h3>{item.name}</h3>
+                  </div>
+                }
+
+              })}</div>
+            </div>
+            
+            {!props.addPersonal ? 
+            <div onClick={props.showPersonalInput}>
+              <i className="fas fa-plus"></i>
+            </div> : 
+            <div>
+              <form className="addPersonal" onSubmit={props.onSubmit}>
+                Name:<br/>
+                <input type="text" name="name" value={props.state.name} onChange={props.onChange}/><br/>
+                ImageURL:<br/>
+                <input type="text" name="imageURL" value={props.state.imageUrl}  onChange={props.onChange}/><br/>
+                info:<br/>
+                <textarea type="text" name="info" value={props.state.info}  onChange={props.onChange}/><br/>
+                List Item One:<br/>
+                <input type="text" name="listItemOne" value={props.state.listItemOne}  onChange={props.onChange}/><br/>
+                List Item Two:<br/>
+                <input type="text" name="listItemTwo" value={props.state.listItemTwo}  onChange={props.onChange}/><br/>
+                List Item Three:<br/>
+                <input type="text" name="listItemThree" value={props.state.listItemThree}  onChange={props.onChange}/><br/>
+                <button>Submit Personal info</button>
+              </form>
+            </div>}
         </div>
         <div className="personalpage__span" >
           

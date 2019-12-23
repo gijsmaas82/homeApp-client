@@ -26,6 +26,30 @@ export const getToDo = () => (dispatch, getState) => {
   }
 }
 
+export const PERSONAL_INFO = 'PERSONAL_INFO'
+
+export function personalInfo (payload) {
+  return {
+    type: PERSONAL_INFO,
+    payload
+  }
+}
+
+export const getPersonalInfo = (dispatch, getState) => {
+  const state = getState()
+  const { personalInfo } = state
+
+  if (!personalInfo.length) {
+    request(`${url}/personal`)
+      .then(response => {
+        const action = personalInfo(response.body)
+
+        dispatch(action)
+      })
+      .catch(console.error)
+  }
+}
+
 export const JWT = 'JWT'
 
 function jwt(payload) {

@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
 import Personal from './Personal'
+import { url } from '../../constants'
+import request from 'superagent'
+import { connect } from 'react-redux'
+import { getPersonalInfo } from '../../actions'
 // import FooterContainer from '../Footer/FooterContainer'
 
-export default class PersonalContainer extends Component {
+class PersonalContainer extends Component {
 
   state = {
+    addPersonal: false,
+    name: '',
+    imageUrl: 'https://i.ibb.co/qgDJsJ9/Apple.png',
+    info: '',
+    listItemOne: '',
+    listItemTwo: '',
+    listItemThree: '',
     menuItems: [
       {name: 'Personalia', active: true, 
         contentItems: [
@@ -77,9 +88,7 @@ export default class PersonalContainer extends Component {
       e.currentTarget.classList.remove('open')
     } else {
       e.currentTarget.classList.add('open')
-    }
-    
-    
+    }  
   }
 
   navigateMenu = (e) => {
@@ -94,7 +103,35 @@ export default class PersonalContainer extends Component {
     })
     this.setState({ menuItems: updatedMenu })
   }
-    
+  
+  showPersonalInput = (e) => {
+    this.setState({ addPersonal: !this.state.addPersonal })
+  }
+
+  onChange = (e) => {
+    this.setState ({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  onSubmit =(e) => {
+    e.preventDefault()
+    request.post(`${url}/personal`)
+      .send(this.state)
+      .then(response => {
+        console.log(response.body)})
+      .catch(console.error)
+    this.setState({ 
+      addPersonal: !this.state.addPersonal,
+      name: '',
+      imageUrl: 'https://i.ibb.co/qgDJsJ9/Apple.png',
+      info: '',
+      listItemOne: '',
+      listItemTwo: '',
+      listItemThree: '' 
+    })
+  }
+
   render() {
     return (
       <div>
@@ -103,8 +140,26 @@ export default class PersonalContainer extends Component {
         menuItems={this.state.menuItems}
         showCard={this.showCard}
         cards={this.state.cards}
+        addPersonal={this.state.addPersonal}
+        showPersonalInput={this.showPersonalInput}
+        onChange={this.onChange}
+        onSubmit={this.onSubmit}
+        state={this.state}
         />
       </div>
     )
   }
 }
+
+
+const mapStateToProps = (state) => {
+  return {
+    personalInfo: state.personalInfo
+  }
+}
+
+const mapDispatchToProps = {
+  getPersonalInfo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalContainer)
