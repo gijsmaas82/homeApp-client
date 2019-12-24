@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css';
+import './scss/main.scss'
 import HeaderContainer from './components/Header/HeaderContainer'
 import HomePageContainer from './components/HomePage/HomePageContainer'
 import ToDoListContainer from './components/ToDoList/ToDoListContainer'
@@ -11,6 +11,8 @@ import CalendarContainer from './components/Calendar/CalendarContainer'
 import GameRoomContainer from './components/GameRoom/GameRoomContainer'
 import DragAndDropContainer from './components/DragAndDrop/DragAndDropContainer'
 import DrawingContainer from './components/Drawing/DrawingContainer'
+import PersonalContainer from './components/Personal/PersonalContainer'
+import ProjectsContainer from './components/Projects/ProjectsContainer'
 
 class App extends Component {
   render() {
@@ -25,6 +27,8 @@ class App extends Component {
         <Route path="/games" component={GameRoomContainer} />
         <Route path="/picking-apples/" component={DragAndDropContainer} />
         <Route path="/drawing/" component={DrawingContainer} />
+        <Route path="/personal-info" component={PersonalContainer} />
+        <Route path="/projects" component={ProjectsContainer} />
       </div>
     );
   }

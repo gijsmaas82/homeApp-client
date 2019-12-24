@@ -1,0 +1,22 @@
+@import 'base/variables', 
+  "base/mixins", 
+  "base/reset", 
+  "base/animations",
+  "base/functions";
+
+@import 'components/header',
+'components/homePage', 
+'components/personal',
+'components/projects';
+
+
+.App {
+  box-sizing: border-box;
+  margin: 0;
+
+  div {
+    @include transition-ease;
+  }
+
+  
+}

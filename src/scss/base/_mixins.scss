@@ -1,0 +1,118 @@
+@mixin transition-ease {
+  @include transition(all 0.5s ease-in-out);
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+      @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+      @content;
+  }  
+  @-ms-keyframes #{$animation-name} {
+      @content;
+  }
+  @-o-keyframes #{$animation-name} {
+      @content;
+  }  
+  @keyframes #{$animation-name} {
+      @content;
+  }
+}
+
+@mixin animation($str) {
+-webkit-animation: #{$str};
+-moz-animation: #{$str};
+-ms-animation: #{$str};
+-o-animation: #{$str};
+animation: #{$str};      
+}
+
+@mixin homeButton {
+  position: absolute;
+  display: block;
+  border: 5px solid $font-color-light;
+  box-shadow: 0 5px 0 $shadow-light,
+              inset 0 5px 0 $shadow-dark;
+  box-sizing: border-box;
+  border-radius: 25%;
+}
+
+@mixin burger {
+  width: 30px;
+  height: 7px;
+  border: solid $font-color-light 5px;
+  background-color: $font-color-light;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px 1px $shadow-light;
+  margin: 0.2rem;
+  @include transition-ease;
+}
+
+@mixin threeDstyle {
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(60deg);
+}
+
+@mixin h1 {
+  @include header-typo;
+  color: $font-color-light;
+  font-family: $header-font;
+  font-size: 4rem;
+}
+
+@mixin h2 {
+  @include header-typo;
+  color: $font-color-light;
+  font-family: $header-font;
+  font-size: 3rem;
+}
+
+@mixin h3 {
+  @include header-typo;
+  color: $font-color-light;
+  font-family: $header-font;
+  font-size: 2rem;
+}
+
+@mixin link {
+  text-decoration: none;
+  color: $font-color-light;
+}
+
+@mixin icon-light {
+  font-size: 7rem;
+  color: set-text-color($background-color);
+}
+
+@mixin icon-dark {
+  font-size: 7rem;
+  color: set-text-color(white);
+}
+
+@mixin parallax {
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin paragraph-typo {
+  font-size: small;
+  letter-spacing: 0.1rem;
+  font-size: 1.2rem;
+}
+
+@mixin header-typo {
+  font-size: larger;
+  letter-spacing: 0.2rem;
+  
+}

@@ -1,0 +1,168 @@
+
+.homepage {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 13vh 50vh auto 50vh 20vh;
+  grid-template-areas: 
+    'title title title'
+    'parallax__top parallax__top parallax__top'
+    'left middle right'
+    'parallax__bottom parallax__bottom parallax__bottom'
+    'bottom bottom bottom'
+   
+  ;
+  grid-gap: 0;
+  text-align: center;
+  
+
+  h1 {
+    @include h1;
+  }
+
+  h2 {
+    @include h2;
+  }
+
+  a {
+    @include link;
+  }
+
+  &__title {
+    grid-area: title;
+    margin-top: 7vh;
+    height: 13vh;
+    text-align: center;
+    background-color: $background-color;
+  }
+
+  &__parallax__top {
+    grid-area: parallax__top;
+    margin-top: 7vh;
+    background-image: url('https://i.ibb.co/bHBMVtV/haarlem.png');
+    @include parallax
+  }
+
+  &__left {
+    grid-area: left;
+    background-color: $background-color;
+    text-align: center;
+    @include transition-ease;
+
+    &__header {
+      
+      h2 {
+        color: $font-color-light;
+      }
+
+      &__btn {
+        a {
+          i {
+            @include icon-light;
+          }
+          i:hover  {
+            @include animation('pulsate 0.9s infinite');
+          }
+        }
+        
+      }
+    }
+
+    &:hover {
+      box-shadow: none;
+    }
+    
+  }
+
+  &__middle {
+    grid-area: middle;
+    background-color: $background-color;
+    img {
+      margin: 5rem;
+      width: 50%;
+      border: solid 5px $font-color-light;
+      border-radius: 5px;
+      
+    }
+  }
+
+  &__right {
+    grid-area: right;
+    background-color: $background-color;
+    @include transition-ease;
+
+    &__header {
+      h2 {
+        color: $font-color-light;
+      }
+
+      &__btn {
+        a {
+          i {
+            @include icon-light;
+          }
+          i:hover  {
+            @include animation('pulsate 0.9s infinite');
+          }
+        }
+        
+      }
+    }
+  }
+
+  &__parallax__bottom {
+    grid-area: parallax__bottom;
+    background-image: url('https://i.ibb.co/bHBMVtV/haarlem.png');
+    @include parallax
+  }
+
+  &__span {
+    grid-area: bottom; 
+    background-color: $background-color;
+    
+
+    i {
+      color: $font-color-light;
+      font-size: 3rem;
+      margin: 1rem;
+    }
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .homepage {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20vh 50vh 50vh 50vh 15vh;
+    grid-template-areas: 
+      'title'
+      'left'
+      'middle'
+      'right'
+      'bottom'
+    ;
+
+    &__left {
+      &__image img {
+        width: 50vw;
+      }
+    }
+  
+    &__right__image img {
+      width: 50vw;
+    }
+
+  }
+
+}

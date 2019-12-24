@@ -26,6 +26,46 @@ export const getToDo = () => (dispatch, getState) => {
   }
 }
 
+export const PERSONAL_INFO = 'PERSONAL_INFO'
+
+export function personalInfo (payload) {
+  return {
+    type: PERSONAL_INFO,
+    payload
+  }
+}
+
+export const getPersonalInfo = () => dispatch => {
+    request(`${url}/personal`)
+      .then(response => {
+        const action = personalInfo(response.body)
+
+        dispatch(action)
+      })
+      .catch(console.error)
+  
+}
+
+export const PROJECT_INFO = 'PROJECT_INFO'
+
+export function projectInfo (payload) {
+  return {
+    type: PROJECT_INFO,
+    payload
+  }
+}
+
+export const getProjectInfo = () => dispatch => {
+    request(`${url}/project`)
+      .then(response => {
+        const action = projectInfo(response.body)
+
+        dispatch(action)
+      })
+      .catch(console.error)
+  
+}
+
 export const JWT = 'JWT'
 
 function jwt(payload) {
