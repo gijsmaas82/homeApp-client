@@ -8,77 +8,79 @@ export default function Projects(props) {
         <div className="projectspage__title" >
           <h1>Projects</h1>
         </div>
-        
+        <div className="projectspage__right">
+          {props.activeCV ? 
+          <div className="projectspage__right__CV" >
+            <img src="https://i.ibb.co/5jGVfSn/Kopie-van-Cover-letter-en-CV-G-Maas.jpg" alt="CV"/> 
+          </div> : 
+          <div className="projectspage__right__active" >
+            <div className="projectspage__right__active__header" >
+              <h3>{props.activeItem.name}</h3>
+            </div>
+            <div className="projectspage__right__active__content">
+              <p>{props.activeItem.info}</p>
+            </div>
+            <div  className="projectspage__right__active__image">
+              <div><img src={props.activeItem.image} alt="picture" /></div>
+            </div>
+            <div  className="projectspage__right__active__list">
+              <ul>
+                <li>{props.activeItem.listItemOne}</li>
+                <li>{props.activeItem.listItemTwo}</li>
+                <li>{props.activeItem.listItemThree}</li>
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
         <div className="projectspage__left">
           <div className="projectspage__left__header">
             <Link to="/">
-                <i className="fas fa-backward" style={{fontSize: "5rem", color: "rgb(83, 11, 11)"}}/>
+                <i className="fas fa-backward" />
             </Link>
             <h3>Menu</h3>
           </div>
           <div className="projectspage__left__menu">
-          <div></div>{props.menuItems.map(item => {
-              if (!item.active) {
+            <div className="projectspage__left__menu__item" onClick={props.showCV}>
+              <h3>CV</h3>
+            </div>
+            <div>{!props.projectInfo ? 'loading' : props.projectInfo.map(item => {
                 return <div className="projectspage__left__menu__item" onClick={props.navigateMenu}>
-                  <h3 className={item.name}>{item.name}</h3>
-                </div>
-              } else {
-                return <div className="projectspage__left__menu__item__active">
-                  <h3>{item.name}</h3>
-                </div>
-              }
-              
-            })}</div>
+                    <h3 className={item.name}>{item.name}</h3>
+                  </div>
+              })}</div>
           </div>
+            
+            {!props.addProject ? 
+            <div onClick={props.showProjectInput}>
+              <i className="fas fa-plus"></i>
+            </div> : 
+            <div className="projectspage__left__form">
+              <form className="addProject" onSubmit={props.onSubmit}>Name:
+                <br/>
+                <input type="text" name="name" value={props.state.name} onChange={props.onChange}/><br/>
+                ImageURL:<br/>
+                <input type="text" name="image" value={props.state.image}  onChange={props.onChange}/><br/>
+                info:<br/>
+                <textarea type="text" name="info" value={props.state.info}  onChange={props.onChange}/><br/>
+                List Item One:<br/>
+                <input type="text" name="listItemOne" value={props.state.listItemOne}  onChange={props.onChange}/><br/>
+                List Item Two:<br/>
+                <input type="text" name="listItemTwo" value={props.state.listItemTwo}  onChange={props.onChange}/><br/>
+                List Item Three:<br/>
+                <input type="text" name="listItemThree" value={props.state.listItemThree}  onChange={props.onChange}/><br/>
+                <button>Submit Project info</button>
+              </form>
+            </div>}
+        </div>
+        <div className="projectspage__parallax__bottom" >
         
-        <div className="projectspage__right">
-          {props.menuItems.map(item => {
-            if (item.active) {
-              return <div className="projectspage__right__active">
-                <div className="projectspage__right__active__header" > 
-                  <h2>{item.name}</h2>
-                </div>
-                <div className="projectspage__right__active__content">
-                  <div className="projectspage__right__active__content__left">
-                    <h3>{item.contentItems[0].header}</h3>
-                    <p>{item.contentItems[0].body}</p>
-                    <ul>
-                      {item.contentItems[0].list.map(item => {
-                        return <li>{item}</li>
-                      })}
-                    </ul>
-                  </div>
-                  <div className="projectspage__right__active__content__middle">
-                    <h3>{item.contentItems[1].header}</h3>
-                    <p>{item.contentItems[1].body}</p>
-                    <ul>
-                      {item.contentItems[1].list.map(item => {
-                        return <li>{item}</li>
-                      })}
-                    </ul>
-                  </div>
-                  <div className="projectspage__right__active__content__right">
-                    <h3>{item.contentItems[2].header}</h3>
-                    <p>{item.contentItems[2].body}</p>
-                    <ul>
-                      {item.contentItems[2].list.map(item => {
-                        return <li>{item}</li>
-                      })}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            } else {
-              return
-            }
-          })}
-          
         </div>
         <div className="projectspage__span" >
-          
+            <i className="fab fa-github" />
+            <i className="fab fa-linkedin" />
         </div>
       </div>
     </div>
-    
   )
 }

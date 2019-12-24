@@ -63,18 +63,21 @@ animation: #{$str};
 }
 
 @mixin h1 {
+  @include header-typo;
   color: $font-color-light;
   font-family: $header-font;
   font-size: 4rem;
 }
 
 @mixin h2 {
+  @include header-typo;
   color: $font-color-light;
   font-family: $header-font;
   font-size: 3rem;
 }
 
 @mixin h3 {
+  @include header-typo;
   color: $font-color-light;
   font-family: $header-font;
   font-size: 2rem;
@@ -100,4 +103,16 @@ animation: #{$str};
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@mixin paragraph-typo {
+  font-size: small;
+  letter-spacing: 0.1rem;
+  font-size: 1.2rem;
+}
+
+@mixin header-typo {
+  font-size: larger;
+  letter-spacing: 0.2rem;
+  
 }

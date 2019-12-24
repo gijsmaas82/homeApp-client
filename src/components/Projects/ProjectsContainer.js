@@ -1,67 +1,96 @@
 import React, { Component } from 'react'
 import Projects from './Projects'
+import { url } from '../../constants'
+import request from 'superagent'
+import { connect } from 'react-redux'
+import { getProjectInfo } from '../../actions'
 
-export default class ProjectsContainer extends Component {
+class ProjectsContainer extends Component {
   state = {
-    menuItems: [
-      {name: 'Home App', active: true, 
-        contentItems: [
-          {header: 'This app!', body:'Wow!', list: ['Amazings', 'Awesome', 'Cool']},
-          {header: 'Nice', body:'bar', list: ['foo', 'bar', 'Col']},
-          {header: 'Boa', body:'lee', list: ['karma', 'lope', 'Classy']}
-        ]
-      },
-      {name: 'Videogames Room', active: false,
-        contentItems: [
-          {header: 'This app!', body:'Wow!', list: ['Amazings', 'Awesome', 'Cool']},
-          {header: 'Nice', body:'bar', list: ['foo', 'bar', 'Col']},
-          {header: 'Boa', body:'lee', list: ['karma', 'lope', 'Classy']}
-        ]
-      }, 
-      {name: 'Photo Search App', active: false,
-        contentItems: [
-          {header: 'This app!', body:'Wow!', list: ['Amazings', 'Awesome', 'Cool']},
-          {header: 'Nice', body:'bar', list: ['foo', 'bar', 'Col']},
-          {header: 'Boa', body:'lee', list: ['karma', 'lope', 'Classy']}
-        ]
-      }, 
-      {name: 'Path To War', active: false, 
-        contentItems: [
-          {header: 'This app!', body:'Wow!', list: ['Amazings', 'Awesome', 'Cool']},
-          {header: 'Nice', body:'bar', list: ['foo', 'bar', 'Col']},
-          {header: 'Boa', body:'lee', list: ['karma', 'lope', 'Classy']}
-        ]
-      }, 
-      {name: 'Calendar App', active: false, 
-        contentItems: [
-          {header: 'This app!', body:'Wow!', list: ['Amazings', 'Awesome', 'Cool']},
-          {header: 'Nice', body:'bar', list: ['foo', 'bar', 'Col']},
-          {header: 'Boa', body:'lee', list: ['karma', 'lope', 'Classy']}
-        ]
-      },  
-      ]
+    addProject: false,
+    name: '',
+    image: '',
+    info: '',
+    listItemOne: '',
+    listItemTwo: '',
+    listItemThree: '',
+    activeItem: null,
+    activeCV: true,
   }
 
   navigateMenu = (e) => {
-    const updatedMenu = this.state.menuItems.map(item => {
+    const clickedItem = this.props.projectInfo.find(item => {
       if (e.target.classList.value === item.name) {
         item.active = true
         return item
-      } else {
-        item.active = false
-        return item
-      }
+      } 
     })
-    this.setState({ menuItems: updatedMenu })
+    this.setState({ activeItem: clickedItem, activeCV: false })
   }
+
+  showCV = () => {
+    this.setState({ activeCV: true })
+  }
+  showProjectInput = (e) => {
+    this.setState({ addProject: !this.state.addProject })
+  }
+
+  onChange = (e) => {
+    this.setState ({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  onSubmit =(e) => {
+    e.preventDefault()
+    request.post(`${url}/project`)
+      .send(this.state)
+      .then(response => {
+        console.log(response.body)})
+      .catch(console.error)
+    this.setState({ 
+      addProject: !this.state.addProject,
+      name: '',
+      image: '',
+      info: '',
+      listItemOne: '',
+      listItemTwo: '',
+      listItemThree: '' 
+    })
+  }
+  componentDidMount() {
+    this.props.getProjectInfo()
+  }
+
   render() {
     return (
       <div>
         <Projects 
         navigateMenu={this.navigateMenu}
         menuItems={this.state.menuItems}
+        addProject={this.state.addProject}
+        showProjectInput={this.showProjectInput}
+        onChange={this.onChange}
+        onSubmit={this.onSubmit}
+        state={this.state}
+        projectInfo={this.props.projectInfo}
+        showCV={this.showCV}
+        activeCV={this.state.activeCV}
+        activeItem={this.state.activeItem}
         />
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    projectInfo: state.projectInfo
+  }
+}
+
+const mapDispatchToProps = {
+  getProjectInfo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectsContainer)

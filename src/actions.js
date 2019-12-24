@@ -46,6 +46,26 @@ export const getPersonalInfo = () => dispatch => {
   
 }
 
+export const PROJECT_INFO = 'PROJECT_INFO'
+
+export function projectInfo (payload) {
+  return {
+    type: PROJECT_INFO,
+    payload
+  }
+}
+
+export const getProjectInfo = () => dispatch => {
+    request(`${url}/project`)
+      .then(response => {
+        const action = projectInfo(response.body)
+
+        dispatch(action)
+      })
+      .catch(console.error)
+  
+}
+
 export const JWT = 'JWT'
 
 function jwt(payload) {

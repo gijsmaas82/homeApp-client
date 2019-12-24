@@ -14,16 +14,16 @@ export default function Personal(props) {
             <img src="https://i.ibb.co/5jGVfSn/Kopie-van-Cover-letter-en-CV-G-Maas.jpg" alt="CV"/> 
           </div> : 
           <div className="personalpage__left__active" >
-            <div>
+            <div className="personalpage__left__active__header" >
               <h3>{props.activeItem.name}</h3>
             </div>
-            <div className="personalpage__left__active__body">
+            <div className="personalpage__left__active__content">
               <p>{props.activeItem.info}</p>
             </div>
-            <div>
-              <img src={props.activeItem.image} alt="picture" />
+            <div  className="personalpage__left__active__image">
+              <div><img src={props.activeItem.image} alt="picture" /></div>
             </div>
-            <div>
+            <div  className="personalpage__left__active__list">
               <ul>
                 <li>{props.activeItem.listItemOne}</li>
                 <li>{props.activeItem.listItemTwo}</li>
@@ -49,18 +49,18 @@ export default function Personal(props) {
                     <h3 className={item.name}>{item.name}</h3>
                   </div>
               })}</div>
-            </div>
+          </div>
             
             {!props.addPersonal ? 
             <div onClick={props.showPersonalInput}>
               <i className="fas fa-plus"></i>
             </div> : 
-            <div>
-              <form className="addPersonal" onSubmit={props.onSubmit}>
-                Name:<br/>
+            <div className="personalpage__right__form">
+              <form className="addPersonal" onSubmit={props.onSubmit}>Name:
+                <br/>
                 <input type="text" name="name" value={props.state.name} onChange={props.onChange}/><br/>
                 ImageURL:<br/>
-                <input type="text" name="imageURL" value={props.state.imageUrl}  onChange={props.onChange}/><br/>
+                <input type="text" name="image" value={props.state.image}  onChange={props.onChange}/><br/>
                 info:<br/>
                 <textarea type="text" name="info" value={props.state.info}  onChange={props.onChange}/><br/>
                 List Item One:<br/>
@@ -73,8 +73,14 @@ export default function Personal(props) {
               </form>
             </div>}
         </div>
+        <div className="personalpage__parallax__bottom" >
+        
+        </div>
         <div className="personalpage__span" >
-          
+          <div className="homepage__span" >
+            <i className="fab fa-github" />
+            <i className="fab fa-linkedin" />
+          </div>
         </div>
       </div>
     </div>

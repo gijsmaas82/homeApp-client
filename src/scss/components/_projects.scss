@@ -1,49 +1,36 @@
 .projectspage {
   display: grid;
   grid-template-columns: auto 80vw;
-  grid-template-rows: 13vh auto 15vh;
+  grid-template-rows: 13vh auto 40vh 20vh;
   grid-template-areas: 
     'title title'
     'left right'
+    'parallax__bottom parallax__bottom'
     'bottom bottom'
   ;
   grid-gap: 0;
   text-align: center;
 
   h1 {
-    color: $font-color-light;
-    animation: grow 2s ease-in-out; 
-    font-family: $header-font;
-    font-size: 4rem;
+    @include h1;
   }
 
   h2 {
+    @include h2;
     color: $font-color-dark;
-    animation: grow 2s ease-in-out;
-    font-family: $header-font;
-    font-size: 3rem;
   }
 
   h3 {
-    color: $font-color-dark;
-    animation: grow 2s ease-in-out;
-    font-family: $header-font;
-    font-size: 2rem;
+    @include h3
   }
 
-  p {
-    color: $font-color-dark;
-    font-weight: 700;
-    animation: grow 2s ease-in-out;
-    font-family: $paragraph-font;
-    font-size: 1.5rem;
+  p, li {
+    color: $font-color-light;
+    @include paragraph-typo;
   }
 
   a {
-    text-decoration: none;
-    color: $second-color;
-    font-weight: 700;
-    animation: grow 2s ease-in-out;
+    @include link;
   }
 
   &__title {
@@ -52,9 +39,6 @@
     height:13vh;
     text-align: center;
     background-color: $background-color;
-    h1 {
-      color: $font-color-light;
-    }
   }
 
   &__span {
@@ -64,75 +48,90 @@
 
   &__right {
     grid-area: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 7vh;
-    width: 70vw;
     transform-style: preserve-3d;
     animation-delay: 1s;
-    height: 80vh;
+    background-color: $background-color;
     @include transition-ease;
 
-    &__active {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      
-      div {
-        
-        &:nth-child(1) {
-          animation: header-slide 1s linear;
-          animation-fill-mode: both;
-          
-        }
-        &:nth-child(2) {
-          animation: shrink 1s linear;
-          animation-fill-mode: both;
-          animation-delay: 0.5s;
-        }
-        &:nth-child(3) {
-          animation: shrink 1s linear;
-          animation-fill-mode: both;
-          animation-delay: 1s;
-        }
-        &:nth-child(4) {
-          animation: shrink 1s linear;
-          animation-fill-mode: both;
-          animation-delay: 1.5s;
-        }
-        &:nth-child(5) {
-          animation: shrink 1s linear;
-          animation-fill-mode: both;
-          animation-delay: 2s;
-        }
-         
+    &__CV {
+      width: 40vw;
+      box-shadow: 0.7rem 0.7rem 0.4rem 0.4rem;
+      @include animation('tada 2s');
+
+      &:hover {
+        transform: scale(1.2, 1.2);
+        box-shadow: 1rem 1rem 0.4rem 0.4rem;
       }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &__active {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      grid-template-areas: 
+        'header icon'
+        'content image'
+        'content list'
+      ;
+      align-items: center;
+      text-align: left;
+      background-color: $background-color-trans;
+      width: 60vw;
+      margin: 2rem;
+      margin-bottom: 6rem;
+      border: solid $font-color-light 0.1rem;
+      border-radius: 5px;
+      box-shadow: 0.7rem 0.7rem 0.4rem 0.4rem;
+      
+      @include animation('menu-drop 2s');
+
+      &:hover {
+        transform: scale(1.2, 1.2);
+        box-shadow: 1rem 1rem 0.4rem 0.4rem;
+      }
+
       &__header {
+        grid-area: header;
         height: 7vh;
         margin: 10px;
         width: 100%;
-        border: solid $prime-color-transparent 2px;
-        box-shadow: 5px 10px 5px 5px black;
+        margin-left: 3rem;
+        
       }
       &__content {
+        
+        grid-area: content;
         height: auto;
         display: flex;
         flex-wrap: wrap;
         justify-content: left;
         align-items: left;
+        margin-left: 3rem;
+        margin-right: 3rem;
         
-        
-
-        div {
-          width: 20vw;
-          height: 60vh;
-          margin: 10px;
+      }
+      &__list {
+        margin-left: 3rem;
+        max-width: 20vw;
+        grid-area: list;
+      }
+      &__image {
+        margin-right: 3rem;
+        grid-area: image;
+        display: flex;
+        justify-content: center;
+        img {
+          max-height: 30vh;;
+          min-width: 10vw;
           
-          border: solid $prime-color-transparent 2px;
-          box-shadow: 5px 10px 5px 5px black;
-          
-          &:hover {
-            transform: scale(2, 1);
-          }
         }
       }
     }
@@ -141,13 +140,25 @@
   &__left {
     grid-area: left;
     margin-top: 7vh;
-    height:80vh;
+    height: auto;
+    background-color: $background-color;
     @include transition-ease;
+  
+  &__header {
 
-   &__menu {
+    a {
+      i {
+        @include icon-light;
+      }
+      i:hover  {
+        @include animation('pulsate 0.9s infinite');
+      }
+     }
+  }
 
-      display: flex;
-      flex-direction: column;
+  &__menu {
+     display: flex;
+     flex-direction: column;
 
      div {
       
@@ -163,35 +174,50 @@
       }
       &:nth-child(3) {
         animation: side-ways 1s linear 2s;
-        animation-fill-mode: both;
+       animation-fill-mode: both;
         animation-delay: 0.9s;
       }
       &:nth-child(4) {
         animation: side-ways 1s linear 2s;
-        animation-fill-mode: both;
+       animation-fill-mode: both;
         animation-delay: 1.2s;
       }
       &:nth-child(5) {
         animation: side-ways 1s linear 2s;
-        animation-fill-mode: both;
+       animation-fill-mode: both;
         animation-delay: 1.5s;
-      }
-      &:nth-child(6) {
-        animation: side-ways 1s linear 2s;
-        animation-fill-mode: both;
-        animation-delay: 1.8s;
       }
      }
      &__item {
-      
-      &:hover {
-        h3 {color: $font-color-light}
-      }
-      &__active {
-        h3 {color: $font-color-light}
-      }
-     }
+
+       &:hover {
+         h3 {color: $font-color-dark}
+       }
+       &__active {
+         h3 {color: $font-color-light}
+       }
+    }
    }
+   &__form {
+
+    background-color: white;
+   }
+  }
+  &__parallax__bottom {
+    grid-area: parallax__bottom;
+    background-image: url('https://i.ibb.co/bHBMVtV/haarlem.png');
+    @include parallax
+  }
+  &__span {
+    grid-area: bottom; 
+    background-color: $background-color;
+    
+
+    i {
+      color: $font-color-light;
+      font-size: 3rem;
+      margin: 1rem;
+    }
   }
 }
 
