@@ -7,7 +7,7 @@ export default class LogIn extends Component {
       <div>
         <Container>
         <Row>
-        <Form onSubmit={this.props.onSubmit}>
+        <Form onSubmit={this.props.onSubmit} style={{ marginTop: "10vh"}} >
         <Form.Group controlId="formBasicText">
             <Form.Label>User Name</Form.Label>
             <Form.Control type="text" placeholder="Enter User Name" value={this.props.name}
