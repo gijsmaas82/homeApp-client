@@ -21,7 +21,7 @@ export default function Projects(props) {
               <p>{props.activeItem.info}</p>
             </div>
             <div  className="projectspage__right__active__image">
-              <div><img src={props.activeItem.image} alt="picture" /></div>
+              <div><img src={props.activeItem.image} alt="" /></div>
             </div>
             <div  className="projectspage__right__active__list">
               <ul>
@@ -45,7 +45,7 @@ export default function Projects(props) {
               <h3>CV</h3>
             </div>
             <div>{!props.projectInfo ? 'loading' : props.projectInfo.map(item => {
-                return <div className="projectspage__left__menu__item" onClick={props.navigateMenu}>
+                return <div key={item.name} className="projectspage__left__menu__item" onClick={props.navigateMenu}>
                     <h3 className={item.name}>{item.name}</h3>
                   </div>
               })}</div>

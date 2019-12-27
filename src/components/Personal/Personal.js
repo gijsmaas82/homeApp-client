@@ -21,7 +21,7 @@ export default function Personal(props) {
               <p>{props.activeItem.info}</p>
             </div>
             <div  className="personalpage__left__active__image">
-              <div><img src={props.activeItem.image} alt="picture" /></div>
+              <div><img src={props.activeItem.image} alt="" /></div>
             </div>
             <div  className="personalpage__left__active__list">
               <ul>

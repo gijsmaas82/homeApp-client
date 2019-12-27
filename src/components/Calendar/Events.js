@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { CardDeck, Card, Button } from 'react-bootstrap'
-import { url } from '../../constants'
-import request from 'superagent'
 
 export default class Events extends Component {
 

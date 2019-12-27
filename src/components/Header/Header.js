@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { LinkContainer } from 'react-router-bootstrap'
 
 
 export default class Header extends Component {
@@ -30,10 +28,10 @@ export default class Header extends Component {
         {this.props.menuVisible && 
             <div>
             <div className="menu">{this.props.menuItems.map(item => {
-              return <div className="menu__item" onClick={this.props.toggleMenu}>
+              return <div key={item.name} className="menu__item" onClick={this.props.toggleMenu}>
                 <Link to={item.link}>
                   <h3>{item.name}</h3>
-                  <div className={item.className}><i class={item.icon}></i></div>
+                  <div className={item.className}><i className={item.icon}></i></div>
                 </Link>
               </div>
             })}</div></div>}
