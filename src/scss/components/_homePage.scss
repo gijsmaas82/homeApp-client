@@ -2,7 +2,7 @@
 .homepage {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 13vh 50vh auto 50vh 20vh;
+  grid-template-rows: 13vh 35vh auto 50vh 20vh;
   grid-template-areas: 
     'title title title'
     'parallax__top parallax__top parallax__top'
@@ -38,7 +38,7 @@
   &__parallax__top {
     grid-area: parallax__top;
     margin-top: 7vh;
-    background-image: url('https://i.ibb.co/bHBMVtV/haarlem.png');
+    background-image: url('https://i.ibb.co/2v0Z7Rv/spaarne.jpg');
     @include parallax
   }
 
@@ -111,7 +111,7 @@
 
   &__parallax__bottom {
     grid-area: parallax__bottom;
-    background-image: url('https://i.ibb.co/bHBMVtV/haarlem.png');
+    background-image: url('https://i.ibb.co/2v0Z7Rv/spaarne.jpg');
     @include parallax
   }
 

@@ -13,6 +13,7 @@ import DragAndDropContainer from './components/DragAndDrop/DragAndDropContainer'
 import DrawingContainer from './components/Drawing/DrawingContainer'
 import PersonalContainer from './components/Personal/PersonalContainer'
 import ProjectsContainer from './components/Projects/ProjectsContainer'
+import PhotoGalleryContainer from './components/PhotoGallery/PhotoGalleryContainer'
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
         <Route path="/drawing/" component={DrawingContainer} />
         <Route path="/personal-info" component={PersonalContainer} />
         <Route path="/projects" component={ProjectsContainer} />
+        <Route path="/photo-search" component={PhotoGalleryContainer} />
       </div>
     );
   }
