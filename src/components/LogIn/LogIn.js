@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Container, Row, Col } from 'react-bootstrap'
+import { Button, Form, Container, Row } from 'react-bootstrap'
 
 export default class LogIn extends Component {
   render() {

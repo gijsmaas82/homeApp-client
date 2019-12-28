@@ -24,6 +24,7 @@ class ProjectsContainer extends Component {
         item.active = true
         return item
       } 
+      return null
     })
     this.setState({ activeItem: clickedItem, activeCV: false })
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Stage, Layer, Circle } from 'react-konva';
+
 
 export default function HomePage(props) {
 
@@ -24,7 +24,7 @@ export default function HomePage(props) {
           </div>
         </div>
         <div className="homepage__middle" >
-          <img src="https://i.ibb.co/4YDTRx6/DSC03981.jpg" />
+          <img src="https://i.ibb.co/4YDTRx6/DSC03981.jpg" alt="selfportrait" />
           <h2>Programmer</h2>
           <h2>Teacher</h2>
           <h2>Historian</h2>

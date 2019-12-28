@@ -25,7 +25,8 @@ class PersonalContainer extends Component {
       if (e.target.classList.value === item.name) {
         item.active = true
         return item
-      } 
+      }
+      return null
     })
     this.setState({ activeItem: clickedItem, activeCV: false })
   }

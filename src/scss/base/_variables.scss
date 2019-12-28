@@ -5,17 +5,22 @@ $second-color-transparent: rgb(197, 142, 157);
 $third-color: rgb(27, 25, 25);
 $third-color-transparent: rgb(51, 45, 45);
 
-$background-color: rgb(51, 45, 45);
+$background-color: rgb(255, 255, 255);
 $background-color-trans: rgba(255, 255, 255, 0.3);
 
-$shadow-light: rgb(165, 165, 73);
+$background-radial: radial-gradient(circle, rgba(227,233,238,0.7021183473389356) 0%, rgba(0,91,110,1) 100%);;
+$background-linear: linear-gradient(45deg, rgba(227,233,238,0.7021183473389356) 46%, rgba(0,91,110,1) 100%);
+
+$shadow-light: rgb(15, 9, 100);
 $shadow-dark: rgb(30, 56, 90);
 
 
-$font-color-light: rgb(162, 212, 105);
+$font-color-light: rgb(0, 0, 201);
 $font-color-dark: rgb(33, 99, 33);
 
 $header-font: 'PT Sans Caption', sans-serif;
 $paragraph-font: 'PT Sans Caption', sans-serif;
 
 
+// rgb(51, 45, 45); background-color
+// $font-color-light: rgb(162, 212, 105);

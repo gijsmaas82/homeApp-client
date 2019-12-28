@@ -2,7 +2,7 @@
 .homepage {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 13vh 50vh auto 50vh 20vh;
+  grid-template-rows: 13vh 35vh auto 50vh 20vh;
   grid-template-areas: 
     'title title title'
     'parallax__top parallax__top parallax__top'
@@ -32,19 +32,19 @@
     margin-top: 7vh;
     height: 13vh;
     text-align: center;
-    background-color: $background-color;
+    background: $background-radial;
   }
 
   &__parallax__top {
     grid-area: parallax__top;
     margin-top: 7vh;
-    background-image: url('https://i.ibb.co/bHBMVtV/haarlem.png');
+    background-image: url('https://i.ibb.co/2v0Z7Rv/spaarne.jpg');
     @include parallax
   }
 
   &__left {
     grid-area: left;
-    background-color: $background-color;
+    background: $background-radial;
     text-align: center;
     @include transition-ease;
 
@@ -75,7 +75,7 @@
 
   &__middle {
     grid-area: middle;
-    background-color: $background-color;
+    background: $background-radial;
     img {
       margin: 5rem;
       width: 50%;
@@ -87,7 +87,7 @@
 
   &__right {
     grid-area: right;
-    background-color: $background-color;
+    background: $background-radial;
     @include transition-ease;
 
     &__header {
@@ -111,13 +111,13 @@
 
   &__parallax__bottom {
     grid-area: parallax__bottom;
-    background-image: url('https://i.ibb.co/bHBMVtV/haarlem.png');
+    background-image: url('https://i.ibb.co/2v0Z7Rv/spaarne.jpg');
     @include parallax
   }
 
   &__span {
     grid-area: bottom; 
-    background-color: $background-color;
+    background: $background-radial;
     
 
     i {
