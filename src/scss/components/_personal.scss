@@ -38,7 +38,7 @@
     margin-top: 7vh;
     height:13vh;
     text-align: center;
-    background-color: $background-color;
+    background: $background-radial;
   }
 
   &__span {
@@ -54,7 +54,7 @@
     margin-top: 7vh;
     transform-style: preserve-3d;
     animation-delay: 1s;
-    background-color: $background-color;
+    background: $background-radial;
     @include transition-ease;
 
     &__CV {
@@ -83,7 +83,7 @@
       ;
       align-items: center;
       text-align: left;
-      background-color: $background-color-trans;
+      background: $background-linear;
       width: 60vw;
       margin: 2rem;
       margin-bottom: 6rem;
@@ -141,7 +141,7 @@
     grid-area: right;
     margin-top: 7vh;
     height: auto;
-    background-color: $background-color;
+    background: $background-radial;
     @include transition-ease;
   
   &__header {
@@ -210,7 +210,7 @@
   }
   &__span {
     grid-area: bottom; 
-    background-color: $background-color;
+    background: $background-radial;
     
 
     i {
