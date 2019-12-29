@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import { url } from '../../constants'
 import request from 'superagent'
 import ReactFileReader from 'react-file-reader'
@@ -13,7 +13,8 @@ export default class AddEvent extends Component {
     startTime: '',
     endTime: '',
     description: '',
-    picture: ''
+    picture: '',
+    filename: ''
   }
 
   addEvent = () => {
@@ -32,9 +33,10 @@ export default class AddEvent extends Component {
   }
 
   handleFiles = files => {
-    console.log('file:', files.base64)
+    console.log('file:', files.fileList[0].name)
     this.setState({
-      picture: files.base64
+      picture: files.base64,
+      filename: files.fileList[0].name
     })
   }
 
@@ -59,40 +61,41 @@ export default class AddEvent extends Component {
 
   render() {
     return (
-      <div>
+      <div className="calendarpage__left__addevent">
         {!this.state.addEvent ? 
-      <Button 
-      variant="dark" 
-      style={{ fontFamily:"'Righteous', cursive" }}
+      <button 
+      className="btn draw-border"
       onClick={this.addEvent}
-      >Add Event</Button> 
+      >Add Event</button> 
       :
-      <div><Form style={{ fontFamily:"'Righteous', cursive" }} onSubmit={this.submitEvent} >
+      <div><Form style={{ fontFamily:"'Righteous', cursive", margin: '2rem' }} onSubmit={this.submitEvent} >
         <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Title</Form.Label>
+          <Form.Label><p>Title of Event</p></Form.Label>
           <Form.Control onChange={this.onChange} name="title" type="text" placeholder="title" value={this.state.title} required />
-          <Form.Label>Date</Form.Label>
+          <Form.Label><p>Date</p></Form.Label>
           <Form.Control onChange={this.onChange} name="date" type="date" placeholder="date" value={this.state.date}required /> 
-            <Form.Check 
-              type="switch"
-              id="custom-switch"
-              label="Set Time"
-              onChange={this.setTime}
-            />
-          { !this.state.wholeDay && <div><Form.Label>Start time</Form.Label>
-          <Form.Control onChange={this.onChange} name="startTime" type="time" placeholder="starttime" value={this.state.startTime} />
-          <Form.Label>End time</Form.Label>
-          <Form.Control onChange={this.onChange} name="endTime" type="time" placeholder="endtime" value={this.state.endTime} /></div> }
-          <Form.Label>Description</Form.Label>
-          <Form.Control onChange={this.onChange} name="description" type="textarea" placeholder="description" value={this.state.description} required/>
           <ReactFileReader handleFiles={this.handleFiles} base64={true}>
-            <button className='btn'>Upload</button>
+            <button className='btn draw-border'>Upload a picture</button>
           </ReactFileReader>
-          <Button variant="dark" type="submit">Submit form</Button>
-          <Button variant="dark" onClick={this.addEvent}>Cancel</Button>
+          {!this.state.filename ? '' : <div><p>{this.state.filename}</p></div>}
+          <p>Set Time</p>
+          <Form.Check 
+            type="switch"
+            id="custom-switch"
+            label="Add times to the event"
+            onChange={this.setTime}
+          />
+          { !this.state.wholeDay && <div><Form.Label><p>Start time</p></Form.Label>
+          <Form.Control onChange={this.onChange} name="startTime" type="time" placeholder="starttime" value={this.state.startTime} />
+          <Form.Label><p>End time</p></Form.Label>
+          <Form.Control onChange={this.onChange} name="endTime" type="time" placeholder="endtime" value={this.state.endTime} /></div> }
+          <Form.Label><p>Description</p></Form.Label>
+          <Form.Control onChange={this.onChange} name="description" type="textarea" placeholder="description" value={this.state.description} required/>
+          <button className="btn draw-border" type="submit">Submit form</button>
+          <button className="btn draw-border" onClick={this.addEvent}>Cancel</button>
         </Form.Group>
       </Form>
-      <img src={this.state.picture} /></div>
+      </div>
       } 
       </div>
     )

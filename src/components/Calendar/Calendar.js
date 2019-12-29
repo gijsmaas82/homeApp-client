@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import moment from "moment";
-import "./calendar.css";
+// import "./calendar.css";
+import AddEvent from './AddEvent'
+import Events from './Events'
 
 export default class Calendar extends Component {
 
@@ -88,7 +90,7 @@ export default class Calendar extends Component {
       <div>
         <div className="calendarpage">
           <div className="calendarpage__title">
-            <h2>Calendarpage</h2>
+            <h2>Calendar</h2>
           </div>
           <div className="calendarpage__left">
            <div className="calendarpage__left__menu">
@@ -103,23 +105,22 @@ export default class Calendar extends Component {
            </div>
           <div className="calendarpage__left__body" >
             {this.props.showDateTable && (
-
-                <table>
-                  <thead>
-                    <tr>{moment.weekdaysShort().map(day => {
-                      return <th key={day}><p>{day}</p></th>;
-                        })}</tr>
-                  </thead>
-                  <tbody>{this.dayList().map(week => {
-                    if (week.length === 0) {
-                      return week
-                    } else {
-                      const key = week[0].key
-                      return <tr key={key}>{week}</tr>
-                    }
-                    })}
-                  </tbody>
-                </table>
+              <table>
+                <thead>
+                  <tr>{moment.weekdaysShort().map(day => {
+                    return <th key={day}><p>{day}</p></th>;
+                      })}</tr>
+                </thead>
+                <tbody>{this.dayList().map(week => {
+                  if (week.length === 0) {
+                    return week
+                  } else {
+                    const key = week[0].key
+                    return <tr key={key}>{week}</tr>
+                  }
+                  })}
+                </tbody>
+              </table>
             )}
             </div>
             <div>
@@ -142,6 +143,20 @@ export default class Calendar extends Component {
               </table>
             )}
           </div>
+          <AddEvent />
+        </div>
+        <Events 
+            deleteEvent={this.props.deleteEvent}
+            deletedEvent={this.props.deletedEvent}
+            events={this.props.events}
+            deletingEvent={this.props.deletingEvent}
+            selectedDay={this.props.selectedDay}
+            dateObject={this.props.dateObject}
+          />
+        <div className="calendarpage__parallax__bottom"></div>
+        <div className="calendarpage__span" >
+            <i className="fab fa-github" />
+            <i className="fab fa-linkedin" />
         </div>
       </div>
      </div>

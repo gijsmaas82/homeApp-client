@@ -1,14 +1,13 @@
 .calendarpage {
   display: grid;
-  grid-template-columns: 30vw auto;
-  grid-template-rows: 13vh 80vh 40vh 20vh;
+  grid-template-columns: 37vw auto;
+  grid-template-rows: 13vh auto 40vh 20vh;
   grid-template-areas: 
     'title title'
     'left right'
-    'parallax__bottom right'
+    'parallax__bottom parallax__bottom'
     'bottom bottom'
   ;
-  grid-gap: 0;
   text-align: center;
 
   h1 {
@@ -17,7 +16,6 @@
 
   h2 {
     @include h2;
-    color: $font-color-dark;
   }
 
   h3 {
@@ -35,6 +33,9 @@
 
   &__title {
     grid-area: title;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 7vh;
     height:13vh;
     text-align: center;
@@ -44,12 +45,13 @@
   &__left {
     grid-area: left;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
     margin-top: 7vh;
     transform-style: preserve-3d;
     animation-delay: 1s;
+    padding: 5rem;
     background: $background-radial;
     @include transition-ease;
 
@@ -97,5 +99,107 @@
       }
     }
   }
+  &__right {
+    grid-area: right;
+    display: flex;
+    flex-direction: column;
+    margin-top: 7vh;
+    transform-style: preserve-3d;
+    animation-delay: 1s;
+    @include transition-ease;
+    border: solid $font-color-light 3px;
+    border-radius: 3px;
 
+    &__header {
+      width: 100%;
+      h2 {
+        @include animation('menu-drop 2s');
+      }
+    }
+    &__body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-around;
+
+      &__event {
+        width: 40%;
+        height: 50%;
+        border: solid $font-color-light 3px;
+        margin: 2rem;
+        border-radius: 5px;
+        background: $background-radial;
+        box-shadow: 5px 5px 2px 3px black;
+
+        &:hover {
+          transform: scale(1.2, 1.2);
+         
+        }
+
+
+        img {
+          border: solid $font-color-light 3px;
+          border-radius: 5px;
+          width: 50%;
+        }
+      }
+
+      img {
+        border: solid $font-color-light 3px;
+        border-radius: 5px;
+        width: 50%;
+      }
+
+    }
+  }
+  &__parallax__bottom {
+    grid-area: parallax__bottom;
+    background-image: url('https://i.ibb.co/2v0Z7Rv/spaarne.jpg');
+    @include parallax
+  }
+  &__span {
+    grid-area: bottom; 
+    background: $background-radial;
+    
+
+    i {
+      color: $font-color-light;
+      font-size: 3rem;
+      margin: 1rem;
+    }
+  }
+}
+.draw-border {
+  @include btn-border-drawing($font-color-light, #ffe593, 4px, bottom, right);
+}
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  padding: 1em 2em;
+  letter-spacing: 0.05rem;
+  
+  &:focus { outline: 2px dotted #55d7dc; }
+}
+
+.today {
+  @include animation(pulsate 0.7s infinite);
+  border: solid $font-color-light 2px;
+  border-radius: 3px;
+}
+
+.today:hover {
+  color: red;
+}
+
+.day:hover {
+  color: red;
+}
+
+.month:hover {
+  color: red;
 }
