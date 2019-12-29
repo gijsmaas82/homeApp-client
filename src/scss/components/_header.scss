@@ -1,6 +1,6 @@
 .header {
   position: fixed;
-  z-index: 0;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,6 +90,7 @@
   position: fixed;
   width: 70vw;
   height: 7vh;
+  z-index: 2;
   margin-left: 15vw;
   margin-right: 15vw;
   display: flex;

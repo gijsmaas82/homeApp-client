@@ -1,13 +1,8 @@
 import React from "react";
 import moment from "moment";
-import "./calendar.css";
 import Calendar from './Calendar'
 import { url } from '../../constants'
 import request from 'superagent'
-import AddEvent from './AddEvent'
-import Events from './Events'
-import { Button } from 'react-bootstrap'
-
 import { connect } from 'react-redux'
 
 
@@ -17,7 +12,7 @@ class CalendarContainer extends React.Component {
     showMonthTable: false,
     showDateTable: true,
     dateObject: moment(),
-    selectedDay: null,
+    selectedDay: moment().format('D'),
     events: [],
     addEvent: false,
     deletingEvent: false,
@@ -154,18 +149,12 @@ class CalendarContainer extends React.Component {
           setMonth={this.setMonth}
           onPrevYear={this.onPrevYear}
           onNextYear={this.onNextYear}
-        />
-        <AddEvent /> 
-        {!this.state.showEvents ? 
-        <Button style={{ fontFamily:"'Righteous', cursive" }} variant="dark" onClick={this.showEvents}>Show Events</Button>
-        : 
-        <Button style={{ fontFamily:"'Righteous', cursive" }} variant="dark" onClick={() => this.setState({ showEvents: !this.state.showEvents })}>Hide Events</Button>}
-        {this.state.showEvents && <Events 
           deleteEvent={this.deleteEvent}
           deletedEvent={this.deletedEvent}
           events={this.state.events}
           deletingEvent={this.state.deletingEvent}
-        />}
+          selectedDay={this.state.selectedDay}
+        />
       </div>
     );
   }

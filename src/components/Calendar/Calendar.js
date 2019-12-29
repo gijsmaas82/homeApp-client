@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Table, Button } from 'react-bootstrap'
 import moment from "moment";
-import "./calendar.css";
+// import "./calendar.css";
+import AddEvent from './AddEvent'
+import Events from './Events'
 
 export default class Calendar extends Component {
 
@@ -28,7 +29,7 @@ export default class Calendar extends Component {
             this.props.onDayClick(e, day);
           }}>
             <div className={`${currentDay}`}>
-              {day}
+              <p>{day}</p>
             </div>
           </td>
         );
@@ -63,7 +64,7 @@ export default class Calendar extends Component {
             this.props.setMonth(month);
           }}
         >
-          <div className='month'>{month}</div>
+          <div className='month'><p>{month}</p></div>
       </td> )
     })
     let rows = []
@@ -87,21 +88,27 @@ export default class Calendar extends Component {
   render() {
     return (
       <div>
-        <div style={{display:"flex", flexDirection:"column", fontFamily:"'Righteous', cursive" }}>
-         <div style={{ margin:"10px", width:"100%", display:"flex", justifyContent:"space-around", alignItems:"center", fontFamily:"'Righteous', cursive"}}> 
-           <h4 onClick={this.props.showMonth}>{this.props.dateObject.format("MMMM")}</h4>
-           <h4>{this.props.dateObject.format("Y")}</h4>
-           <Button variant="dark" onClick={this.props.onPrev} >-</Button>
-           <Button variant="dark" onClick={this.props.onNext}>+</Button>
-         </div>        
-       
-        <div>
-          {this.props.showDateTable && (
-            
-              <Table>
+        <div className="calendarpage">
+          <div className="calendarpage__title">
+            <h2>Calendar</h2>
+          </div>
+          <div className="calendarpage__left">
+           <div className="calendarpage__left__menu">
+            <div className="calendarpage__left__menu__buttons">
+              <div><i onClick={this.props.onPrev} className="fas fa-minus"/></div>
+              <div><h3 onClick={this.props.showMonth}>{this.props.dateObject.format("MMMM")}</h3></div>
+              <div><i onClick={this.props.onNext} className="fas fa-plus"/></div>
+            </div> 
+            <div className="calendarpage__left__menu__year">
+              <h3>{this.props.dateObject.format("Y")}</h3>
+            </div>
+           </div>
+          <div className="calendarpage__left__body" >
+            {this.props.showDateTable && (
+              <table>
                 <thead>
                   <tr>{moment.weekdaysShort().map(day => {
-                    return <th key={day}>{day}</th>;
+                    return <th key={day}><p>{day}</p></th>;
                       })}</tr>
                 </thead>
                 <tbody>{this.dayList().map(week => {
@@ -113,28 +120,43 @@ export default class Calendar extends Component {
                   }
                   })}
                 </tbody>
-              </Table>
-          )}
+              </table>
+            )}
+            </div>
+            <div>
+            {this.props.showMonthTable && (
+              <table >
+                <thead>
+                  <tr>
+                    <th colSpan="4"><p>Select a Month</p></th>
+                  </tr>
+                </thead>
+                <tbody>{this.monthList().map(row => {
+                  if (row.length === 0) {
+                    return row
+                  } else {
+                    const key = row[0].key
+                    return <tr key={key}>{row}</tr>
+                  }
+                  })}
+                </tbody>
+              </table>
+            )}
           </div>
-          <div>
-          {this.props.showMonthTable && (
-            <Table >
-              <thead>
-                <tr>
-                  <th colSpan="4">Select a Month</th>
-                </tr>
-              </thead>
-              <tbody>{this.monthList().map(row => {
-                if (row.length === 0) {
-                  return row
-                } else {
-                  const key = row[0].key
-                  return <tr key={key}>{row}</tr>
-                }
-                })}
-              </tbody>
-            </Table>
-          )}
+          <AddEvent />
+        </div>
+        <Events 
+            deleteEvent={this.props.deleteEvent}
+            deletedEvent={this.props.deletedEvent}
+            events={this.props.events}
+            deletingEvent={this.props.deletingEvent}
+            selectedDay={this.props.selectedDay}
+            dateObject={this.props.dateObject}
+          />
+        <div className="calendarpage__parallax__bottom"></div>
+        <div className="calendarpage__span" >
+            <i className="fab fa-github" />
+            <i className="fab fa-linkedin" />
         </div>
       </div>
      </div>
