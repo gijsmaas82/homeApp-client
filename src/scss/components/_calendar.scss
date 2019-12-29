@@ -1,0 +1,101 @@
+.calendarpage {
+  display: grid;
+  grid-template-columns: 30vw auto;
+  grid-template-rows: 13vh 80vh 40vh 20vh;
+  grid-template-areas: 
+    'title title'
+    'left right'
+    'parallax__bottom right'
+    'bottom bottom'
+  ;
+  grid-gap: 0;
+  text-align: center;
+
+  h1 {
+    @include h1;
+  }
+
+  h2 {
+    @include h2;
+    color: $font-color-dark;
+  }
+
+  h3 {
+    @include h3
+  }
+
+  p, li {
+    color: $font-color-light;
+    @include paragraph-typo;
+  }
+
+  a {
+    @include link;
+  }
+
+  &__title {
+    grid-area: title;
+    margin-top: 7vh;
+    height:13vh;
+    text-align: center;
+    background: $background-radial;
+  }
+
+  &__left {
+    grid-area: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 7vh;
+    transform-style: preserve-3d;
+    animation-delay: 1s;
+    background: $background-radial;
+    @include transition-ease;
+
+    &__menu {
+      width: 100%;
+      height: 10vh;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      &__buttons {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+          margin: 1rem;
+        }
+
+        i {
+          @include icon-light;
+          font-size: 2rem;
+        }
+        i:hover  {
+          @include animation('pulsate 0.9s infinite');
+        }
+        h3:hover  {
+          color: $font-color-dark;
+          @include animation('pulsate 0.9s infinite');
+        }
+      }
+      &__year {
+        h3 {
+          font-weight: 900;
+        }
+      }
+    }
+    &__body {
+      margin-top: 3rem;
+
+      table {
+        width: 100%;
+      }
+    }
+  }
+
+}

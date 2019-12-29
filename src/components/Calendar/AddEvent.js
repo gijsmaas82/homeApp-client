@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { url } from '../../constants'
 import request from 'superagent'
+import ReactFileReader from 'react-file-reader'
 
 export default class AddEvent extends Component {
   state = {
@@ -12,7 +13,7 @@ export default class AddEvent extends Component {
     startTime: '',
     endTime: '',
     description: '',
-    picture: 'https://www.starfm.com/wp-content/uploads/sites/32/2012/10/submit-event.jpg'
+    picture: ''
   }
 
   addEvent = () => {
@@ -26,8 +27,15 @@ export default class AddEvent extends Component {
   onChange = (e) => {
     this.setState ({
       [e.target.name]: e.target.value
-    })
+    }) 
+    
+  }
 
+  handleFiles = files => {
+    console.log('file:', files.base64)
+    this.setState({
+      picture: files.base64
+    })
   }
 
   submitEvent = (e) => {
@@ -45,7 +53,7 @@ export default class AddEvent extends Component {
       startTime: '',
       endTime: '',
       description: '',
-      picture: 'https://www.starfm.com/wp-content/uploads/sites/32/2012/10/submit-event.jpg'
+      picture: ''
     })
   }
 
@@ -59,7 +67,7 @@ export default class AddEvent extends Component {
       onClick={this.addEvent}
       >Add Event</Button> 
       :
-      <Form style={{ fontFamily:"'Righteous', cursive" }} onSubmit={this.submitEvent} >
+      <div><Form style={{ fontFamily:"'Righteous', cursive" }} onSubmit={this.submitEvent} >
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Title</Form.Label>
           <Form.Control onChange={this.onChange} name="title" type="text" placeholder="title" value={this.state.title} required />
@@ -77,10 +85,14 @@ export default class AddEvent extends Component {
           <Form.Control onChange={this.onChange} name="endTime" type="time" placeholder="endtime" value={this.state.endTime} /></div> }
           <Form.Label>Description</Form.Label>
           <Form.Control onChange={this.onChange} name="description" type="textarea" placeholder="description" value={this.state.description} required/>
+          <ReactFileReader handleFiles={this.handleFiles} base64={true}>
+            <button className='btn'>Upload</button>
+          </ReactFileReader>
           <Button variant="dark" type="submit">Submit form</Button>
           <Button variant="dark" onClick={this.addEvent}>Cancel</Button>
         </Form.Group>
       </Form>
+      <img src={this.state.picture} /></div>
       } 
       </div>
     )
