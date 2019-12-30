@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import { getPhotos, getPage, getSearchTag } from '../../actions'
 import { connect } from 'react-redux'
 import PhotoGallery from './PhotoGallery'
+import request from 'superagent'
+const { url } = require('../../constants')
 
 
 
 class PhotoGalleryContainer extends Component {
   state = {
     tag: '',
-    currentPage: 1
+    currentPage: 1,
+    saving: false,
+    url: null,
   }
 
   onPageClick = (event) => {
@@ -31,6 +35,24 @@ class PhotoGalleryContainer extends Component {
     this.setState({ tag: '' })
   }
 
+  promptSave = (e) => { 
+    this.setState({ saving: !this.state.saving, url: e.currentTarget.dataset.url })
+  }
+
+  cancelSave = () => { 
+    this.setState({ saving: !this.state.saving })
+  }
+
+  savePicture = () => {
+    request
+      .post(`${url}/photo`)
+      // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .send({ URL: this.state.url })
+      .then(response => console.log(response))
+      .catch(console.error)
+    this.setState({ saving: !this.state.saving })
+  }
+
   render() {
 
     return (
@@ -44,6 +66,11 @@ class PhotoGalleryContainer extends Component {
           tag={this.state.tag}
           onSubmit={this.onSubmit}
           onChange={this.onChange}
+          saving={this.state.saving}
+          url={this.state.url}
+          promptSave={this.promptSave}
+          cancelSave={this.cancelSave}
+          savePicture={this.savePicture}
         />
       </div>
     )
