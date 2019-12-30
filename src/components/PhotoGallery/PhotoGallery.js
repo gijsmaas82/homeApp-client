@@ -6,6 +6,18 @@ export default class PhotoGallery extends Component {
     return (
       <div>
         <div className="photoapp">
+        {this.props.saving &&
+        <div className="photoapp__save">
+          <div className="photoapp__save__prompt">
+            <h3>Save this image?</h3>
+            <img src={this.props.url} alt="savedImage" />
+            <div className="photoapp__save__prompt__buttons">
+              <button onClick={this.props.cancelSave} className="btn draw-border">Cancel</button>
+              <button onClick={this.props.savePicture} className="btn draw-border">Save Photo</button>
+            </div>
+          </div>
+        </div>
+        }
           <div className="photoapp__title">
             <h2>Photo Search</h2>
           </div>
@@ -47,7 +59,8 @@ export default class PhotoGallery extends Component {
                       </Tooltip>
                     }
                   >
-                  <img
+                  <img onClick={this.props.promptSave}
+                  data-url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} 
                   src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} alt="pic" />
                   </OverlayTrigger>
                 </div>
