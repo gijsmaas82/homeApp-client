@@ -174,3 +174,10 @@ animation: #{$str};
   border-radius: 1.5rem;
   border: solid black 3px;
 }
+
+@mixin neumorph {
+  box-shadow: 10px 10px 3px 3px rgba(0,0,0, 0.3),
+              -5px -5px 1px 1px rgba(255, 255, 255, 0.7);
+  border: solid #d9e7ff 3px;
+  border-radius: 5px;
+}

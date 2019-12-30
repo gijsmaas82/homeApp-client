@@ -46,11 +46,11 @@ class GameRoomContainer extends Component {
       shadowOffsetY: 5
     })
     
-    if (e.target.x() - this.state.apple.x >= 0 && e.target.x() - this.state.apple.x <= 200 && e.target.y() - this.state.apple.y >= 0 && e.target.y() - this.state.apple.y <= 200) {
+    if (e.target.x() - this.state.apple.x >= -200 && e.target.x() - this.state.apple.x <= 200 && e.target.y() - this.state.apple.y >= -200 && e.target.y() - this.state.apple.y <= 200) {
       this.props.history.push('/picking-apples/')
     }
 
-    if (e.target.x() - this.state.pencil.x >= 0 && e.target.x() - this.state.pencil.x <= 200 && e.target.y() - this.state.pencil.y >= 0 && e.target.y() - this.state.pencil.y <= 200) {
+    if (e.target.x() - this.state.pencil.x >= -200 && e.target.x() - this.state.pencil.x <= 200 && e.target.y() - this.state.pencil.y >= -200 && e.target.y() - this.state.pencil.y <= 200) {
       this.props.history.push('/drawing/')
     }
   }

@@ -40,6 +40,7 @@
     height:13vh;
     text-align: center;
     background: $background-radial;
+    
   }
 
   &__left {
@@ -57,7 +58,7 @@
 
     &__menu {
       width: 100%;
-      height: 10vh;
+      height: 15vh;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
@@ -68,6 +69,7 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
+        @include neumorph;
 
         div {
           margin: 1rem;
@@ -86,13 +88,15 @@
         }
       }
       &__year {
+        
         h3 {
           font-weight: 900;
         }
       }
     }
     &__body {
-      margin-top: 3rem;
+      margin: 3rem;
+      @include neumorph;
 
       table {
         width: 100%;
@@ -103,15 +107,16 @@
     grid-area: right;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-top: 7vh;
     transform-style: preserve-3d;
     animation-delay: 1s;
     @include transition-ease;
-    border: solid $font-color-light 3px;
-    border-radius: 3px;
 
     &__header {
-      width: 100%;
+      width: 80%;
+      margin-bottom: 3rem;
+      @include neumorph;
       h2 {
         @include animation('menu-drop 2s');
       }
@@ -126,12 +131,11 @@
 
       &__event {
         width: 40%;
-        height: 50%;
-        border: solid $font-color-light 3px;
+        height: auto;
         margin: 2rem;
         border-radius: 5px;
         background: $background-radial;
-        box-shadow: 5px 5px 2px 3px black;
+        @include neumorph;
 
         &:hover {
           transform: scale(1.2, 1.2);
@@ -172,7 +176,7 @@
   }
 }
 .draw-border {
-  @include btn-border-drawing($font-color-light, #ffe593, 4px, bottom, right);
+  @include btn-border-drawing($font-color-light, $button-color, 4px, bottom, right);
 }
 .btn {
   background: none;
@@ -187,11 +191,14 @@
 }
 
 .today {
-  @include animation(pulsate 0.7s infinite);
-  border: solid $font-color-light 2px;
+  @include neumorph;
   border-radius: 3px;
 }
 
+.clickedDay {
+  @include neumorph;
+  border-radius: 3px;
+}
 .today:hover {
   color: red;
 }
