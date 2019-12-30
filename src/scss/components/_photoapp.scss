@@ -1,0 +1,138 @@
+.photoapp {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 13vh auto 40vh 20vh;
+  grid-template-areas: 
+    'title title'
+    'search gallery'
+    'parallax__bottom parallax__bottom'
+    'span span'
+  ;
+  grid-gap: 0;
+  text-align: center;
+
+
+  h1 {
+    @include h1;
+  }
+
+  h2 {
+    @include h2;
+    color: $font-color-dark;
+  }
+
+  h3 {
+    @include h3
+  }
+
+  p, li {
+    color: $font-color-light;
+    @include paragraph-typo;
+  }
+
+  a {
+    @include link;
+  }
+
+  &__title {
+    grid-area: title;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7vh;
+    height:13vh;
+    text-align: center;
+    background: $background-radial;
+  }
+
+  &__search {
+    grid-area: search;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 7vh;
+    min-height: 60vh;
+    background: $background-radial;
+    &__info {
+      @include neumorph;
+    }
+    &__input {
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  }
+  &__gallery {
+    grid-area: gallery;
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+    align-items: center;
+    margin-top: 7vh;
+    &__header {
+      width: 80%;
+      @include neumorph
+    }
+    &__body {
+      display: flex;
+      flex-direction: column;
+      margin-top: 3rem;
+
+      &__photos {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+
+        &__photo {
+          width: 20vw;
+          margin: 0.5rem;
+          &:hover {
+            transform: scale(1.2, 1.2);
+          }
+          img {
+            @include neumorph;
+          }
+        }
+      }
+      &__pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+        &__page {
+          margin: 0.8rem;
+        }
+      }
+    }
+  }
+  &__parallax__bottom {
+    grid-area: parallax__bottom;
+    background-image: url('https://i.ibb.co/2v0Z7Rv/spaarne.jpg');
+    @include parallax
+  }
+  &__span {
+    grid-area: span; 
+    background: $background-radial;
+
+    i {
+      color: $font-color-light;
+      font-size: 3rem;
+      margin: 1rem;
+    }
+  }
+}
+
+.draw-border {
+  @include btn-border-drawing($font-color-light, $button-color, 4px, bottom, right);
+}
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  padding: 1em 2em;
+  letter-spacing: 0.05rem;
+  
+  &:focus { outline: 2px dotted #55d7dc; }
+}
