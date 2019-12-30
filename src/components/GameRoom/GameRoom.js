@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { Stage, Layer, Path } from 'react-konva';
-import './GameRoom.css'
 
 
 export default class GameRoom extends Component {
   render() {
     return (
-      <div className="HomePageWrapper">
-        <h1>Melle's Video Games Room</h1>
-        <div className="HomePageStage">
-          <Stage width={window.innerWidth} height={window.innerHeight}>
+      <div className="gameroom">
+        <div className="gameroom__header">
+          <h1>Melle's Video Game Room</h1>
+        </div>
+        <div className="gameroom__stage">
+          <Stage width={window.innerWidth - 20} height={window.innerHeight - 200}>
             <Layer >
             <Path
                 x={this.props.apple.x}
@@ -39,10 +40,10 @@ export default class GameRoom extends Component {
               />
 
             <Path
-              x={400}
-              y={123}
-              scaleX={0.5}
-              scaleY={0.5}
+              x={window.innerWidth/2}
+              y={window.innerHeight/4}
+              scaleX={0.8}
+              scaleY={0.8}
               shadowBlur={5}
               shadowOpacity={0.6}
               shadowOffsetX={10}
@@ -56,6 +57,10 @@ export default class GameRoom extends Component {
               
             </Layer>
           </Stage>
+        </div>
+        <div className="gameroom__span">
+          <i className="fab fa-github" />
+          <i className="fab fa-linkedin" />
         </div>
       </div>
     )

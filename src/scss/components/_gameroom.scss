@@ -1,0 +1,239 @@
+.gameroom {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 13vh auto 20vh;
+  grid-template-areas: 
+    'title'
+    'stage'
+    'bottom'
+  ;
+  grid-gap: 0;
+  text-align: center;
+
+
+  h1 {
+    @include h1;
+  }
+
+  &__header {
+    grid-area: title;
+    margin-top: 7vh;
+    height: 13vh;
+    text-align: center;
+    background: $background-radial;
+  }
+
+  &__stage {
+    grid-area: stage;
+    margin-top: 7vh;
+    background-image: url('https://i.pinimg.com/736x/5c/9e/3c/5c9e3c5945d922017dea74ed0d29ad3c.jpg'); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  &__span {
+    grid-area: bottom; 
+    background: $background-radial;
+    
+
+    i {
+      color: $font-color-light;
+      font-size: 3rem;
+      margin: 1rem;
+    }
+  }
+}
+
+.applegame {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 13vh auto 20vh;
+  grid-template-areas: 
+    'title'
+    'stage'
+    'bottom'
+  ;
+  grid-gap: 0;
+  text-align: center;
+
+
+  h1 {
+    @include h1;
+  }
+
+  &__header {
+    grid-area: title;
+    margin-top: 7vh;
+    height: 13vh;
+    text-align: center;
+    background: $background-radial;
+  }
+  
+  &__stage {
+    grid-area: stage;
+    margin-top: 7vh;
+    background-image: url('https://cdn.wallpapersafari.com/19/27/Exluhg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  &__span {
+    grid-area: bottom; 
+    background: $background-radial;
+    
+
+    i {
+      color: $font-color-light;
+      font-size: 3rem;
+      margin: 1rem;
+    }
+  }
+}
+
+.drawingpage {
+  width: 100%;
+  height: 100%;
+  &__start {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 13vh auto  40vh 20vh;
+    grid-template-areas: 
+      'title'
+      'startbutton'
+      'gallery'
+      'bottom'
+    ;
+    grid-gap: 0;
+    text-align: center;
+  
+    h2 {
+      @include h2;
+    }
+
+    h3 {
+      @include h3;
+    }
+  
+    &__header {
+      grid-area: title;
+      margin-top: 7vh;
+      height: 13vh;
+      text-align: center;
+      background: $background-radial;
+    }
+    &__startbutton {
+      grid-area: startbutton;
+      padding: 5rem;
+      width: 70%;
+      display: flex;
+      margin-top: 7vh;
+      justify-content: space-around;
+      i {
+        @include icon-light;
+        &:hover {
+          @include animation(tada 0.8s infinite)
+        }
+      }
+    }
+    &__gallery {
+      grid-area: gallery;
+      background: $background-radial;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &__drawing {
+        display: flex;
+        justify-content: left;
+        background: white;
+        img {
+          width: 30vw;
+          border: solid $font-color-light;
+          border-radius: 3px;
+          box-shadow: 3px 3px 1px 1px black;
+        }
+      }
+    }
+    &__span {
+      grid-area: bottom; 
+      background: $background-radial;
+      i {
+        color: $font-color-light;
+        font-size: 3rem;
+        margin: 1rem;
+      }
+    }
+
+  }
+  &__game {
+    position: fixed;
+    width: 95vw;
+    height: 95vh;
+    z-index: 3;
+    border: solid $font-color-light 5px;
+    box-shadow: 5px 5px 2px 2px black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 3rem;
+
+    &__stage {
+      border: solid $font-color-light 2px;
+    }
+    &__toolbar {
+      width: 100%;
+      height: 15vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      
+      &__colors {
+        display: flex;
+        align-items: center;
+        div {
+          margin: 0.5rem;
+        }
+  
+        p {
+          color: $font-color-light;
+          @include paragraph-typo;
+          margin: 2rem;
+        }
+        &__green {
+          @include colorPick;
+          background-color: green;
+        }
+        &__yellow {
+          @include colorPick;
+          background-color: yellow;
+        }
+        &__red {
+          @include colorPick;
+          background-color: red;
+        }
+        &__blue {
+          @include colorPick;
+          background-color: blue;
+        }
+        &__orange {
+          @include colorPick;
+          background-color: orange;
+        }
+      }
+      &__savebutton {
+        display: flex;
+        align-items: flex-start;
+        p {
+          color: $font-color-light;
+          @include paragraph-typo;
+          margin: 2rem;
+        }
+        i {
+          @include icon-light;
+          &:hover {
+            @include animation(tada 0.8s infinite)
+          }
+        }
+      }
+    }
+
+  }
+}

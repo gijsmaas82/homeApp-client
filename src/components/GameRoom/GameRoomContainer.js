@@ -8,12 +8,12 @@ class GameRoomContainer extends Component {
 
   state = {
     apple: {
-      x: 100,
-      y: 100
+      x: window.innerWidth/5,
+      y: window.innerHeight/4
     }, 
     pencil: {
-      x: 700,
-      y: 200
+      x: window.innerWidth - window.innerWidth/5,
+      y: window.innerHeight/4
     }
   }
 
@@ -24,8 +24,8 @@ class GameRoomContainer extends Component {
         x: 15,
         y: 15
       },
-      scaleX: 0.8,
-      scaleY: 0.8,
+      scaleX: 1.2,
+      scaleY: 1.2,
       rotation: Math.random() * 180
     });
 
@@ -40,8 +40,8 @@ class GameRoomContainer extends Component {
     e.target.to({
       duration: 0.5,
       easing: Konva.Easings.ElasticEaseOut,
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 0.8,
+      scaleY: 0.8,
       shadowOffsetX: 5,
       shadowOffsetY: 5
     })

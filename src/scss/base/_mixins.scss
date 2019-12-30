@@ -167,3 +167,10 @@ animation: #{$str};
     &::after { transition-delay: 0s, $duration, 0s; }
   }
 }
+
+@mixin colorPick {
+  width:3rem;
+  height:3rem;
+  border-radius: 1.5rem;
+  border: solid black 3px;
+}
