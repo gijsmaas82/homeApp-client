@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Drawing from './Drawing'
-// import request from 'superagent'
-// const { url } = require('../../constants')
+import request from 'superagent'
+const { url } = require('../../constants')
 
 class DrawingContainer extends Component {
   state = {
@@ -54,20 +54,15 @@ class DrawingContainer extends Component {
     if (this.state.saveStage) {
       const stage = this.state.saveStage
       const drawing = stage.toDataURL()
-      this.setState({ lines: [[0, 0, 0, 0]], drawings: this.state.drawings.concat(drawing), newDrawing: !this.state.newDrawing})
+      request
+        .post(`${url}/drawing`)
+        // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+        .send({ URL: drawing })
+        .then(response => console.log(response))
+        .catch(console.error)
+      this.setState({ lines: [[0, 0, 0, 0]], drawings: this.state.drawings.concat(drawing) })
     }
-    // const stage = this.state.saveStage
-    
-    // const drawing = stage.toDataURL()
-    // request
-    //   .post(`${url}/drawing`)
-    //   .set('Authorization', `Bearer ${this.props.user.jwt}`)
-    //   .send({ URL: drawing })
-    //   .then(response => console.log(response))
-    //   .catch(console.error)
-    
-    // this.setState({ lines: [[0, 0, 0, 0]], drawings: this.state.drawings.concat(drawing), newDrawing: !this.state.newDrawing})
-    
+    this.setState({ newDrawing: !this.state.newDrawing})
   }
 
   newDrawingFn = (e) => {
@@ -76,6 +71,17 @@ class DrawingContainer extends Component {
 
   changeColor = (e) => {
     this.setState({ color: e.currentTarget.dataset.color })
+  }
+
+  componentDidMount() {
+    request.get(`${url}/drawing`)
+      .then(response => {
+        const savedDrawings = response.body.map(drawing => {
+          return drawing.URL
+        })
+        this.setState({ drawings: savedDrawings })
+      })
+      .catch(console.error)
   }
 
   render() {

@@ -137,6 +137,7 @@
       grid-area: gallery;
       background: $background-radial;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-around;
       &__drawing {
