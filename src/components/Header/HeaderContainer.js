@@ -8,8 +8,7 @@ class HeaderContainer extends Component {
     menuItems: [
       {className:'menu__item__calendar', name: 'Calendar', link:'/calendar', icon:'fas fa-calendar'},
       {className:'menu__item__games', name: 'Games', link: '/games', icon:'fas fa-gamepad'}, 
-      {className:'menu__item__todolist', name: 'To-Do-List', link: '/', icon:'fas fa-list-alt'}, 
-      {className:'menu__item__todolist', name: 'Search Photos', link: '/photo-search', icon:'fas fa-camera'}, 
+      {className:'menu__item__photos', name: 'Search Photos', link: '/photo-search', icon:'fas fa-camera'}, 
       {className:'menu__item__login', name: 'Log In', link:'/login', icon:'fas fa-sign-in-alt'}, 
       {className:'menu__item__signup', name: 'Sign Up', link:'/signup', icon:'fas fa-user-plus'},  
        ]

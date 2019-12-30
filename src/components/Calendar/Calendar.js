@@ -23,12 +23,12 @@ export default class Calendar extends Component {
     for (let day = 1; day <= this.props.dateObject.daysInMonth(); day++) {
       let currentMonth = moment().format("MMMM")
       let currentDay = day === Number(this.props.dateObject.format("D")) && currentMonth === this.props.dateObject.format("MMMM") ? "today" : 'day'
-    
+      let clickedDay = day === this.props.selectedDay && this.props.selectedDay !== Number(this.props.dateObject.format("D")) ? 'clickedDay' : ''
       daysInMonth.push(
           <td key={day}  onClick={e => {
             this.props.onDayClick(e, day);
           }}>
-            <div className={`${currentDay}`}>
+            <div className={`${currentDay} ${clickedDay}`}>
               <p>{day}</p>
             </div>
           </td>
@@ -93,14 +93,14 @@ export default class Calendar extends Component {
             <h2>Calendar</h2>
           </div>
           <div className="calendarpage__left">
-           <div className="calendarpage__left__menu">
+           <div className="calendarpage__left__menu"> 
+            <div className="calendarpage__left__menu__year">
+              <h3>{this.props.dateObject.format("Y")}</h3>
+            </div>
             <div className="calendarpage__left__menu__buttons">
               <div><i onClick={this.props.onPrev} className="fas fa-minus"/></div>
               <div><h3 onClick={this.props.showMonth}>{this.props.dateObject.format("MMMM")}</h3></div>
               <div><i onClick={this.props.onNext} className="fas fa-plus"/></div>
-            </div> 
-            <div className="calendarpage__left__menu__year">
-              <h3>{this.props.dateObject.format("Y")}</h3>
             </div>
            </div>
           <div className="calendarpage__left__body" >

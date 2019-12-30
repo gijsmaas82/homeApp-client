@@ -8,12 +8,14 @@
 'components/homePage', 
 'components/personal',
 'components/projects',
-'components/calendar';
+'components/calendar',
+'components/gameroom';
 
 
 .App {
   box-sizing: border-box;
   margin: 0;
+  background: $background-linear;
 
   div {
     @include transition-ease;

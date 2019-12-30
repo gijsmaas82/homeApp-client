@@ -8,12 +8,12 @@ class GameRoomContainer extends Component {
 
   state = {
     apple: {
-      x: 100,
-      y: 100
+      x: window.innerWidth/5,
+      y: window.innerHeight/4
     }, 
     pencil: {
-      x: 700,
-      y: 200
+      x: window.innerWidth - window.innerWidth/5,
+      y: window.innerHeight/4
     }
   }
 
@@ -24,8 +24,8 @@ class GameRoomContainer extends Component {
         x: 15,
         y: 15
       },
-      scaleX: 0.8,
-      scaleY: 0.8,
+      scaleX: 1.2,
+      scaleY: 1.2,
       rotation: Math.random() * 180
     });
 
@@ -40,17 +40,17 @@ class GameRoomContainer extends Component {
     e.target.to({
       duration: 0.5,
       easing: Konva.Easings.ElasticEaseOut,
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scaleX: 0.8,
+      scaleY: 0.8,
       shadowOffsetX: 5,
       shadowOffsetY: 5
     })
     
-    if (e.target.x() - this.state.apple.x >= 0 && e.target.x() - this.state.apple.x <= 200 && e.target.y() - this.state.apple.y >= 0 && e.target.y() - this.state.apple.y <= 200) {
+    if (e.target.x() - this.state.apple.x >= -200 && e.target.x() - this.state.apple.x <= 200 && e.target.y() - this.state.apple.y >= -200 && e.target.y() - this.state.apple.y <= 200) {
       this.props.history.push('/picking-apples/')
     }
 
-    if (e.target.x() - this.state.pencil.x >= 0 && e.target.x() - this.state.pencil.x <= 200 && e.target.y() - this.state.pencil.y >= 0 && e.target.y() - this.state.pencil.y <= 200) {
+    if (e.target.x() - this.state.pencil.x >= -200 && e.target.x() - this.state.pencil.x <= 200 && e.target.y() - this.state.pencil.y >= -200 && e.target.y() - this.state.pencil.y <= 200) {
       this.props.history.push('/drawing/')
     }
   }
