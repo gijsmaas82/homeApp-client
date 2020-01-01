@@ -1,12 +1,24 @@
 .header {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
   height: 7vh;
-  background-color: $background-color;
+  background-color: $background-radial;
+
+  h1 {
+    @include h1;
+  }
+  h3 {
+    @include h3;
+  }
+  
+  p, li {
+    color: $font-color-light;
+    @include paragraph-typo;
+  }
 
   &__logo {
     margin-left: 3rem; 
@@ -52,78 +64,78 @@
     }
   }
 
-  &__burger {
-    display: flex;
-    flex-direction: column;
+  &__sun {
     margin-right: 3rem;
-    
-
-    &__top {
-      @include burger
-    }
-
-
-    &__middle {
-      @include burger
-    }
-
-    &__bottom {
-      @include burger
-    }
-
+    @include sun;
 
     &:hover {
+      transform: scale(1.5, 1.5)
+    }
+  }
+  &__moon {
+    margin-right: 3rem;
+    @include moon;
 
-      div {
-        &:nth-child(1) {
-          @include animation(menu-roll 15s infinite);
-          @include threeDstyle;
-        }
-      }
-      
-
+    &:hover {
+      transform: scale(1.5, 1.5)
     }
   }
 }
 
 .menu {
   position: fixed;
-  width: 70vw;
-  height: 7vh;
-  z-index: 2;
-  margin-left: 15vw;
-  margin-right: 15vw;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-top: 0; 
-  background-color: $background-color;
+  justify-content: space-evenly;
   font-family: $header-font;
-  
-  &__item {
-    
-    text-align: left;
+  background: linear-gradient(45deg, #434343 0%, #00000099 100%);
+  @include animation(night 1s);
 
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: $font-color-light;
-      @include animation(menu-drop 2s ease-in-out);
-      
+  &__header {
+    width: 30%;
+    height: 10%;
+    align-items: center;
+    text-align: center;
+    @include neumorph-top;
 
-      &:hover {
-        color: $shadow-light;
-      }
-
-      h3 {
-        font-size: 1rem;
-      }
+    h2 {
+      @include h2
     }
-    i {
+  }
+  
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    
+    &__item {
+      @include neumorph-middle;
+      text-align: center;
+      width: 20%;
       margin: 2rem;
-      font-size: 2rem;
+      &:hover {
+        box-shadow: none;
+      }
+  
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: $font-color-light;
+      }
+      p {
+        @include paragraph-typo;
+      }
+      i {
+        margin: 2rem;
+        font-size: 5rem;
+      }
     }
   }
 } 

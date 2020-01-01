@@ -63,10 +63,10 @@ export default class AddEvent extends Component {
     return (
       <div className="calendarpage__left__addevent">
         {!this.state.addEvent ? 
-      <button 
-      className="btn draw-border"
+      <div 
+      className="calendarpage__left__addButton"
       onClick={this.addEvent}
-      >Add Event</button> 
+      ><p>Add Event</p></div> 
       :
       <div><Form style={{ fontFamily:"'Righteous', cursive", margin: '2rem' }} onSubmit={this.submitEvent} >
         <Form.Group controlId="exampleForm.ControlInput1">

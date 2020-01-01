@@ -9,8 +9,8 @@ export default class Events extends Component {
         <div  className="calendarpage__right__header">
     <h3> Events of {this.props.selectedDay} {this.props.dateObject.format('MMMM')} {this.props.dateObject.format('Y')}</h3>
         </div>
-        {this.props.events.length === 0 && <p>There are no events today</p>}
-        {this.props.deletingEvent && <div>
+        {this.props.events.length === 0 && <div className="calendarpage__right__noEvents"><p>There are no events today</p></div>}
+        {this.props.deletingEvent && <div className="calendarpage__right__deleteEvent">
             <h3> Event Deleted</h3>
             <button className="btn draw-border"
              onClick={this.props.deletedEvent}
@@ -26,7 +26,7 @@ export default class Events extends Component {
                <p>{event.endTime}</p>
                <p>{event.description}</p>
                <img src={event.picture} alt="eventpicture" />
-               <button value={event.id} className="btn draw-border" onClick={this.props.deleteEvent}>Delete Event</button>
+               <button value={event.id} className="calendarpage__right__body__event__button" onClick={this.props.deleteEvent}>Delete Event</button>
              </div>
            })}
          </div>

@@ -46,14 +46,19 @@ animation: #{$str};
   border-radius: 25%;
 }
 
-@mixin burger {
-  width: 30px;
-  height: 7px;
-  border: solid $font-color-light 5px;
-  background-color: $font-color-light;
-  border-radius: 3px;
-  box-shadow: 2px 2px 2px 1px $shadow-light;
-  margin: 0.2rem;
+@mixin sun {
+  width: 8rem;
+  height: 8rem;
+  background: radial-gradient(circle, yellow 0%, orange 50%, rgba(255, 255, 0, 0.5) 50%, rgba(255, 255, 0, 0) 100%);
+  border-radius: 4rem;
+  @include transition-ease;
+}
+
+@mixin moon {
+  width: 8rem;
+  height: 8rem;
+  background: radial-gradient(circle, grey 0%, rgb(54, 54, 54) 50%, rgba(128, 128, 128, 0.5) 50%, rgba(128, 128, 128, 0) 100%);
+  border-radius: 4rem;
   @include transition-ease;
 }
 
@@ -105,9 +110,13 @@ animation: #{$str};
   background-repeat: no-repeat;
 }
 
+@mixin button {
+  @include paragraph-typo;
+}
+
 @mixin paragraph-typo {
-  font-size: small;
-  letter-spacing: 0.1rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
   font-size: 1.2rem;
 }
 
@@ -175,9 +184,70 @@ animation: #{$str};
   border: solid black 3px;
 }
 
-@mixin neumorph {
-  box-shadow: 10px 10px 3px 3px rgba(0,0,0, 0.3),
-              -5px -5px 1px 1px rgba(255, 255, 255, 0.7);
-  border: solid #d9e7ff 3px;
-  border-radius: 5px;
+@mixin neumorph-top {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-10deg); 
+  @include animation(appear 2s);
 }
+
+@mixin neumorph-middle {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px);
+  @include animation(fadeInDown 0.5s backwards);
+  animation-delay: 3s;
+}
+
+@mixin neumorph-left {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateY(10deg);
+  @include animation(openleft 2s backwards);
+  animation-delay: 2s;
+  div {
+    @include animation(fadeIn 1s backwards);
+    animation-delay: 3s;
+  }
+}
+
+@mixin neumorph-right {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateY(-10deg); 
+  @include animation(openright 2s backwards);
+  animation-delay: 2s;
+  div {
+    @include animation(fadeIn 1s backwards);
+    animation-delay: 3s;
+  }
+}
+
+@mixin neumorph-bottom {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(10deg); 
+  @include animation(fadeInDown 0.5s backwards);
+  animation-delay: 3s;
+}
+

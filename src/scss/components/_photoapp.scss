@@ -43,6 +43,7 @@
     height:13vh;
     text-align: center;
     background: $background-radial;
+    @include neumorph-top;
   }
 
   &__search {
@@ -54,7 +55,7 @@
     min-height: 60vh;
     background: $background-radial;
     &__info {
-      @include neumorph;
+      @include neumorph-middle;
     }
     &__input {
       margin-top: 2rem;
@@ -70,7 +71,7 @@
     margin-top: 7vh;
     &__header {
       width: 80%;
-      @include neumorph
+      @include neumorph-middle
     }
     &__body {
       display: flex;
@@ -91,7 +92,7 @@
             transform: scale(1.2, 1.2);
           }
           img {
-            @include neumorph;
+            @include neumorph-middle;
           }
         }
       }
@@ -142,7 +143,7 @@
       
       img {
         max-width: 35vw;
-        @include neumorph;
+        @include neumorph-middle;
       }
       &__buttons {
         display: flex;
