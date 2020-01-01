@@ -61,10 +61,10 @@ export default class AddEvent extends Component {
 
   render() {
     return (
-      <div className="calendarpage__left__addevent">
+      <div className="calendarpage__right">
         {!this.state.addEvent ? 
       <div 
-      className="calendarpage__left__addButton"
+      className="calendarpage__right__addButton"
       onClick={this.addEvent}
       ><p>Add Event</p></div> 
       :
@@ -75,7 +75,7 @@ export default class AddEvent extends Component {
           <Form.Label><p>Date</p></Form.Label>
           <Form.Control onChange={this.onChange} name="date" type="date" placeholder="date" value={this.state.date}required /> 
           <ReactFileReader handleFiles={this.handleFiles} base64={true}>
-            <button className='btn draw-border'>Upload a picture</button>
+            <div className='calendarpage__right__addButton'><p>Upload a picture</p></div>
           </ReactFileReader>
           {!this.state.filename ? '' : <div><p>{this.state.filename}</p></div>}
           <p>Set Time</p>
@@ -91,8 +91,14 @@ export default class AddEvent extends Component {
           <Form.Control onChange={this.onChange} name="endTime" type="time" placeholder="endtime" value={this.state.endTime} /></div> }
           <Form.Label><p>Description</p></Form.Label>
           <Form.Control onChange={this.onChange} name="description" type="textarea" placeholder="description" value={this.state.description} required/>
-          <button className="btn draw-border" type="submit">Submit form</button>
-          <button className="btn draw-border" onClick={this.addEvent}>Cancel</button>
+          <div 
+            className="calendarpage__right__addButton"
+            onClick={this.submitEvent}
+            ><p>Add Event</p></div>
+          <div 
+            className="calendarpage__right__addButton"
+            onClick={this.addEvent}
+            ><p>Cancel</p></div>
         </Form.Group>
       </Form>
       </div>

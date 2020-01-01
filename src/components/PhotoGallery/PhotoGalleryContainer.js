@@ -13,6 +13,7 @@ class PhotoGalleryContainer extends Component {
     currentPage: 1,
     saving: false,
     url: null,
+    randomPhoto: Math.floor(Math.random() * 10)
   }
 
   onPageClick = (event) => {
@@ -53,6 +54,10 @@ class PhotoGalleryContainer extends Component {
     this.setState({ saving: !this.state.saving })
   }
 
+  newRandomPhoto = () => {
+    this.setState({ randomPhoto: Math.floor(Math.random() * 10) })
+  }
+
   render() {
 
     return (
@@ -71,6 +76,8 @@ class PhotoGalleryContainer extends Component {
           promptSave={this.promptSave}
           cancelSave={this.cancelSave}
           savePicture={this.savePicture}
+          randomPhoto={this.state.randomPhoto}
+          newRandomPhoto={this.newRandomPhoto}
         />
       </div>
     )

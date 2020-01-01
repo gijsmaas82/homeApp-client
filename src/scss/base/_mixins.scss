@@ -88,6 +88,11 @@ animation: #{$str};
   font-size: 2rem;
 }
 
+@mixin p {
+  @include paragraph-typo;
+  color: $font-color-light;
+}
+
 @mixin link {
   text-decoration: none;
   color: $font-color-light;
@@ -184,6 +189,14 @@ animation: #{$str};
   border: solid black 3px;
 }
 
+@mixin neumorph {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+}
+
 @mixin neumorph-top {
   box-shadow: -10px 10px 3px 3px #4f4870,
               2px -2px 2px 2px #eef2f3,
@@ -251,3 +264,85 @@ animation: #{$str};
   animation-delay: 3s;
 }
 
+@mixin neumorph-button {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  padding: 1rem;
+  margin: 1rem;
+  @include transition-ease;
+  &:hover {
+    box-shadow: none;
+    box-shadow: -5px 5px 3px 3px #4f4870,
+              1px -1px 1px 1px #eef2f3,
+              inset -1px 1px 1px 1px #eef2f3;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    'title title title'
+    'left middle right'
+    'bottom bottom bottom' 
+  ;
+  grid-gap: 0;
+  text-align: center;
+}
+
+@mixin title {
+  grid-area: title;
+  margin-top: 3rem;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  background: $background-radial;
+  @include neumorph-top;
+}
+
+@mixin left {
+  grid-area: left;
+  width: 80%;
+  margin-left: 20%;
+  background: $background-radial;
+  text-align: center;
+  margin-top: 10vh;
+  @include neumorph-left;
+}
+
+@mixin middle {
+  grid-area: middle;
+  background: $background-radial;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@mixin right {
+  grid-area: right;
+  width: 80%;
+  background: $background-radial;
+  margin-top: 10vh;
+  @include neumorph-right;
+}
+
+@mixin bottom {
+  grid-area: bottom; 
+  width: 50vw;
+  margin-left: 25vw;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  background: $background-radial;
+  @include neumorph-bottom;
+  i {
+    color: $font-color-light;
+    font-size: 3rem;
+    margin: 1rem;
+  }
+}
