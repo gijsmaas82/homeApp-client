@@ -1,7 +1,7 @@
 .calendarpage {
   display: grid;
   grid-template-columns: 37vw auto;
-  grid-template-rows: 13vh auto 40vh 20vh;
+  grid-template-rows: auto auto 50vh 20vh;
   grid-template-areas: 
     'title title'
     'left right'
@@ -33,30 +33,29 @@
 
   &__title {
     grid-area: title;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-top: 7vh;
-    height:13vh;
+    width: 60%;
+    margin-left: 20vw;
     text-align: center;
     background: $background-radial;
+    @include neumorph-top;
   }
 
   &__left {
     grid-area: left;
-    display: flex;
-    flex-wrap: wrap;
+    width: auto;
     align-items: center;
-    justify-content: space-around;
-    margin-top: 7vh;
+    justify-content: space-evenly;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
     transform-style: preserve-3d;
-    animation-delay: 1s;
-    padding: 5rem;
     background: $background-radial;
+    @include neumorph-middle;
     @include transition-ease;
 
     &__menu {
-      width: 100%;
+      width: 80%;
+      margin-left: 10%;
       height: 15vh;
       display: flex;
       flex-wrap: wrap;
@@ -67,8 +66,7 @@
         width: 100%;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: space-between;
-        @include neumorph;
+        justify-content: space-evenly;
 
         div {
           margin: 1rem;
@@ -95,10 +93,17 @@
     }
     &__body {
       margin: 3rem;
-      @include neumorph;
 
       table {
         width: 100%;
+      }
+    }
+    &__addButton {
+      margin: 1rem;
+      padding: 2rem;
+      @include neumorph-middle;
+      &:hover {
+        box-shadow: none;
       }
     }
   }
@@ -115,10 +120,16 @@
     &__header {
       width: 80%;
       margin-bottom: 3rem;
-      @include neumorph;
+      @include neumorph-middle;
       h2 {
         @include animation('menu-drop 2s');
       }
+    }
+    &__noEvents {
+      @include neumorph-middle;
+    }
+    &__deleteEvent {
+      @include neumorph-middle;
     }
     &__body {
       width: 100%;
@@ -132,29 +143,23 @@
         width: 40%;
         height: auto;
         margin: 2rem;
-        border-radius: 5px;
-        background: $background-radial;
-        @include neumorph;
+        @include neumorph-middle;
 
         &:hover {
-          transform: scale(1.2, 1.2);
-         
+          box-shadow: none;
         }
-
 
         img {
-          border: solid $font-color-light 3px;
-          border-radius: 5px;
-          width: 50%;
+          width: 80%;
+        }
+        &__button {
+          @include button;
+          @include neumorph-middle;
+          &:hover {
+            box-shadow: none;
+          }
         }
       }
-
-      img {
-        border: solid $font-color-light 3px;
-        border-radius: 5px;
-        width: 50%;
-      }
-
     }
   }
   &__parallax__bottom {
@@ -174,28 +179,12 @@
     }
   }
 }
-.draw-border {
-  @include btn-border-drawing($font-color-light, $button-color, 4px, bottom, right);
-}
-.btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1.5;
-  font: 700 1.2rem 'Roboto Slab', sans-serif;
-  padding: 1em 2em;
-  letter-spacing: 0.05rem;
-  
-  &:focus { outline: 2px dotted #55d7dc; }
-}
 
 .today {
-  @include neumorph;
   border-radius: 3px;
 }
 
 .clickedDay {
-  @include neumorph;
   border-radius: 3px;
 }
 .today:hover {

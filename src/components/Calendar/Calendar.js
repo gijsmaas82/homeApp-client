@@ -90,7 +90,7 @@ export default class Calendar extends Component {
       <div>
         <div className="calendarpage">
           <div className="calendarpage__title">
-            <h2>Calendar</h2>
+            <h1>Calendar</h1>
           </div>
           <div className="calendarpage__left">
            <div className="calendarpage__left__menu"> 

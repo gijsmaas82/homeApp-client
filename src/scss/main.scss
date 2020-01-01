@@ -17,6 +17,7 @@
   box-sizing: border-box;
   margin: 0;
   background: $background-linear;
+  min-height: 100vh;
 
   div {
     @include transition-ease;

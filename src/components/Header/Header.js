@@ -18,25 +18,27 @@ export default class Header extends Component {
             </div> 
           </Link>
         </div>
-        
-        <div className="header__burger" onClick={this.props.toggleMenu}>
-          <div className="header__burger__top"></div>
-          <div className="header__burger__middle"></div>
-          <div className="header__burger__bottom"></div>
-        </div>
+        {!this.props.menuVisible ? 
+        <div className="header__sun" onClick={this.props.toggleMenu}></div> : 
+        <div className="header__moon" onClick={this.props.toggleMenu}></div>}
       </div>
         {this.props.menuVisible && 
-            <div>
-            <div className="menu">{this.props.menuItems.map(item => {
-              return <div key={item.name} className="menu__item" onClick={this.props.toggleMenu}>
+        <div>
+          <div className="menu">
+            <div className="menu__header">
+              <h2>Menu</h2>
+            </div> 
+            <div className="menu__items">{this.props.menuItems.map(item => {
+              return <div key={item.name} className="menu__items__item" onClick={this.props.toggleMenu}>
                 <Link to={item.link}>
-                  <h3>{item.name}</h3>
+                  <p>{item.name}</p>
                   <div className={item.className}><i className={item.icon}></i></div>
                 </Link>
-              </div>
-            })}</div></div>}
+              </div>})}
+            </div>
           </div>
-        
+        </div>}
+    </div>     
     )
   }
 }
