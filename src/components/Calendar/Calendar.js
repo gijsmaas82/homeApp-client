@@ -99,7 +99,7 @@ export default class Calendar extends Component {
             </div>
             <div className="calendarpage__left__menu__buttons">
               <div><i onClick={this.props.onPrev} className="fas fa-minus"/></div>
-              <div><h3 onClick={this.props.showMonth}>{this.props.dateObject.format("MMMM")}</h3></div>
+              <div><p onClick={this.props.showMonth}>{this.props.dateObject.format("MMMM")}</p></div>
               <div><i onClick={this.props.onNext} className="fas fa-plus"/></div>
             </div>
            </div>
@@ -143,7 +143,6 @@ export default class Calendar extends Component {
               </table>
             )}
           </div>
-          <AddEvent />
         </div>
         <Events 
             deleteEvent={this.props.deleteEvent}
@@ -153,7 +152,7 @@ export default class Calendar extends Component {
             selectedDay={this.props.selectedDay}
             dateObject={this.props.dateObject}
           />
-        <div className="calendarpage__parallax__bottom"></div>
+        <AddEvent />
         <div className="calendarpage__span" >
             <i className="fab fa-github" />
             <i className="fab fa-linkedin" />

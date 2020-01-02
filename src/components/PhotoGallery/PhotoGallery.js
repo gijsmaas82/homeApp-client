@@ -12,8 +12,8 @@ export default class PhotoGallery extends Component {
             <h3>Save this image?</h3>
             <img src={this.props.url} alt="savedImage" />
             <div className="photoapp__save__prompt__buttons">
-              <button onClick={this.props.cancelSave} className="btn draw-border">Cancel</button>
-              <button onClick={this.props.savePicture} className="btn draw-border">Save Photo</button>
+              <div onClick={this.props.cancelSave} className="photoapp__save__prompt__buttons__button"><p>Cancel</p></div>
+              <div onClick={this.props.savePicture} className="photoapp__save__prompt__buttons__button"><p>Save Photo</p></div>
             </div>
           </div>
         </div>
@@ -30,16 +30,11 @@ export default class PhotoGallery extends Component {
               <Form inline onSubmit={this.props.onSubmit} >
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" 
                   value={this.props.tag} name='tag' onChange={this.props.onChange}/>
-                <button className="btn draw-border" type="submit">Search</button>
+                <div className="photoapp__search__input__button" onClick={this.props.onSubmit}><p>Search</p></div>
               </Form>
             </div>
           </div>
           <div className="photoapp__gallery">
-            <div className="photoapp__gallery__header">
-              {!this.props.photos ? 
-                <h3>Start searching!</h3>
-              : <h3>Results for {this.props.searchTag}</h3>}
-            </div>
             <div>
               {!this.props.photos && this.props.searchTag &&
                 <Spinner animation="border" role="status">
@@ -86,8 +81,15 @@ export default class PhotoGallery extends Component {
             }
             </div>
           </div>
-          <div className="photoapp__parallax__bottom" >
-        
+          <div className="photoapp__right">
+            <div className="photoapp__right__header">
+                {!this.props.photos ? 
+                  <div><h3>Start searching!</h3></div>
+                : <div><h3>Results for {this.props.searchTag}</h3>
+                  <img onClick={this.props.newRandomPhoto}
+                  src={`https://farm${this.props.photos[this.props.randomPhoto].farm}.staticflickr.com/${this.props.photos[this.props.randomPhoto].server}/${this.props.photos[this.props.randomPhoto].id}_${this.props.photos[this.props.randomPhoto].secret}.jpg`} alt="pic" />
+                </div>}
+            </div>
           </div>
           <div className="photoapp__span">
             <i className="fab fa-github" />

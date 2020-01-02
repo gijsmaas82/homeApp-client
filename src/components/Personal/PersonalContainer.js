@@ -17,7 +17,7 @@ class PersonalContainer extends Component {
     listItemTwo: '',
     listItemThree: '',
     activeItem: null,
-    activeCV: true,
+    activeCV: false
   }
 
   navigateMenu = (e) => {

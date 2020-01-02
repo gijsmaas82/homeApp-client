@@ -1,16 +1,5 @@
 .photoapp {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 13vh auto 40vh 20vh;
-  grid-template-areas: 
-    'title title'
-    'search gallery'
-    'parallax__bottom parallax__bottom'
-    'span span'
-  ;
-  grid-gap: 0;
-  text-align: center;
-
+  @include grid;
 
   h1 {
     @include h1;
@@ -18,7 +7,6 @@
 
   h2 {
     @include h2;
-    color: $font-color-dark;
   }
 
   h3 {
@@ -26,7 +14,6 @@
   }
 
   p, li {
-    color: $font-color-light;
     @include paragraph-typo;
   }
 
@@ -35,63 +22,46 @@
   }
 
   &__title {
-    grid-area: title;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 7vh;
-    height:13vh;
-    text-align: center;
-    background: $background-radial;
-    @include neumorph-top;
+    @include title;
   }
 
   &__search {
-    grid-area: search;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 7vh;
-    min-height: 60vh;
-    background: $background-radial;
+    @include left;
+    max-height: 60vh;
     &__info {
-      @include neumorph-middle;
+      @include neumorph;
+      margin: 2rem;
     }
     &__input {
       margin-top: 2rem;
       padding: 1rem;
+      &__button {
+        @include neumorph-button;
+      }
     }
   }
   &__gallery {
-    grid-area: gallery;
-    display: flex;
-    flex-direction: column;
-    min-height: 60vh;
-    align-items: center;
-    margin-top: 7vh;
-    &__header {
-      width: 80%;
-      @include neumorph-middle
-    }
+    @include middle;
     &__body {
       display: flex;
       flex-direction: column;
       margin-top: 3rem;
 
       &__photos {
-        width: 80%;
+        width: 90%;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
 
         &__photo {
-          width: 20vw;
+          width: 15vw;
           margin: 0.5rem;
           &:hover {
             transform: scale(1.2, 1.2);
           }
           img {
+            width: 100%;
             @include neumorph-middle;
           }
         }
@@ -100,33 +70,36 @@
         display: flex;
         justify-content: center;
         margin-top: 3rem;
+        @include neumorph-middle;
         &__page {
           margin: 0.8rem;
         }
       }
     }
   }
-  &__parallax__bottom {
-    grid-area: parallax__bottom;
-    background-image: url('https://i.ibb.co/2v0Z7Rv/spaarne.jpg');
-    @include parallax
+  &__right {
+    @include right; 
+    max-height: 60vh;
+    &__header {
+      width: 80%;
+      margin-left: 10%;
+      img {
+        width: 80%;
+        margin-left: 10%;
+        max-height: 40vh;
+        @include neumorph-button;
+      }
+    }  
   }
   &__span {
-    grid-area: span; 
-    background: $background-radial;
-
-    i {
-      color: $font-color-light;
-      font-size: 3rem;
-      margin: 1rem;
-    }
+    @include bottom;
   }
   &__save {
     position: fixed;
     z-index: 4;
     width: 100%;
     height: 100%;
-    background: $background-radial;
+    
     &__prompt {
       width: 40vw;
       height: 80vh;
@@ -139,34 +112,20 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem;
-      background-color: $second-color;
+      @include neumorph;
       
       img {
         max-width: 35vw;
-        @include neumorph-middle;
+        @include neumorph;
       }
       &__buttons {
         display: flex;
         width: 80%;
         justify-content: space-between;
+        &__button {
+          @include neumorph-button;
+        }
       }
-    }
-    
-    
+    } 
   }
-}
-
-.draw-border {
-  @include btn-border-drawing($font-color-light, $button-color, 4px, bottom, right);
-}
-.btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1.5;
-  font: 700 1.2rem 'Roboto Slab', sans-serif;
-  padding: 1em 2em;
-  letter-spacing: 0.05rem;
-  
-  &:focus { outline: 2px dotted #55d7dc; }
 }
