@@ -33,7 +33,6 @@ export default class AddEvent extends Component {
   }
 
   handleFiles = files => {
-    console.log('file:', files.fileList[0].name)
     this.setState({
       picture: files.base64,
       filename: files.fileList[0].name
