@@ -14,6 +14,10 @@
     @include h3
   }
 
+  p {
+    @include p
+  }
+
   a {
     @include link;
   }
@@ -143,29 +147,145 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1100px) {
   .homepage {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 20vh 50vh 50vh 50vh 15vh;
-    grid-template-areas: 
-      'title'
-      'left'
-      'middle'
-      'right'
-      'bottom'
-    ;
+    @include grid-small;
+    h1 {
+      @include h1-small;
+    }
+  
+    h2 {
+      @include h2-small;
+    }
+  
+    h3 {
+      @include h3-small
+    }
+    p {
+      @include p-small
+    }
+    a {
+      @include link;
+    }
+
+    &__title {
+      @include title-small;
+    }
 
     &__left {
-      &__image img {
-        width: 50vw;
+      @include left-small;
+      display: flex;
+      flex-direction: column;
+      width: 80vw;
+  
+      &__header {
+        &:hover {
+          @include neumorph-small;
+        }
+      }
+      &__menu {
+        width: 100%;
+        &__item {
+          @include neumorph-button;
+        }
+      }
+      &__form {
+        &__addButton {
+          @include neumorph-button;
+        }
+      }
+    }
+    &__middle {
+      @include middle-small;
+  
+      &__intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        &__image {
+          @include neumorph-middle-small;
+          width: 50%;
+          img {
+            width: 100%;
+            border-radius: 3px;
+            
+          }
+        }
+        &__list {
+          @include neumorph-middle-small;
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+    
+        }
+        &__site {
+          @include neumorph-middle-small;
+          text-align: left;
+          width: auto;
+          margin: 3rem;
+          h3, p {
+            margin: 1rem;
+          }
+        }
+      }
+      &__CV {
+        @include neumorph-middle-small;
+        width: 90%;
+        margin-left: 5%;
+        &:hover {
+          transform: scale(1.2, 1.2);
+          z-index: 1;
+        }
+        img {
+          width: 100%;
+        }
+      }
+      &__active {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        &__header {
+          @include neumorph-small;
+          width: 90%;
+          margin-left: 5%;
+        }
+        &__image {
+          @include neumorph-small;
+          width: 40%;
+          margin: 5%;
+          img {
+            width: 100%
+          }
+        }
+        &__list {
+          @include neumorph-small;
+          width: 30%;
+          margin: 5%;
+        }
+        &__content {
+          @include neumorph-small;
+          width: 90%;
+          margin: 5%;
+          padding: 3rem;
+        }
       }
     }
   
-    &__right__image img {
-      width: 50vw;
+    &__right {
+      @include right-small;
+  
+      &__item {
+        @include neumorph-button;
+      }
     }
-
+  
+    &__span {
+      @include bottom-small;
+    }
   }
 
 }

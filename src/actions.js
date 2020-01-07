@@ -178,3 +178,47 @@ function setPagination(payload) {
     payload
   }
 }
+
+// Profile page 
+
+export const SET_FAVORITE_PHOTOS = 'SET_FAVORITE_PHOTOS'
+
+function setFavoritePhotos(payload) {
+  return{
+    type: SET_FAVORITE_PHOTOS,
+    payload
+  }
+}
+
+export const getFavoritePhotos = (jwt) => dispatch => {  
+
+  request
+    .get(`${url}/photo`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(response => {
+      const action = setFavoritePhotos(response.body)
+      dispatch(action)
+      })
+    .catch(console.error)
+}
+
+export const SET_USER_DRAWINGS = 'SET_USER_DRAWINGS'
+
+function setUserDrawings(payload) {
+  return{
+    type: SET_USER_DRAWINGS,
+    payload
+  }
+}
+
+export const getUserDrawings = (jwt) => dispatch => {  
+
+  request
+    .get(`${url}/drawing`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(response => {
+      const action = setUserDrawings(response.body)
+      dispatch(action)
+      })
+    .catch(console.error)
+}

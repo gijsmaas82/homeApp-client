@@ -3,6 +3,7 @@ import moment from "moment";
 // import "./calendar.css";
 import AddEvent from './AddEvent'
 import Events from './Events'
+import { Table } from 'react-bootstrap'
 
 export default class Calendar extends Component {
 
@@ -89,13 +90,36 @@ export default class Calendar extends Component {
     return (
       <div>
         <div className="calendarpage">
+          {this.props.showPictures &&
+          <div className="photoapp__save">
+              <div className="photoapp__save__prompt">
+                <h2>Click on image?</h2>
+                {this.props.favoritePhotos && 
+                  <div className="photoapp__save__prompt__gallery">
+                    {this.props.favoritePhotos.map(item => {
+                      return <div
+                              onClick={this.props.useFavoritePhoto}
+                              data-picture={item.picture} 
+                              className="photoapp__save__prompt__gallery__item" >
+                          <img src={item.picture} alt="pic" />
+                        </div>
+                    })}
+                  </div>
+                }
+                {/* <img src={this.props.url} alt="savedImage" />
+                <div className="photoapp__save__prompt__buttons">
+                  <div onClick={this.props.cancelSave} className="photoapp__save__prompt__buttons__button"><p>Cancel</p></div>
+                  <div onClick={this.props.savePicture} className="photoapp__save__prompt__buttons__button"><p>Save Photo</p></div>
+                </div> */}
+              </div>
+          </div>}
           <div className="calendarpage__title">
             <h1>Calendar</h1>
           </div>
           <div className="calendarpage__left">
            <div className="calendarpage__left__menu"> 
             <div className="calendarpage__left__menu__year">
-              <h3>{this.props.dateObject.format("Y")}</h3>
+              <h2>{this.props.dateObject.format("Y")}</h2>
             </div>
             <div className="calendarpage__left__menu__buttons">
               <div><i onClick={this.props.onPrev} className="fas fa-minus"/></div>
@@ -105,13 +129,13 @@ export default class Calendar extends Component {
            </div>
           <div className="calendarpage__left__body" >
             {this.props.showDateTable && (
-              <table>
+              <Table striped bordered hover size="sm">
                 <thead>
                   <tr>{moment.weekdaysShort().map(day => {
                     return <th key={day}><p>{day}</p></th>;
                       })}</tr>
                 </thead>
-                <tbody>{this.dayList().map(week => {
+                <tbody >{this.dayList().map(week => {
                   if (week.length === 0) {
                     return week
                   } else {
@@ -120,7 +144,7 @@ export default class Calendar extends Component {
                   }
                   })}
                 </tbody>
-              </table>
+              </Table>
             )}
             </div>
             <div>
@@ -144,6 +168,9 @@ export default class Calendar extends Component {
             )}
           </div>
         </div>
+        {!this.props.user ? 
+        ''
+        :
         <Events 
             deleteEvent={this.props.deleteEvent}
             deletedEvent={this.props.deletedEvent}
@@ -152,7 +179,14 @@ export default class Calendar extends Component {
             selectedDay={this.props.selectedDay}
             dateObject={this.props.dateObject}
           />
-        <AddEvent />
+        }
+        <AddEvent 
+          user={this.props.user}
+          login={this.props.login}
+          showEvents={this.props.showEvents}
+          promptPictures={this.props.promptPictures}
+          picture={this.props.picture}
+          />
         <div className="calendarpage__span" >
             <i className="fab fa-github" />
             <i className="fab fa-linkedin" />

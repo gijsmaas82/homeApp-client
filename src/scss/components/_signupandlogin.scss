@@ -1,0 +1,83 @@
+.signuploginpage {
+  @include grid;
+
+  h1 {
+    @include h1
+  }
+
+  h2 {
+     @include h2
+  }
+
+  p {
+     @include p
+  }
+
+  &__header {
+    @include title;
+  }
+  &__left {
+    @include left;
+    &__btn {
+      @include neumorph-button;
+    }
+  }
+  &__middle {
+    @include middle;
+    &__content {
+      @include neumorph;
+    }
+  }
+  &__right {
+    @include right;
+    &__btn {
+      @include neumorph-button;
+    }
+  }
+  &__bottom {
+    @include bottom;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .signuploginpage {
+    @include grid-small;
+  
+    h1 {
+      @include h1-small;
+    }
+  
+    h2 {
+       @include h2-small;
+    }
+  
+    p {
+       @include p-small;
+    }
+  
+    &__header {
+      @include title-small;
+    }
+    &__left {
+      @include left-small;
+      &__btn {
+        @include neumorph-button-small;
+      }
+    }
+    &__middle {
+      @include middle-small;
+      &__content {
+        @include neumorph-small;
+      }
+    }
+    &__right {
+      @include right-small;
+      &__btn {
+        @include neumorph-button-small;
+      }
+    }
+    &__bottom {
+      @include bottom-small;
+    }
+  }
+}

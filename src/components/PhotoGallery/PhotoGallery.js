@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Spinner, Pagination, Tooltip, OverlayTrigger, Form, FormControl } from 'react-bootstrap'
+import { Spinner, Pagination, Form, FormControl, Col, Button } from 'react-bootstrap'
+import ReactFileReader from 'react-file-reader'
 
 export default class PhotoGallery extends Component {
   render() {
@@ -8,14 +9,61 @@ export default class PhotoGallery extends Component {
         <div className="photoapp">
         {this.props.saving &&
         <div className="photoapp__save">
-          <div className="photoapp__save__prompt">
-            <h3>Save this image?</h3>
+          {!this.props.values.message ?
+            <div className="photoapp__save__prompt">
+            <h2>Save this image?</h2>
             <img src={this.props.url} alt="savedImage" />
             <div className="photoapp__save__prompt__buttons">
               <div onClick={this.props.cancelSave} className="photoapp__save__prompt__buttons__button"><p>Cancel</p></div>
               <div onClick={this.props.savePicture} className="photoapp__save__prompt__buttons__button"><p>Save Photo</p></div>
             </div>
           </div>
+          :
+          <div className="photoapp__save__prompt">
+            <h2>{this.props.values.message}</h2>
+            <img src={this.props.url} alt="savedImage" />
+            <div className="photoapp__save__prompt__buttons">
+              <div onClick={this.props.cancelSave} className="photoapp__save__prompt__buttons__button"><p>Close</p></div>
+            </div>
+          </div>}
+        </div>
+        }
+        {this.props.values.uploadingPhoto &&
+        <div className="photoapp__save">
+          {!this.props.values.message ?
+          <div className="photoapp__save__prompt">
+            <h2>Upload an image?</h2>
+            <Form onSubmit={this.props.onSubmit} style={{ maxWidth: "70vw" }} >
+              <Col>
+                <Form.Group controlId="formBasicText">
+                  <Form.Label><p>Name of photo</p></Form.Label>
+                  <Form.Control type="text" placeholder="Name your file" value={this.props.name}
+                    name='name' onChange={this.props.onChange} required/>
+                    <Form.Label><p>Album</p></Form.Label>
+                    <Form.Control type="text" placeholder="optional" value={this.props.album}
+                      name='album' onChange={this.props.onChange}/>
+                </Form.Group>
+              </Col>
+              <Col>
+                <ReactFileReader handleFiles={this.props.handleFiles} base64={true}>
+                  <div className='calendarpage__right__addButton'><p>Upload picture</p></div>
+                </ReactFileReader>
+                {!this.props.values.filename ? '' : <div><p>{this.props.values.filename}</p></div>}
+              </Col>
+              <Col>
+                  <Button type="submit" className='calendarpage__right__addButton'><p>Upload to profile</p></Button>
+              </Col>
+            </Form>
+          </div>
+          :
+          <div className="photoapp__save__prompt">
+            <h2>{this.props.values.message}</h2>
+            <img src={this.props.url} alt="savedImage" />
+            <div className="photoapp__save__prompt__buttons">
+              <div onClick={this.props.cancelUpload} className="photoapp__save__prompt__buttons__button"><p>Close</p></div>
+            </div>
+          </div>
+          }
         </div>
         }
           <div className="photoapp__title">
@@ -27,10 +75,11 @@ export default class PhotoGallery extends Component {
               <p>Please type something that you are interested in and start searching for cool images!</p>
             </div>
             <div className="photoapp__search__input">
-              <Form inline onSubmit={this.props.onSubmit} >
+              <Form inline  >
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" 
                   value={this.props.tag} name='tag' onChange={this.props.onChange}/>
-                <div className="photoapp__search__input__button" onClick={this.props.onSubmit}><p>Search</p></div>
+                <div className="photoapp__search__input__button" onClick={this.props.onSubmitSearch}><p>Search</p></div>
+                {this.props.user && <div className="photoapp__search__input__button" onClick={this.props.promptUpload}><p>Or upload your own photo.</p></div>}
               </Form>
             </div>
           </div>
@@ -45,19 +94,12 @@ export default class PhotoGallery extends Component {
                 <div className="photoapp__gallery__body">
                 <div className="photoapp__gallery__body__photos">{this.props.photos.map(photo => {
                 return <div className="photoapp__gallery__body__photos__photo">
-                  <OverlayTrigger
-                    key="bottom"
-                    placement="bottom"
-                    overlay={
-                      <Tooltip id="bottom">
-                        <p>Title: {photo.title}</p>
-                      </Tooltip>
-                    }
-                  >
+                  
                   <img onClick={this.props.promptSave}
+                  data-name={photo.title}
                   data-url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} 
                   src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} alt="pic" />
-                  </OverlayTrigger>
+                  
                 </div>
               })}</div>
               <div className="photoapp__gallery__body__pagination">
