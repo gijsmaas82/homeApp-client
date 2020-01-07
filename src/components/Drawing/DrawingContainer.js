@@ -47,22 +47,32 @@ class DrawingContainer extends Component {
      })   
   }
 
-  
-
   saveStage = () => {
     
-    if (this.state.saveStage) {
+    if (this.state.saveStage && this.props.user) {
       const stage = this.state.saveStage
       const drawing = stage.toDataURL()
       request
         .post(`${url}/drawing`)
-        // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+        .set('Authorization', `Bearer ${this.props.user.jwt}`)
         .send({ URL: drawing })
         .then(response => console.log(response))
         .catch(console.error)
-      this.setState({ lines: [[0, 0, 0, 0]], drawings: this.state.drawings.concat(drawing) })
+      this.setState({ 
+        newDrawing: !this.state.newDrawing, 
+        lines: [[0, 0, 0, 0]], 
+        drawings: this.state.drawings.concat(drawing) 
+      })
     }
-    this.setState({ newDrawing: !this.state.newDrawing})
+    if (this.state.saveStage && !this.props.user) {
+      const stage = this.state.saveStage
+      const drawing = stage.toDataURL()
+      this.setState({ 
+        newDrawing: !this.state.newDrawing, 
+        lines: [[0, 0, 0, 0]], 
+        drawings: this.state.drawings.concat(drawing) 
+      })
+    }
   }
 
   newDrawingFn = (e) => {
@@ -74,14 +84,18 @@ class DrawingContainer extends Component {
   }
 
   componentDidMount() {
-    request.get(`${url}/drawing`)
-      .then(response => {
-        const savedDrawings = response.body.map(drawing => {
-          return drawing.URL
+    if (this.props.user) {
+      request
+        .get(`${url}/drawing`)
+        .set('Authorization', `Bearer ${this.props.user.jwt}`)
+        .then(response => {
+          const savedDrawings = response.body.map(drawing => {
+            return drawing.URL
+          })
+          this.setState({ drawings: savedDrawings })
         })
-        this.setState({ drawings: savedDrawings })
-      })
-      .catch(console.error)
+        .catch(console.error)
+    }
   }
 
   render() {

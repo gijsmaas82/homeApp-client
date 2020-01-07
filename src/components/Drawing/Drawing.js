@@ -12,8 +12,8 @@ export default class Drawing extends Component {
              <h2>Make your own drawing!</h2>
            </div>
            <div className="drawingpage__start__startbutton" onClick={this.props.newDrawingFn}>
-             <h3>Start a new Drawing. <br/> Click on the pencil. </h3>
-             <i className="fas fa-pen" />
+             <div><h3>Start a new Drawing. <br/> Click on the pencil. </h3></div>
+             <div><i className="fas fa-pen" /></div>
            </div>
            <div className="drawingpage__start__gallery">
             {this.props.drawings.map(drawing => {
