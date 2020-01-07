@@ -118,6 +118,22 @@
         max-width: 35vw;
         @include neumorph;
       }
+      &__gallery {
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 30%;
+        overflow-y: scroll;
+
+        &__item {
+          max-width: 80%;
+          @include neumorph-button-small;
+          img {
+            max-width: 90%;
+          }
+        }
+        
+      }
+      
       &__buttons {
         display: flex;
         width: 80%;
