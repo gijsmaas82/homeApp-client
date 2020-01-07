@@ -12,36 +12,36 @@ class DragAndDropContainer extends Component {
         id: 0, 
         isDragging: false,
         dropped: false,
-        x: Math.floor(Math.random() * 700),
-        y: Math.floor(Math.random() * 400)
+        x: Math.floor(Math.random() * (window.innerWidth - 150)),
+        y: Math.floor(Math.random() * (window.innerHeight - 350))
       },{
         id: 1, 
         isDragging: false,
         dropped: false,
-        x: Math.floor(Math.random() * 700),
-        y: Math.floor(Math.random() * 400)
+        x: Math.floor(Math.random() * (window.innerWidth - 150)),
+        y: Math.floor(Math.random() * (window.innerHeight - 350))
       },{
         id: 2, 
         isDragging: false,
         dropped: false,
-        x: Math.floor(Math.random() * 700),
-        y: Math.floor(Math.random() * 400)
+        x: Math.floor(Math.random() * (window.innerWidth - 150)),
+        y: Math.floor(Math.random() * (window.innerHeight - 350))
       },{
         id: 3, 
         isDragging: false,
         dropped: false,
-        x: Math.floor(Math.random() * 700),
-        y: Math.floor(Math.random() * 400)
+        x: Math.floor(Math.random() * (window.innerWidth - 150)),
+        y: Math.floor(Math.random() * (window.innerHeight - 350))
       },{
         id: 4, 
         isDragging: false,
         dropped: false,
-        x: Math.floor(Math.random() * 700),
-        y: Math.floor(Math.random() * 400)
+        x: Math.floor(Math.random() * (window.innerWidth - 150)),
+        y: Math.floor(Math.random() * (window.innerHeight - 350))
       }],
     basket: {
-      x: Math.floor(Math.random() * 700),
-      y: 350
+      x: Math.floor(Math.random() * (window.innerWidth - 50)),
+      y: (window.innerHeight - 200) * 0.75
       },
     gameOver: false,
     droppedApples: [0]
@@ -98,7 +98,7 @@ class DragAndDropContainer extends Component {
   }
 
   onEnded = () => {
-    this.props.history.push('/')
+    this.props.history.push('/games')
   }
 
   render() {
@@ -126,9 +126,7 @@ class DragAndDropContainer extends Component {
         onDragStart={this.onDragStart}
         onDragEnd={this.onDragEnd}
         onEnded={this.onEnded}
-         />
-        
-
+        />
       </div>
     )
   }

@@ -39,27 +39,49 @@ animation: #{$str};
 @mixin homeButton {
   position: absolute;
   display: block;
-  border: 5px solid $font-color-light;
-  box-shadow: 0 5px 0 $shadow-light,
-              inset 0 5px 0 $shadow-dark;
+  border: solid #abbaab 5px;
+  box-shadow: -3px 3px 1px 1px #4f4870,
+              1px -1px 1px 1px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
   box-sizing: border-box;
   border-radius: 25%;
 }
 
-@mixin burger {
-  width: 30px;
-  height: 7px;
-  border: solid $font-color-light 5px;
-  background-color: $font-color-light;
-  border-radius: 3px;
-  box-shadow: 2px 2px 2px 1px $shadow-light;
-  margin: 0.2rem;
+@mixin sun {
+  width: 8rem;
+  height: 8rem;
+  background: radial-gradient(circle, yellow 0%, orange 50%, rgba(255, 255, 0, 0.5) 50%, rgba(255, 255, 0, 0) 100%);
+  border-radius: 4rem;
+  @include transition-ease;
+}
+
+@mixin sun-small {
+  width: 3rem;
+  height: 3rem;
+  background: radial-gradient(circle, yellow 0%, orange 50%, rgba(255, 255, 0, 0.5) 50%, rgba(255, 255, 0, 0) 100%);
+  border-radius: 1.5rem;
+  @include transition-ease;
+}
+
+@mixin moon {
+  width: 8rem;
+  height: 8rem;
+  background: radial-gradient(circle, grey 0%, rgb(54, 54, 54) 50%, rgba(128, 128, 128, 0.5) 50%, rgba(128, 128, 128, 0) 100%);
+  border-radius: 4rem;
+  @include transition-ease;
+}
+
+@mixin moon-small {
+  width: 3rem;
+  height: 3rem;
+  background: radial-gradient(circle, grey 0%, rgb(54, 54, 54) 50%, rgba(128, 128, 128, 0.5) 50%, rgba(128, 128, 128, 0) 100%);
+  border-radius: 1.5rem;
   @include transition-ease;
 }
 
 @mixin threeDstyle {
   transform-style: preserve-3d;
-  transform: perspective(500px) rotateX(60deg);
+  transform: perspective(500px) rotateX(70deg);
 }
 
 @mixin h1 {
@@ -69,6 +91,13 @@ animation: #{$str};
   font-size: 4rem;
 }
 
+@mixin h1-small {
+  @include header-typo;
+  color: $font-color-light;
+  font-family: $header-font;
+  font-size: 2rem;
+}
+
 @mixin h2 {
   @include header-typo;
   color: $font-color-light;
@@ -76,11 +105,39 @@ animation: #{$str};
   font-size: 3rem;
 }
 
+@mixin h2-small {
+  @include header-typo;
+  color: $font-color-light;
+  font-family: $header-font;
+  font-size: 1.5rem;
+}
+
 @mixin h3 {
   @include header-typo;
   color: $font-color-light;
   font-family: $header-font;
   font-size: 2rem;
+}
+
+@mixin h3-small {
+  @include header-typo;
+  color: $font-color-light;
+  font-family: $header-font;
+  font-size: 1rem;
+}
+
+@mixin p {
+  @include paragraph-typo;
+  font-family: $header-font;
+  color: $font-color-light;
+  font-size: 1rem;
+}
+
+@mixin p-small {
+  @include paragraph-typo;
+  font-family: $header-font;
+  color: $font-color-light;
+  font-size: 0.8rem;
 }
 
 @mixin link {
@@ -105,15 +162,379 @@ animation: #{$str};
   background-repeat: no-repeat;
 }
 
+@mixin button {
+  @include paragraph-typo;
+}
+
 @mixin paragraph-typo {
-  font-size: small;
-  letter-spacing: 0.1rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
   font-size: 1.2rem;
 }
 
 @mixin header-typo {
-  font-size: larger;
   font-weight: 300;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
   
+}
+
+@mixin colorPick {
+  width:3rem;
+  height:3rem;
+  border-radius: 1.5rem;
+  border: solid black 3px;
+}
+@mixin colorPick-small {
+  width: 1.8rem;
+  height:1.8rem;
+  border-radius: 0.9rem;
+  border: solid black 1px;
+}
+
+@mixin neumorph {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+}
+
+@mixin neumorph-small {
+  box-shadow: -3px 3px 1px 1px #4f4870,
+              0.5px 0.5px 0.5px 0.5px #eef2f3,
+              inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+}
+
+@mixin neumorph-top {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-10deg); 
+  @include animation(appear 1s);
+}
+
+@mixin neumorph-top-small {
+  box-shadow: -3px 3px 1px 1px #4f4870,
+              0.5px 0.5px 0.5px 0.5px #eef2f3,
+              inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-10deg); 
+  @include animation(appear 1s);
+}
+
+@mixin neumorph-middle {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px);
+  @include animation(fadeInDown 0.5s backwards);
+  animation-delay: 1.5s;
+}
+
+@mixin neumorph-middle-small {
+  box-shadow: -3px 3px 1px 1px #4f4870,
+              0.5px 0.5px 0.5px 0.5px #eef2f3,
+              inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px);
+  @include animation(appear 1s);
+}
+
+@mixin neumorph-left {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateY(10deg);
+  @include animation(openleft 1s backwards);
+  animation-delay: 1s;
+  div {
+    @include animation(fadeIn 0.5s backwards);
+    animation-delay: 1.5s;
+  }
+}
+
+@mixin neumorph-left-small {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateY(0deg);
+  @include animation(fadeInDown 1s backwards);
+  animation-delay: 1s;
+  div {
+    @include animation(fadeIn 0.5s backwards);
+    animation-delay: 1.5s;
+  }
+}
+
+@mixin neumorph-right {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateY(-10deg); 
+  @include animation(openright 1s backwards);
+  animation-delay: 1s;
+  div {
+    @include animation(fadeIn 0.5s backwards);
+    animation-delay: 1.5s;
+  }
+}
+
+@mixin neumorph-right-small {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(0deg); 
+  @include animation(fadeInDown 1s backwards);
+  animation-delay: 1s;
+  div {
+    @include animation(fadeIn 0.5s backwards);
+    animation-delay: 1.5s;
+  }
+}
+
+@mixin neumorph-bottom {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(10deg); 
+  @include animation(fadeInDown 0.5s backwards);
+  animation-delay: 1.5s;
+}
+
+@mixin neumorph-button {
+  box-shadow: -10px 10px 3px 3px #4f4870,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  padding: 1rem;
+  margin: 1rem;
+  @include transition-ease;
+  &:hover {
+    box-shadow: none;
+    box-shadow: -5px 5px 3px 3px #4f4870,
+              1px -1px 1px 1px #eef2f3,
+              inset -1px 1px 1px 1px #eef2f3;
+  }
+}
+
+@mixin neumorph-button-small {
+  box-shadow: -5px 5px 3px 3px #4f4870,
+              1.5px -1.5px 1px 1px #eef2f3,
+              inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  padding: 0.7rem;
+  margin: 0.7rem;
+  @include transition-ease;
+  &:hover {
+    box-shadow: none;
+    box-shadow: -3px 3px 1px 1px #4f4870,
+              0.5px 0.5px 0.5px 0.5px #eef2f3,
+              inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
+  }
+}
+
+@mixin bg-carbon {
+  background:
+    linear-gradient(27deg, #4f4870 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #4f4870 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #eef2f3 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #eef2f3 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #4f4870 10px, transparent 10px),
+    linear-gradient(#eef2f3 25%, #66d4f0ce 25%, #4f4870 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #66d4f0ce;
+  background-size: 20px 20px;
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    'title title title'
+    'left middle right'
+    'bottom bottom bottom' 
+  ;
+  grid-gap: 0;
+  text-align: center;
+}
+
+@mixin grid-small {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    'title-small'
+    'middle-small'
+    'left-small'
+    'right-small'
+    'bottom-small' 
+  ;
+  grid-gap: 0;
+  text-align: center;
+}
+
+@mixin title {
+  grid-area: title;
+  margin-top: 3rem;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  background: $background-radial;
+  @include neumorph-top;
+}
+
+@mixin title-small {
+  grid-area: title-small;
+  margin-top: 5rem;
+  width: 70%;
+  margin-left: 15%;
+  text-align: center;
+  background: $background-radial;
+  @include neumorph-top-small;
+}
+
+@mixin left {
+  grid-area: left;
+  width: 80%;
+  margin-left: 20%;
+  background: $background-radial;
+  text-align: center;
+  margin-top: 10vh;
+  @include neumorph-left;
+  &:hover {
+    transform-style: preserve-3d;
+    transform: perspective(500px) rotateX(0deg); 
+  }
+}
+
+@mixin left-small {
+  grid-area: left-small;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+  margin-left: 10vw;
+  max-height: auto;
+  background: $background-radial;
+  text-align: center;
+  @include neumorph-middle-small;
+}
+
+@mixin middle {
+  grid-area: middle;
+  background: $background-radial;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@mixin middle-small {
+  grid-area: middle-small;
+  background: $background-radial;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@mixin right {
+  grid-area: right;
+  width: 80%;
+  background: $background-radial;
+  margin-top: 10vh;
+  @include neumorph-right;
+  &:hover {
+    transform-style: preserve-3d;
+    transform: perspective(500px) rotateX(0deg); 
+  }
+}
+
+@mixin right-small {
+  grid-area: right-small;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+  margin-left: 10vw;
+  max-height: auto;
+  background: $background-radial;
+  text-align: center;
+  @include neumorph-middle-small;
+}
+
+@mixin bottom {
+  grid-area: bottom; 
+  width: 50vw;
+  margin-left: 25vw;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  background: $background-radial;
+  @include neumorph-bottom;
+  i {
+    color: $font-color-light;
+    font-size: 3rem;
+    margin: 1rem;
+  }
+  &:hover {
+    transform-style: preserve-3d;
+    transform: perspective(500px) rotateX(0deg); 
+  }
+}
+
+@mixin bottom-small {
+  grid-area: bottom-small; 
+  width: 50vw;
+  margin-left: 25vw;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  background: $background-radial;
+  @include neumorph-bottom;
+  i {
+    color: $font-color-light;
+    font-size: 3rem;
+    margin: 1rem;
+  }
+}
+
+@mixin bg-stars {
+  background-color:black;
+  background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }

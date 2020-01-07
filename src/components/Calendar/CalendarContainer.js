@@ -1,14 +1,10 @@
 import React from "react";
 import moment from "moment";
-import "./calendar.css";
 import Calendar from './Calendar'
 import { url } from '../../constants'
 import request from 'superagent'
-import AddEvent from './AddEvent'
-import Events from './Events'
-import { Button } from 'react-bootstrap'
-
 import { connect } from 'react-redux'
+import { getFavoritePhotos, getUserDrawings } from '../../actions'
 
 
 class CalendarContainer extends React.Component {
@@ -17,11 +13,12 @@ class CalendarContainer extends React.Component {
     showMonthTable: false,
     showDateTable: true,
     dateObject: moment(),
-    selectedDay: null,
+    selectedDay: moment().format('D'),
     events: [],
     addEvent: false,
-    deletingEvent: false,
     showEvents: false,
+    showPictures: false,
+    picture: ''
   }
 
   showMonth = () => {
@@ -41,6 +38,7 @@ class CalendarContainer extends React.Component {
       showDateTable: !this.state.showDateTable
     })
   }
+
 
   onPrev = () => {
     this.setState({
@@ -72,52 +70,39 @@ class CalendarContainer extends React.Component {
   }
 
   onDayClick = (e, d) => {
-
-    this.setState(
-      {
-        selectedDay: d
-      },
-      () => {
-        request
-          .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`)
-          // .set('Authorization', `Bearer ${this.props.user.jwt}`)
-          .then(response => {
-            this.setState({
-              events: response.body
-            })})
-          .catch(console.error)
-      }
-    );
-  };
-
-  deleteEvent = (e) => {
-   
-    request.delete(`${url}/event/${e.target.value}`)
-      .then(response => {
-        this.setState({ deletingEvent: !this.state.deletingEvent })
-      })
-      .catch(console.error)
-
+    if (this.props.user) {
+      this.setState(
+        {
+          selectedDay: d
+        },
+        () => {
+          request
+            .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`)
+            .set('Authorization', `Bearer ${this.props.user.jwt}`)
+            .then(response => {
+              this.setState({
+                events: response.body
+              })})
+            .catch(console.error)
+        }
+      )
+    }
   }
 
-  deletedEvent = () => {
-
-    request
-      .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-      // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+  deleteEvent = (e) => {
+    request.delete(`${url}/event/${e.currentTarget.dataset.eventid}`)
+      .set('Authorization', `Bearer ${this.props.user.jwt}`)
       .then(response => {
-        this.setState({
-          events: response.body,
-          deletingEvent: !this.state.deletingEvent
+        this.showEvents()
         })
-      })
       .catch(console.error)
+
   }
 
   showEvents = () => {
     request
       .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-      // .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .set('Authorization', `Bearer ${this.props.user.jwt}`)
       .then(response => {
         this.setState({
           events: response.body,
@@ -126,17 +111,37 @@ class CalendarContainer extends React.Component {
       .catch(console.error)
   }
 
+  login = () => {
+    this.props.history.push('/profile')
+  }
+
+  promptPictures = () => {
+    this.props.getFavoritePhotos(this.props.user.jwt)
+    this.setState({ 
+      showPictures: true,
+    })
+  }
+
+  useFavoritePhoto = (e) => {
+    this.setState({
+      picture: e.currentTarget.dataset.picture,
+      showPictures: false,
+    })
+
+  }
+
   componentDidMount() {
 
-    request
-      .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-      // .set('Authorization', `Bearer ${this.props.user.jwt}`)
-      .then(response => {
-        this.setState({
-          events: response.body
-        })})
-      .catch(console.error)
-
+    if (this.props.user) {
+      request
+        .get(`${url}/event/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
+        .set('Authorization', `Bearer ${this.props.user.jwt}`)
+        .then(response => {
+          this.setState({
+            events: response.body
+          })})
+        .catch(console.error)
+    }
   }
 
   render() {
@@ -154,18 +159,20 @@ class CalendarContainer extends React.Component {
           setMonth={this.setMonth}
           onPrevYear={this.onPrevYear}
           onNextYear={this.onNextYear}
-        />
-        <AddEvent /> 
-        {!this.state.showEvents ? 
-        <Button style={{ fontFamily:"'Righteous', cursive" }} variant="dark" onClick={this.showEvents}>Show Events</Button>
-        : 
-        <Button style={{ fontFamily:"'Righteous', cursive" }} variant="dark" onClick={() => this.setState({ showEvents: !this.state.showEvents })}>Hide Events</Button>}
-        {this.state.showEvents && <Events 
           deleteEvent={this.deleteEvent}
           deletedEvent={this.deletedEvent}
           events={this.state.events}
           deletingEvent={this.state.deletingEvent}
-        />}
+          selectedDay={this.state.selectedDay}
+          user={this.props.user}
+          login={this.login}
+          showEvents={this.showEvents}
+          promptPictures={this.promptPictures}
+          showPictures={this.state.showPictures}
+          favoritePhotos={this.props.favoritePhotos}
+          useFavoritePhoto={this.useFavoritePhoto}
+          picture={this.state.picture}
+        />
       </div>
     );
   }
@@ -173,9 +180,15 @@ class CalendarContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.login
+    user: state.login,
+    favoritePhotos: state.favoritePhotos,
+    userDrawings: state.userDrawings
   }
 }
 
+const mapDispatchToProps = {
+  getFavoritePhotos,
+  getUserDrawings
+}
 
-export default connect(mapStateToProps)(CalendarContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarContainer)

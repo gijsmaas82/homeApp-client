@@ -5,14 +5,19 @@
   "base/functions";
 
 @import 'components/header',
-'components/homePage', 
-'components/personal',
-'components/projects';
+'components/homePage',
+'components/calendar',
+'components/gameroom',
+'components/photoapp',
+'components/profile',
+'components/signupandlogin';
 
 
 .App {
   box-sizing: border-box;
   margin: 0;
+  min-height: 100vh;
+  @include bg-stars;
 
   div {
     @include transition-ease;

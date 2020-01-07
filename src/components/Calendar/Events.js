@@ -1,34 +1,37 @@
 import React, { Component } from 'react'
-import { CardDeck, Card, Button } from 'react-bootstrap'
 
 export default class Events extends Component {
 
   render() {
 
     return (
-      <div style={{ fontFamily:"'Righteous', cursive" }}>
-        <h2> Events </h2>
-        {this.props.events.length === 0 && <p> there are no events today</p>}
-        {this.props.deletingEvent && <div>
-            <h2> Event Deleted</h2>
-            <Button variant="dark"
+      <div className="calendarpage__middle">
+        <div  className="calendarpage__middle__header">
+          <h3> Events of {this.props.selectedDay} {this.props.dateObject.format('MMMM')} {this.props.dateObject.format('Y')}</h3>
+        </div>
+        {this.props.events.length === 0 && <div className="calendarpage__middle__noEvents"><p>There are no events today</p></div>}
+        {/* {this.props.deletingEvent && <div className="calendarpage__middle__deleteEvent">
+            <h3> Event Deleted</h3>
+            <div className="calendarpage__right__addButton"
              onClick={this.props.deletedEvent}
-             >Click to refresh</Button>
-          </div>}
-        {this.props.events.length > 0 && !this.props.deletingEvent &&
-         <CardDeck style={{ fontFamily:"'Righteous', cursive" }}>
+             ><p>Click to refresh</p></div>
+          </div>} */}
+        {this.props.events.length > 0 &&
+         <div className="calendarpage__middle__body">
            {this.props.events.map(event => {
-            return <Card>
-               <Card.Text>{event.title}</Card.Text>
-               <Card.Text>{event.date}</Card.Text>
-               <Card.Text>{event.startTime}</Card.Text>
-               <Card.Text>{event.endTime}</Card.Text>
-               <Card.Text>{event.description}</Card.Text>
-               <Card.Img src={event.picture} alt="eventpicture" />
-               <Button value={event.id} variant="dark" onClick={this.props.deleteEvent}>Delete Event</Button>
-             </Card>
+            return <div key={event.id} className="calendarpage__middle__body__event">
+               <h3>{event.title}</h3>
+               <p>{event.date}</p>
+               <p>{event.startTime}</p>
+               <p>{event.endTime}</p>
+               <p>{event.description}</p>
+               <img src={event.picture} alt="eventpicture" />
+               <div data-eventid={event.id} 
+                className="calendarpage__middle__body__event__button" 
+                onClick={this.props.deleteEvent}><p>Delete Event</p></div>
+             </div>
            })}
-         </CardDeck>
+         </div>
          
         }
       </div>

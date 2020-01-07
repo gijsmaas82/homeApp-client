@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import { url } from '../../constants'
+import { connect } from 'react-redux'
+import { getFavoritePhotos, getUserDrawings } from '../../actions'
 import request from 'superagent'
+import ReactFileReader from 'react-file-reader'
 
-export default class AddEvent extends Component {
+class AddEvent extends Component {
   state = {
     addEvent: false,
     wholeDay: true,
@@ -12,7 +15,8 @@ export default class AddEvent extends Component {
     startTime: '',
     endTime: '',
     description: '',
-    picture: 'https://www.starfm.com/wp-content/uploads/sites/32/2012/10/submit-event.jpg'
+    picture: this.props.picture,
+    filename: ''
   }
 
   addEvent = () => {
@@ -26,16 +30,31 @@ export default class AddEvent extends Component {
   onChange = (e) => {
     this.setState ({
       [e.target.name]: e.target.value
-    })
+    }) 
+    
+  }
 
+  handleFiles = files => {
+    this.setState({
+      picture: files.base64,
+      filename: files.fileList[0].name
+    })
+  }
+
+  addFavoritePhoto = () => {
+    this.setState({
+      picture: this.props.picture
+    })
   }
 
   submitEvent = (e) => {
     e.preventDefault()
     request.post(`${url}/event`)
+      .set('Authorization', `Bearer ${this.props.user.jwt}`)
       .send(this.state)
       .then(response => {
-        console.log(response)})
+        this.props.showEvents()
+        })
       .catch(console.error)
     this.setState({
       addEvent: false,
@@ -45,44 +64,93 @@ export default class AddEvent extends Component {
       startTime: '',
       endTime: '',
       description: '',
-      picture: 'https://www.starfm.com/wp-content/uploads/sites/32/2012/10/submit-event.jpg'
+      picture: null
     })
   }
 
   render() {
     return (
+      <div  className="calendarpage__right">
+        {!this.props.user && 
+          <div 
+          className="calendarpage__right__addButton"
+          onClick={this.props.login}
+          ><p>Please log in to add events</p></div> 
+        }
       <div>
-        {!this.state.addEvent ? 
-      <Button 
-      variant="dark" 
-      style={{ fontFamily:"'Righteous', cursive" }}
-      onClick={this.addEvent}
-      >Add Event</Button> 
-      :
-      <Form style={{ fontFamily:"'Righteous', cursive" }} onSubmit={this.submitEvent} >
+        {!this.state.addEvent && this.props.user &&
+        <div 
+          className="calendarpage__right__addButton"
+          onClick={this.addEvent}
+          ><p>Add Event</p>
+        </div>} 
+        {this.state.addEvent && this.props.user &&
+        <div><Form style={{ fontFamily:"'Righteous', cursive", margin: '2rem' }} onSubmit={this.submitEvent} >
         <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Title</Form.Label>
+          <Form.Label><p>Title of Event</p></Form.Label>
           <Form.Control onChange={this.onChange} name="title" type="text" placeholder="title" value={this.state.title} required />
-          <Form.Label>Date</Form.Label>
+          <Form.Label><p>Date</p></Form.Label>
           <Form.Control onChange={this.onChange} name="date" type="date" placeholder="date" value={this.state.date}required /> 
-            <Form.Check 
-              type="switch"
-              id="custom-switch"
-              label="Set Time"
-              onChange={this.setTime}
-            />
-          { !this.state.wholeDay && <div><Form.Label>Start time</Form.Label>
+          <ReactFileReader handleFiles={this.handleFiles} base64={true}>
+            <div className='calendarpage__right__addButton'><p>Upload a picture</p></div>
+          </ReactFileReader>
+          {!this.state.filename ? '' : <div><p>{this.state.filename}</p></div>}
+          <div 
+            onClick={this.props.promptPictures} 
+            className='calendarpage__right__addButton' >
+              <p>Search favorite pictures</p>
+          </div>
+          {this.props.picture && !this.state.picture &&
+          <div 
+            onClick={this.addFavoritePhoto} 
+            className='calendarpage__right__addButton' >
+              <p>Click to use picture</p>
+              <img src={this.props.picture} alt="eventpicture" style={{ width: "90%", borderRadius: "3px"}}/>
+          </div>
+          }
+          {/* <div onClick={this.addDrawing} className='calendarpage__right__addButton'><p>Use drawing</p></div> */}
+          <p>Set Time</p>
+          <Form.Check 
+            type="switch"
+            id="custom-switch"
+            label="Add times to the event"
+            onChange={this.setTime}
+          />
+          { !this.state.wholeDay && <div><Form.Label><p>Start time</p></Form.Label>
           <Form.Control onChange={this.onChange} name="startTime" type="time" placeholder="starttime" value={this.state.startTime} />
-          <Form.Label>End time</Form.Label>
+          <Form.Label><p>End time</p></Form.Label>
           <Form.Control onChange={this.onChange} name="endTime" type="time" placeholder="endtime" value={this.state.endTime} /></div> }
-          <Form.Label>Description</Form.Label>
+          <Form.Label><p>Description</p></Form.Label>
           <Form.Control onChange={this.onChange} name="description" type="textarea" placeholder="description" value={this.state.description} required/>
-          <Button variant="dark" type="submit">Submit form</Button>
-          <Button variant="dark" onClick={this.addEvent}>Cancel</Button>
+          <div 
+            className="calendarpage__right__addButton"
+            onClick={this.submitEvent}
+            ><p>Add Event</p></div>
+          <div 
+            className="calendarpage__right__addButton"
+            onClick={this.addEvent}
+            ><p>Cancel</p></div>
         </Form.Group>
       </Form>
+      </div>
       } 
+      </div>
       </div>
     )
   }
 }
+
+function mapStateToProps  (state) {
+  return {
+    user: state.login,
+    favoritePhotos: state.favoritePhotos,
+    userDrawings: state.userDrawings
+  }
+}
+
+const mapDispatchToProps = {
+  getFavoritePhotos,
+  getUserDrawings
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddEvent)

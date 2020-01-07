@@ -43,28 +43,153 @@
   @include keyframes(tada) {
     from {
       transform: scale3d(1, 1, 1);
+      opacity: 0;
     }
   
     10%,
     20% {
-      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(1, 1, 1, -30deg);
     }
   
     30%,
     50%,
     70%,
     90% {
-      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(1, 1, 1, 30deg);
     }
   
     40%,
     60%,
     80% {
-      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(1, 1, 1, -30deg);
     }
   
     to {
       transform: scale3d(1, 1, 1);
+      opacity: 1;
+    }
+  }
+
+  @include keyframes(fadeInDown) {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @include keyframes(wobble) {
+    from {
+      transform: translate3d(0, -100%, 0);
+      opacity: 0;
+    }
+  
+    15% {
+      transform: translate3d(-10%, -85%, 0) rotate3d(0, 0, 1, -5deg);
+    }
+  
+    30% {
+      transform: translate3d(10%, -70%, 0) rotate3d(0, 0, 1, 3deg);
+    }
+  
+    45% {
+      transform: translate3d(-5%, -55%, 0) rotate3d(0, 0, 1, -3deg);
+    }
+  
+    60% {
+      transform: translate3d(5%, -40%, 0) rotate3d(0, 0, 1, 2deg);
+    }
+  
+    75% {
+      transform: translate3d(-2%, -25%, 0) rotate3d(0, 0, 1, -1deg);
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0) translateY(0);
+    }
+  }
+
+  @include keyframes(openleft) {
+    0% {
+      transform: translate3d(100%, -100%, 0) rotate3d(0, 1, 0, -180deg);
+      opacity: 0;
+      width: 93%;
+      color: white;
+    }
+    50% {
+      transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, -180deg);
+      opacity: 1;
+      width: 93%;
+      color: white;
+    }
+    100% {
+      transform: translate3d(0, 0, 0) rotate3d(0, 1, 0, 10deg)
+    }
+  }
+
+  @include keyframes(openright) {
+    0% {
+      transform: translate3d(-100%, -100%, 0) rotate3d(0, 1, 0, 180deg);
+      opacity: 0;
+      width: 93%
+    }
+    50% {
+      transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, 180deg);
+      opacity: 1;
+      width: 93%;
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @include keyframes(fadeIn) {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @include keyframes(appear) {
+    0% {
+      transform: scale3d(0.01, 0.01, 0.01) rotateZ(90deg) rotateX(90deg);
+    }
+    50% {
+      transform: scale3d(0.05, 0.05, 0.05) rotateZ(45deg) rotateX(45deg);
+    }
+    80% {
+      transform: scale3d(0.8, 0.8, 0.8) rotateZ(0deg) rotateX(0deg);
+    }
+    90% {
+      
+      transform: scale3d(0.9, 0.9, 0.9) rotateZ(0deg) rotateX(0deg);
+    }
+    100% { 
+      transform: scale3d(1, 1);
+    }
+  }
+
+  @include keyframes(night) {
+    0% {
+      background: transparent;
+    }
+    25%{
+      background: linear-gradient(45deg, #43434325 0%, #00000025 100%);
+    }
+    50% {
+      background: linear-gradient(45deg, #43434350 0%, #00000050 100%);
+    }
+    75% {
+      background: linear-gradient(45deg, #43434375 0%, #00000075 100%);
+    }
+    100% {
+      background: linear-gradient(45deg, #434343 0%, #00000099 100%);
     }
   }
 // Animated Road

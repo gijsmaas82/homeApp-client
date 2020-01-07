@@ -7,6 +7,8 @@ import projectInfo from './projectInfo'
 import photos from './photos'
 import searchTag from './searchTag'
 import pagination from './pagination'
+import favoritePhotos from './favoritePhotos'
+import userDrawings from './userDrawings'
 
 export default combineReducers({
   login,
@@ -16,5 +18,7 @@ export default combineReducers({
   projectInfo,
   photos,
   searchTag,
-  pagination
+  pagination,
+  favoritePhotos,
+  userDrawings
 })
