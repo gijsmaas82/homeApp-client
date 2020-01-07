@@ -156,24 +156,24 @@
     }
   }
 
-  @include keyframes(appear) {
-    0% {
-      transform: scale3d(0.01, 0.01, 0.01) rotateZ(90deg) rotateX(90deg);
-    }
-    50% {
-      transform: scale3d(0.05, 0.05, 0.05) rotateZ(45deg) rotateX(45deg);
-    }
-    80% {
-      transform: scale3d(0.8, 0.8, 0.8) rotateZ(0deg) rotateX(0deg);
-    }
-    90% {
+  // @include keyframes(appear) {
+  //   0% {
+  //     transform: scale3d(0.01, 0.01, 0.01) rotateZ(90deg) rotateX(90deg);
+  //   }
+  //   50% {
+  //     transform: scale3d(0.05, 0.05, 0.05) rotateZ(45deg) rotateX(45deg);
+  //   }
+  //   80% {
+  //     transform: scale3d(0.8, 0.8, 0.8) rotateZ(0deg) rotateX(0deg);
+  //   }
+  //   90% {
       
-      transform: scale3d(0.9, 0.9, 0.9) rotateZ(0deg) rotateX(0deg);
-    }
-    100% { 
-      transform: scale3d(1, 1);
-    }
-  }
+  //     transform: scale3d(0.9, 0.9, 0.9) rotateZ(0deg) rotateX(0deg);
+  //   }
+  //   100% { 
+  //     transform: scale3d(1, 1);
+  //   }
+  // }
 
   @include keyframes(night) {
     0% {
