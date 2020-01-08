@@ -34,6 +34,7 @@ class ProfileContainer extends Component {
       showUserAlbums: false,
       showAlbumPhotos: false,
       activeAlbum: null })
+    window.scrollTo(0, 0)
   }
 
   onPageClick = (event) => {
@@ -46,6 +47,7 @@ class ProfileContainer extends Component {
       this.props.getAlbumPhotos(this.props.user.jwt, this.state.activeAlbum, event.currentTarget.dataset.pagenumber)
       window.scrollTo(0, 0)
     }
+    window.scrollTo(0, 0)
   }
 
   getUserDrawings = () => {
@@ -55,6 +57,7 @@ class ProfileContainer extends Component {
       showUserDrawings: true,
       showUserAlbums: false,
       activeAlbum: null })
+    window.scrollTo(0, 0)
   }
 
   getUserAlbums = () => {
@@ -64,6 +67,7 @@ class ProfileContainer extends Component {
       showUserDrawings: false,
       showUserAlbums: true,
       activeAlbum: null })
+    window.scrollTo(0, 0)
   }
 
   getAlbumPhotos = (e) => {
@@ -74,6 +78,7 @@ class ProfileContainer extends Component {
       showUserAlbums: false,
       activeAlbum: e.currentTarget.dataset.album
      })
+    window.scrollTo(0, 0)
   }
 
   promptPhoto = (e) => {
