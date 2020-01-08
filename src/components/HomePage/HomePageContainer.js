@@ -31,6 +31,7 @@ class HomePageContainer extends Component {
       return null
     })
     this.setState({ activeItem: clickedItem, activeCV: false, intro: false })
+    window.scrollTo(0, 0)
   }
 
   showCV = () => {

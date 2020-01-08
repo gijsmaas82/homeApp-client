@@ -51,7 +51,6 @@ export default function HomePage(props) {
         <div className="homepage__middle" >
           {props.intro && <div className="homepage__middle__intro">
             <div className="homepage__middle__intro__site">
-              <div className="header__sun"></div>
               <div className="homepage__middle__intro__site__item">
                 <i className="fas fa-user-tie" />
                 <p>Welcome to my site!
