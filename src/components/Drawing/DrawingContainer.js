@@ -25,7 +25,6 @@ class DrawingContainer extends Component {
       drawing: [pos.x, pos.y] })
   }
   onTouchMove = (e) => {
-    
     if (this.state.isPaint) {
       const stage = e.target.getStage()
       const pos = stage.getPointerPosition()
