@@ -260,7 +260,7 @@
       }
       &__active {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
         &__header {
@@ -270,16 +270,16 @@
         }
         &__image {
           @include neumorph-small;
-          width: 40%;
-          margin: 5%;
+          width: 90%;
+          margin-left: 5%;
           img {
             width: 100%
           }
         }
         &__list {
           @include neumorph-small;
-          width: 30%;
-          margin: 5%;
+          width: 90%;
+          margin-left: 5%;
         }
         &__content {
           @include neumorph-small;
