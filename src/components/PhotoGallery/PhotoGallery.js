@@ -39,9 +39,26 @@ export default class PhotoGallery extends Component {
                   <Form.Label><p>Name of photo</p></Form.Label>
                   <Form.Control type="text" placeholder="Name your file" value={this.props.name}
                     name='name' onChange={this.props.onChange} required/>
-                    <Form.Label><p>Album</p></Form.Label>
+                    <Form.Label><p>Make an Album</p></Form.Label>
                     <Form.Control type="text" placeholder="optional" value={this.props.album}
                       name='album' onChange={this.props.onChange}/>
+                    <Form.Label><p>Choose an album</p></Form.Label>
+                    {!this.props.userAlbums ?
+                      <p>You don't have any albums yet</p>
+                      :
+                      <div>
+                      {this.props.userAlbums.map(album => {
+                      return <Form.Check 
+                        custom
+                        key={album} 
+                        value={album}
+                        name="album"
+                        onChange={this.props.onChange}
+                        type="checkbox"
+                        label={album}
+                        style={{fontWeight: "700", fontFamily: "'PT Sans Caption', sans-serif"}} />
+                      })}
+                    </div>}
                 </Form.Group>
               </Col>
               <Col>
@@ -54,6 +71,9 @@ export default class PhotoGallery extends Component {
                   <Button type="submit" className='calendarpage__right__addButton'><p>Upload to profile</p></Button>
               </Col>
             </Form>
+            <div className="photoapp__save__prompt__buttons">
+              <div onClick={this.props.cancelUpload} className="photoapp__save__prompt__buttons__button"><p>Cancel Upload</p></div>
+            </div>
           </div>
           :
           <div className="photoapp__save__prompt">
@@ -75,11 +95,11 @@ export default class PhotoGallery extends Component {
               <p>Please type something that you are interested in and start searching for cool images!</p>
             </div>
             <div className="photoapp__search__input">
-              <Form inline  >
+              <Form inline onSubmit={this.props.onSubmitSearch} >
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" 
                   value={this.props.tag} name='tag' onChange={this.props.onChange}/>
-                <div className="photoapp__search__input__button" onClick={this.props.onSubmitSearch}><p>Search</p></div>
-                {this.props.user && <div className="photoapp__search__input__button" onClick={this.props.promptUpload}><p>Or upload your own photo.</p></div>}
+                <div><div className="photoapp__search__input__button" onClick={this.props.onSubmitSearch}><p>Search</p></div>
+                {this.props.user && <div className="photoapp__search__input__button" onClick={this.props.promptUpload}><p>Or upload your own photo.</p></div>}</div>
               </Form>
             </div>
           </div>
@@ -93,7 +113,7 @@ export default class PhotoGallery extends Component {
               {this.props.photos && 
                 <div className="photoapp__gallery__body">
                 <div className="photoapp__gallery__body__photos">{this.props.photos.map(photo => {
-                return <div className="photoapp__gallery__body__photos__photo">
+                return <div key={photo.title} className="photoapp__gallery__body__photos__photo">
                   
                   <img onClick={this.props.promptSave}
                   data-name={photo.title}
@@ -133,10 +153,17 @@ export default class PhotoGallery extends Component {
                 </div>}
             </div>
           </div>
-          <div className="photoapp__span">
-            <i className="fab fa-github" />
-            <i className="fab fa-linkedin" />
+          <div className="homepage__span" >
+          <div className="homepage__span__info">
+            <p>Gijs Maas</p>
+            <p>Haarlem</p>
+            <p>drs.g.maas@gmail.com</p>
           </div>
+          <div className="homepage__span__links">
+            <a href="https://github.com/gijsmaas82"><i className="fab fa-github" /></a>
+            <a href="https://www.linkedin.com/in/drs-gijs-maas/"><i className="fab fa-linkedin" /></a>
+          </div>
+        </div>  
         </div> 
       </div>
     )

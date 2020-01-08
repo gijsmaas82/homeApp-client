@@ -40,8 +40,16 @@ export default class SignUpAndLogIn extends Component {
             ><h2>Log In</h2>
           </div>
         </div>
-        <div className="signuploginpage__bottom">
-          
+        <div className="homepage__span" >
+          <div className="homepage__span__info">
+            <p>Gijs Maas</p>
+            <p>Haarlem</p>
+            <p>drs.g.maas@gmail.com</p>
+          </div>
+          <div className="homepage__span__links">
+            <a href="https://github.com/gijsmaas82"><i className="fab fa-github" /></a>
+            <a href="https://www.linkedin.com/in/drs-gijs-maas/"><i className="fab fa-linkedin" /></a>
+          </div>
         </div>        
       </div>
     )

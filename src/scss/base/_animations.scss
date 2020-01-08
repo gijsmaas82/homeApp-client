@@ -82,6 +82,16 @@
     }
   }
 
+  @include keyframes(fadeInTop) {
+    from {
+      transform: scale(0.1, 0.1);
+    }
+  
+    to {
+      transform:  scale(1, 1);
+    }
+  }
+
   @include keyframes(wobble) {
     from {
       transform: translate3d(0, -100%, 0);
