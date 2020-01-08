@@ -55,7 +55,8 @@ export default class PhotoGallery extends Component {
                         name="album"
                         onChange={this.props.onChange}
                         type="checkbox"
-                        label={album} />
+                        label={album}
+                        style={{fontWeight: "700", fontFamily: "'PT Sans Caption', sans-serif"}} />
                       })}
                     </div>}
                 </Form.Group>
@@ -97,8 +98,8 @@ export default class PhotoGallery extends Component {
               <Form inline onSubmit={this.props.onSubmitSearch} >
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" 
                   value={this.props.tag} name='tag' onChange={this.props.onChange}/>
-                <div className="photoapp__search__input__button" onClick={this.props.onSubmitSearch}><p>Search</p></div>
-                {this.props.user && <div className="photoapp__search__input__button" onClick={this.props.promptUpload}><p>Or upload your own photo.</p></div>}
+                <div><div className="photoapp__search__input__button" onClick={this.props.onSubmitSearch}><p>Search</p></div>
+                {this.props.user && <div className="photoapp__search__input__button" onClick={this.props.promptUpload}><p>Or upload your own photo.</p></div>}</div>
               </Form>
             </div>
           </div>
@@ -152,10 +153,17 @@ export default class PhotoGallery extends Component {
                 </div>}
             </div>
           </div>
-          <div className="photoapp__span">
-            <i className="fab fa-github" />
-            <i className="fab fa-linkedin" />
+          <div className="homepage__span" >
+          <div className="homepage__span__info">
+            <p>Gijs Maas</p>
+            <p>Haarlem</p>
+            <p>drs.g.maas@gmail.com</p>
           </div>
+          <div className="homepage__span__links">
+            <a href="https://github.com/gijsmaas82"><i className="fab fa-github" /></a>
+            <a href="https://www.linkedin.com/in/drs-gijs-maas/"><i className="fab fa-linkedin" /></a>
+          </div>
+        </div>  
         </div> 
       </div>
     )

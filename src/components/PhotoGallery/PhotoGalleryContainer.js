@@ -17,7 +17,7 @@ class PhotoGalleryContainer extends Component {
     uploadingPhoto: false,
     filename: '',
     name: '',
-    album: null,
+    album: 'Favorites',
     albums: [],
     message: '',
 
@@ -90,7 +90,7 @@ class PhotoGalleryContainer extends Component {
       url: null,
       filename: '',
       name: '',
-      album: null,
+      album: 'Favorites',
       message: '', 
     })
   }
@@ -100,7 +100,7 @@ class PhotoGalleryContainer extends Component {
       saving: !this.state.saving,
       url: null,
       name: '',
-      album: null,
+      album: 'Favorites',
       message: '', 
     })
   }

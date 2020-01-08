@@ -12,7 +12,7 @@ export default class DragAndDrop extends Component {
         </div>
         {this.props.gameOver ? 
         <div className="applegame__stage">
-          <ReactPlayer width={window.innerWidth} height={window.innerHeight - 200} url='https://www.youtube.com/watch?v=NCFg7G63KgI' playing loop={false} onEnded={this.props.onEnded} />
+          <ReactPlayer width={window.innerWidth} height={window.innerHeight - 200} url='https://www.youtube.com/watch?v=FmyZFwJdnzk' playing loop={false} onEnded={this.props.onEnded} />
         </div>
         :
         <div className="applegame__stage">

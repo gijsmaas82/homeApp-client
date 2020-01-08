@@ -3,6 +3,8 @@ import Profile from './Profile'
 import { connect } from 'react-redux'
 import { getFavoritePhotos, getUserDrawings, getUserAlbums, getAlbumPhotos } from '../../actions'
 import SignUpAndLogIn from '../SignUpAndLogIn/SignUpAndLogIn'
+import request from 'superagent'
+import { url } from '../../constants'
 
 
 class ProfileContainer extends Component {
@@ -17,7 +19,11 @@ class ProfileContainer extends Component {
     showProfile: true,
     showUserAlbums: false,
     currentPage: 1,
-    activeAlbum: null
+    activeAlbum: null,
+    showPhoto: false,
+    message: null,
+    photo: null,
+    photoId: null
   }
 
   getFavoritePhotos = () => {
@@ -70,6 +76,34 @@ class ProfileContainer extends Component {
      })
   }
 
+  promptPhoto = (e) => {
+    this.setState({ 
+      showPhoto: true, 
+      photo: e.currentTarget.dataset.photo,
+      photoId: e.currentTarget.dataset.id
+    })
+  }
+
+  cancelDelete = () => {
+    this.setState({
+      showPhoto: false, 
+      photo: null,
+      photoId: null,
+      message: ''
+    })
+  }
+
+  deletePhoto = () => {
+    request.delete(`${url}/photo/${this.state.photoId}`)
+      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .then(response => {
+        if (response.statusCode === 204) {
+          this.setState({ message: 'Photo is deleted'})
+        }
+      })
+      .catch(console.error)
+  }
+
   render() {
     return (
       <div>
@@ -92,6 +126,12 @@ class ProfileContainer extends Component {
           currentPage={this.state.currentPage}
           onPageClick={this.onPageClick}
           pagination={this.props.pagination}
+          showPhoto={this.state.showPhoto}
+          message={this.state.message}
+          promptPhoto={this.promptPhoto}
+          photo={this.state.photo}
+          cancelDelete={this.cancelDelete}
+          deletePhoto={this.deletePhoto}
         />}
       </div>
     )
