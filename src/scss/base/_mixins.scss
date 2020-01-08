@@ -215,7 +215,7 @@ animation: #{$str};
   background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
   transform-style: preserve-3d;
   transform: perspective(500px) rotateX(-10deg); 
-  @include animation(appear 1s);
+  @include animation(fadeInDown 1s);
 }
 
 @mixin neumorph-top-small {
@@ -226,7 +226,7 @@ animation: #{$str};
   background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
   transform-style: preserve-3d;
   transform: perspective(500px) rotateX(-10deg); 
-  @include animation(appear 1s);
+  @include animation(fadeInDown 1s);
 }
 
 @mixin neumorph-middle {
