@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getPhotos, getPage, getSearchTag } from '../../actions'
+import { getPhotos, getPage, getSearchTag, getUserAlbums } from '../../actions'
 import { connect } from 'react-redux'
 import PhotoGallery from './PhotoGallery'
 import request from 'superagent'
@@ -17,14 +17,14 @@ class PhotoGalleryContainer extends Component {
     uploadingPhoto: false,
     filename: '',
     name: '',
-    album: null,
+    album: 'Favorites',
+    albums: [],
     message: '',
 
   }
 
   onPageClick = (event) => {
     this.setState({ currentPage: Number(event.currentTarget.dataset.pagenumber) })
-    console.log('value', event.currentTarget.dataset.pagenumber, 'page', this.props.pages)
     this.props.getPage(event.currentTarget.dataset.pagenumber)
     window.scrollTo(0, 0)
   }
@@ -66,6 +66,7 @@ class PhotoGalleryContainer extends Component {
   }
 
   promptSave = (e) => { 
+
     if (this.props.user) {
       this.setState({ 
         saving: !this.state.saving, 
@@ -78,6 +79,7 @@ class PhotoGalleryContainer extends Component {
 
   promptUpload = () => {
     if (this.props.user) {
+      this.props.getUserAlbums(this.props.user.jwt)
       this.setState({ uploadingPhoto: true })
     }
   }
@@ -86,8 +88,9 @@ class PhotoGalleryContainer extends Component {
     this.setState({ 
       uploadingPhoto: false,
       url: null,
+      filename: '',
       name: '',
-      album: null,
+      album: 'Favorites',
       message: '', 
     })
   }
@@ -97,7 +100,7 @@ class PhotoGalleryContainer extends Component {
       saving: !this.state.saving,
       url: null,
       name: '',
-      album: null,
+      album: 'Favorites',
       message: '', 
     })
   }
@@ -148,6 +151,7 @@ class PhotoGalleryContainer extends Component {
           newRandomPhoto={this.newRandomPhoto}
           user={this.props.user}
           handleFiles={this.handleFiles}
+          userAlbums={this.props.userAlbums}
         />
       </div>
     )
@@ -159,8 +163,9 @@ function mapStateToProps (state) {
     user: state.login,
     photos: state.photos,
     searchTag: state.searchTag,
-    pages: state.pagination
+    pages: state.pagination,
+    userAlbums: state.userAlbums
    }
 }
 
-export default connect (mapStateToProps, { getPhotos, getPage, getSearchTag })(PhotoGalleryContainer)
+export default connect (mapStateToProps, { getPhotos, getPage, getSearchTag, getUserAlbums })(PhotoGalleryContainer)

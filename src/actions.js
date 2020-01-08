@@ -190,14 +190,33 @@ function setFavoritePhotos(payload) {
   }
 }
 
-export const getFavoritePhotos = (jwt) => dispatch => {  
+export const getFavoritePhotos = (jwt, page) => dispatch => {  
 
   request
     .get(`${url}/photo`)
     .set('Authorization', `Bearer ${jwt}`)
+    .set('page', page)
     .then(response => {
-      const action = setFavoritePhotos(response.body)
-      dispatch(action)
+      const action1 = setPagination(response.body.count)
+      const action2 = setFavoritePhotos(response.body.rows)
+      dispatch(action1)
+      dispatch(action2)
+      })
+    .catch(console.error)
+}
+
+export const getAlbumPhotos = (jwt, album, page) => dispatch => {  
+
+  request
+    .get(`${url}/photo`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .set('album', album )
+    .set('page', page)
+    .then(response => {
+      const action1 = setPagination(response.body.count)
+      const action2 = setFavoritePhotos(response.body.rows)
+      dispatch(action1)
+      dispatch(action2)
       })
     .catch(console.error)
 }
@@ -218,6 +237,27 @@ export const getUserDrawings = (jwt) => dispatch => {
     .set('Authorization', `Bearer ${jwt}`)
     .then(response => {
       const action = setUserDrawings(response.body)
+      dispatch(action)
+      })
+    .catch(console.error)
+}
+
+export const SET_USER_ALBUMS = 'SET_USER_ALBUMS'
+
+function setUserAlbums(payload) {
+  return{
+    type: SET_USER_ALBUMS,
+    payload
+  }
+}
+
+export const getUserAlbums = (jwt) => dispatch => {  
+
+  request
+    .get(`${url}/photoalbums`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(response => {
+      const action = setUserAlbums(response.body)
       dispatch(action)
       })
     .catch(console.error)

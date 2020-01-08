@@ -107,10 +107,17 @@ export default class GameRoom extends Component {
             </Layer>
           </Stage>
         </div>
-        <div className="gameroom__span">
-          <i className="fab fa-github" />
-          <i className="fab fa-linkedin" />
-        </div>
+        <div className="homepage__span" >
+          <div className="homepage__span__info">
+            <p>Gijs Maas</p>
+            <p>Haarlem</p>
+            <p>drs.g.maas@gmail.com</p>
+          </div>
+          <div className="homepage__span__links">
+            <a href="https://github.com/gijsmaas82"><i className="fab fa-github" /></a>
+            <a href="https://www.linkedin.com/in/drs-gijs-maas/"><i className="fab fa-linkedin" /></a>
+          </div>
+        </div>  
       </div>
     )
   }

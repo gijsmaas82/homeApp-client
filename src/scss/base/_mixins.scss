@@ -40,7 +40,7 @@ animation: #{$str};
   position: absolute;
   display: block;
   border: solid #abbaab 5px;
-  box-shadow: -3px 3px 1px 1px #4f4870,
+  box-shadow: -3px 3px 1px 1px #031253,
               1px -1px 1px 1px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   box-sizing: border-box;
@@ -130,7 +130,7 @@ animation: #{$str};
   @include paragraph-typo;
   font-family: $header-font;
   color: $font-color-light;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 @mixin p-small {
@@ -169,7 +169,6 @@ animation: #{$str};
 @mixin paragraph-typo {
   font-weight: 700;
   letter-spacing: 0.2rem;
-  font-size: 1.2rem;
 }
 
 @mixin header-typo {
@@ -192,7 +191,7 @@ animation: #{$str};
 }
 
 @mixin neumorph {
-  box-shadow: -10px 10px 3px 3px #4f4870,
+  box-shadow: -10px 10px 3px 3px #031253,
               2px -2px 2px 2px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   border-radius: 10px;
@@ -200,7 +199,7 @@ animation: #{$str};
 }
 
 @mixin neumorph-small {
-  box-shadow: -3px 3px 1px 1px #4f4870,
+  box-shadow: -3px 3px 1px 1px #031253,
               0.5px 0.5px 0.5px 0.5px #eef2f3,
               inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
   border-radius: 10px;
@@ -208,29 +207,29 @@ animation: #{$str};
 }
 
 @mixin neumorph-top {
-  box-shadow: -10px 10px 3px 3px #4f4870,
+  box-shadow: -10px 10px 3px 3px #031253,
               2px -2px 2px 2px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   border-radius: 10px;
   background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
   transform-style: preserve-3d;
   transform: perspective(500px) rotateX(-10deg); 
-  @include animation(fadeInDown 1s);
+  @include animation(fadeInTop 1s);
 }
 
 @mixin neumorph-top-small {
-  box-shadow: -3px 3px 1px 1px #4f4870,
+  box-shadow: -3px 3px 1px 1px #031253,
               0.5px 0.5px 0.5px 0.5px #eef2f3,
               inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
   border-radius: 10px;
   background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
   transform-style: preserve-3d;
   transform: perspective(500px) rotateX(-10deg); 
-  @include animation(fadeInDown 1s);
+  @include animation(fadeInTop 1s);
 }
 
 @mixin neumorph-middle {
-  box-shadow: -10px 10px 3px 3px #4f4870,
+  box-shadow: -10px 10px 3px 3px #031253,
               2px -2px 2px 2px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   border-radius: 10px;
@@ -242,7 +241,7 @@ animation: #{$str};
 }
 
 @mixin neumorph-middle-small {
-  box-shadow: -3px 3px 1px 1px #4f4870,
+  box-shadow: -3px 3px 1px 1px #031253,
               0.5px 0.5px 0.5px 0.5px #eef2f3,
               inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
   border-radius: 10px;
@@ -253,7 +252,7 @@ animation: #{$str};
 }
 
 @mixin neumorph-left {
-  box-shadow: -10px 10px 3px 3px #4f4870,
+  box-shadow: -10px 10px 3px 3px #031253,
               2px -2px 2px 2px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   border-radius: 10px;
@@ -269,7 +268,7 @@ animation: #{$str};
 }
 
 @mixin neumorph-left-small {
-  box-shadow: -10px 10px 3px 3px #4f4870,
+  box-shadow: -10px 10px 3px 3px #031253,
               2px -2px 2px 2px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   border-radius: 10px;
@@ -285,7 +284,7 @@ animation: #{$str};
 }
 
 @mixin neumorph-right {
-  box-shadow: -10px 10px 3px 3px #4f4870,
+  box-shadow: -10px 10px 3px 3px #031253,
               2px -2px 2px 2px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   border-radius: 10px;
@@ -301,7 +300,7 @@ animation: #{$str};
 }
 
 @mixin neumorph-right-small {
-  box-shadow: -10px 10px 3px 3px #4f4870,
+  box-shadow: -10px 10px 3px 3px #031253,
               2px -2px 2px 2px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   border-radius: 10px;
@@ -317,7 +316,19 @@ animation: #{$str};
 }
 
 @mixin neumorph-bottom {
-  box-shadow: -10px 10px 3px 3px #4f4870,
+  box-shadow: -10px 10px 3px 3px #031253,
+              2px -2px 2px 2px #eef2f3,
+              inset -1px 1px 2px 2px #eef2f3;
+  border-radius: 10px;
+  background: linear-gradient(-45deg,#eef2f3 0%, #66d4f0ce 100%);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(10deg); 
+  @include animation(fadeInDown 0.5s backwards);
+  animation-delay: 1.5s;
+}
+
+@mixin neumorph-bottom-small {
+  box-shadow: -10px 10px 3px 3px #031253,
               2px -2px 2px 2px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   border-radius: 10px;
@@ -329,7 +340,7 @@ animation: #{$str};
 }
 
 @mixin neumorph-button {
-  box-shadow: -10px 10px 3px 3px #4f4870,
+  box-shadow: -10px 10px 3px 3px #031253,
               2px -2px 2px 2px #eef2f3,
               inset -1px 1px 2px 2px #eef2f3;
   border-radius: 10px;
@@ -339,14 +350,14 @@ animation: #{$str};
   @include transition-ease;
   &:hover {
     box-shadow: none;
-    box-shadow: -5px 5px 3px 3px #4f4870,
+    box-shadow: -5px 5px 3px 3px #031253,
               1px -1px 1px 1px #eef2f3,
               inset -1px 1px 1px 1px #eef2f3;
   }
 }
 
 @mixin neumorph-button-small {
-  box-shadow: -5px 5px 3px 3px #4f4870,
+  box-shadow: -5px 5px 3px 3px #031253,
               1.5px -1.5px 1px 1px #eef2f3,
               inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
   border-radius: 10px;
@@ -356,7 +367,7 @@ animation: #{$str};
   @include transition-ease;
   &:hover {
     box-shadow: none;
-    box-shadow: -3px 3px 1px 1px #4f4870,
+    box-shadow: -3px 3px 1px 1px #031253,
               0.5px 0.5px 0.5px 0.5px #eef2f3,
               inset -0.5px 0.5px 0.5px 0.5px #eef2f3;
   }
@@ -515,18 +526,54 @@ animation: #{$str};
 
 @mixin bottom-small {
   grid-area: bottom-small; 
-  width: 50vw;
-  margin-left: 25vw;
+  width: 80vw;
+  margin-left: 10vw;
   margin-top: 2rem;
   margin-bottom: 4rem;
   background: $background-radial;
-  @include neumorph-bottom;
+  @include neumorph-bottom-small;
   i {
     color: $font-color-light;
     font-size: 3rem;
     margin: 1rem;
   }
 }
+
+@mixin fixed {
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin prompt {
+  width: 90vw;
+  height: 90vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  @include neumorph;
+}
+
+@mixin prompt-small {
+  width: 90vw;
+  min-height: 94vh;
+  margin-top: 3vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  @include neumorph-small;
+}
+
 
 @mixin bg-stars {
   background-color:black;

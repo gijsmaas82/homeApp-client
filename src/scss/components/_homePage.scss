@@ -88,6 +88,17 @@
         h3, p {
           margin: 1rem;
         }
+        i {
+          font-size: 3rem;
+        }
+        &__item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          i {
+            margin: 1rem;
+          }
+        }
       }
     }
     &__CV {
@@ -105,7 +116,7 @@
     &__active {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-evenly;
       &__header {
         @include neumorph;
@@ -113,16 +124,17 @@
         margin-left: 5%;
       }
       &__image {
-        @include neumorph;
+        @include neumorph-button;
         width: 40%;
         margin: 5%;
         img {
-          width: 100%
+          width: 100%;
+          border-radius: 5px;
         }
       }
       &__list {
         @include neumorph;
-        width: 30%;
+        width: 40%;
         margin: 5%;
       }
       &__content {
@@ -144,6 +156,10 @@
 
   &__span {
     @include bottom;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
   }
 }
 
@@ -157,7 +173,6 @@
     h2 {
       @include h2-small;
     }
-  
     h3 {
       @include h3-small
     }
@@ -279,12 +294,16 @@
       @include right-small;
   
       &__item {
-        @include neumorph-button;
+        @include neumorph-button-small;
       }
     }
   
     &__span {
       @include bottom-small;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
     }
   }
 

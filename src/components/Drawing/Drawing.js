@@ -22,18 +22,25 @@ export default class Drawing extends Component {
                 </div>
             })}
           </div>
-          <div className="drawingpage__start__span">
-            <i className="fab fa-github" />
-            <i className="fab fa-linkedin" />
+          <div className="homepage__span" >
+          <div className="homepage__span__info">
+            <p>Gijs Maas</p>
+            <p>Haarlem</p>
+            <p>drs.g.maas@gmail.com</p>
           </div>
+          <div className="homepage__span__links">
+            <a href="https://github.com/gijsmaas82"><i className="fab fa-github" /></a>
+            <a href="https://www.linkedin.com/in/drs-gijs-maas/"><i className="fab fa-linkedin" /></a>
+          </div>
+        </div>  
         </div>
         :
         <div className="drawingpage__game">
           <div className="drawingpage__game__stage">
           <Stage width={window.innerWidth - 20} height={window.innerHeight - 200} 
-          onTouchStart={this.props.onTouchStart} 
-          onTouchMove={this.props.onTouchMove}
-          onTouchEnd={this.props.onTouchEnd}
+          onTouchStart={this.props.onTouchStart} onMouseDown={this.props.onTouchStart}  
+          onTouchMove={this.props.onTouchMove} onMouseMove={this.props.onTouchMove}
+          onTouchEnd={this.props.onTouchEnd} onMouseUp={this.props.onTouchEnd}
           >
             <Layer> 
               <Path 

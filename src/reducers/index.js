@@ -9,6 +9,7 @@ import searchTag from './searchTag'
 import pagination from './pagination'
 import favoritePhotos from './favoritePhotos'
 import userDrawings from './userDrawings'
+import userAlbums from './userAlbums'
 
 export default combineReducers({
   login,
@@ -20,5 +21,6 @@ export default combineReducers({
   searchTag,
   pagination,
   favoritePhotos,
-  userDrawings
+  userDrawings,
+  userAlbums
 })
